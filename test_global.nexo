@@ -1,0 +1,15 @@
+using nexocore.math
+using nexocore.system
+
+do CalcolaAssoluto() {
+    res = abs(0 - 55)
+    write "Valore assoluto globale:"
+    write res
+    
+    esito = assert(res == 55, "Mate errore")
+    if esito == 1: {
+        write "Tutti i Test CoreLibs Superati!"
+    }
+}
+
+CalcolaAssoluto()

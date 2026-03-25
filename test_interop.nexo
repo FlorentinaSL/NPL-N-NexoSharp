@@ -1,0 +1,7 @@
+using nexocore.io
+
+print_border()
+write "Valore Casuale Test:"
+rnd = random(10, 99)
+write rnd
+print_border()

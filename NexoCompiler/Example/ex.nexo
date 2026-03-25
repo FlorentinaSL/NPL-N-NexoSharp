@@ -1,0 +1,27 @@
+﻿<3 NEXO Game: Guess the Number v1.1
+<3 Global Edition
+
+write "--- WELCOME TO NEXO GAME ---"
+write "I have chosen a secret number: 7"
+secret = 7
+attempts = 0
+guess = 0
+
+while guess != secret: {
+    write "Enter your guess:"
+    guess = read
+    attempts = attempts + 1
+    
+    if guess < secret: {
+        write "Too low! Try again."
+    } else: {
+        if guess > secret: {
+            write "Too high! Try again."
+        }
+    }
+}
+
+write "CONGRATULATIONS!"
+write "You found it in this many attempts:"
+write attempts
+write "Nexo loves you <3"

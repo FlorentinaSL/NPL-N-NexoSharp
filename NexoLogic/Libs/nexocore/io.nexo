@@ -1,0 +1,9 @@
+do print_border() {
+    write "----------------------------------------"
+}
+
+do prompt(msg) {
+    write msg
+    var input = read
+    return input
+}
