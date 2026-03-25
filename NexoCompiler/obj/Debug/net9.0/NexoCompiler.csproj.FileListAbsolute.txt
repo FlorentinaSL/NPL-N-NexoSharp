@@ -47,3 +47,4 @@ C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Alt5\NexoLogic.pdb
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Debug\net9.0\Libs\nexocore\math.nexo
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Debug\net9.0\Libs\nexocore\system.nexo
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Debug\net9.0\Libs\nexocore\io.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Debug\net9.0\NexoCompiler.sourcelink.json

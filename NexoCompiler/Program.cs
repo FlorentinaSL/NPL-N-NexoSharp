@@ -1,180 +1,203 @@
+using System;
 using System.Diagnostics;
+using System.IO;
 using NexoLogic.Lexing;
 using NexoLogic.Parsing;
 using NexoLogic.Execution;
 
-Console.WriteLine("NPL (Nexo Programming Language) - Version 1.0.0");
-Console.WriteLine("Copyright (c) 2026 Luca Cisternino. All rights reserved.");
-Console.WriteLine("Type 'help' for usage, 'exit' to quit.\n");
+namespace NexoCompiler;
 
-// Gestione immediata se passato come argomento esterno (es. doppio clic o CLI)
-if (args.Length > 0)
-{
-    string command = args[0].ToLower();
-    if (command == "build" && args.Length > 1) {
-        BuildFile(args[1]);
-    } else if (command == "run" && args.Length > 1) {
-        RunDll(args[1]);
-    } else if (command == "open" && args.Length > 1) {
-        ExecuteFile(args[1]);
-    } else if (command != "build" && command != "open" && command != "run") {
-        ExecuteFile(command); // Se ha passato direttamente il path
-    } else {
-        Console.WriteLine("Usage: NexoCompiler [build|open] file.nexo");
-    }
+/// <summary>
+/// CLI Bootstrap entry point for the Nexo Programming Language (NPL).
+/// Orchestrates REPL environments, Just-In-Time execution traversing, and Ahead-Of-Time (AOT) MSIL compilation workloads.
+/// </summary>
+public static class Program {
     
-    // We don't read key physically if there's no console window attached, 
-    // but for simplicity let's just return to avoid hanging CI/CD processes.
-    return;
-}
+    public static void Main(string[] args) {
+        Console.WriteLine("NPL (Nexo Programming Language) - Version 1.0.0");
+        Console.WriteLine("Copyright (c) 2026 Luca Cisternino. All rights reserved.");
+        Console.WriteLine("Type 'help' for usage, 'exit' to quit.\n");
 
-bool running = true;
-while (running)
-{
-    Console.Write("Nexo > ");
-    string fullInput = Console.ReadLine()?.Trim() ?? "";
-    if (string.IsNullOrEmpty(fullInput)) continue;
-
-    // Dividiamo l'input: la prima parola è il comando, il resto è l'argomento (il percorso)
-    string[] parts = fullInput.Split(' ', 2); 
-    string command = parts[0].ToLower();
-    string argument = parts.Length > 1 ? parts[1].Replace("\"", "") : "";
-
-    switch (command)
-    {
-        case "help":
-            ShowHelp();
-            break;
-
-        case "version":
-            ShowVersion();
-            break;
-
-        case "exit":
-            running = false;
-            break;
-
-        case "open":
-            if (string.IsNullOrEmpty(argument))
-            {
-                // Se scrivi solo 'open', apriamo la cartella di installazione come bonus
-                string appPath = AppDomain.CurrentDomain.BaseDirectory;
-                Process.Start("explorer.exe", appPath);
-                Console.WriteLine($"Installation directory opened: {appPath}");
+        // Native Argument Binding: Handle implicit executions via OS double-clicks or shell parameters
+        if (args.Length > 0)
+        {
+            string command = args[0].ToLower();
+            if (command == "build" && args.Length > 1) {
+                BuildFile(args[1]);
+            } else if (command == "run" && args.Length > 1) {
+                RunDll(args[1]);
+            } else if (command == "open" && args.Length > 1) {
+                ExecuteFile(args[1]);
+            } else if (command != "build" && command != "open" && command != "run") {
+                // Fallback: Default to JIT execution if raw path is passed without explicit commands
+                ExecuteFile(command); 
+            } else {
+                Console.WriteLine("Usage: NexoCompiler [build|open] file.nexo");
             }
-            else
+            
+            // Unmount process synchronously without hanging CI/CD daemon layers
+            return;
+        }
+
+        // REPL Emulation Sequence
+        bool running = true;
+        while (running)
+        {
+            Console.Write("Nexo > ");
+            string fullInput = Console.ReadLine()?.Trim() ?? "";
+            if (string.IsNullOrEmpty(fullInput)) continue;
+
+            // Lexical Pre-Parsing: Splitting terminal commands from target file descriptor payloads
+            string[] parts = fullInput.Split(' ', 2); 
+            string command = parts[0].ToLower();
+            string argument = parts.Length > 1 ? parts[1].Replace("\"", "") : "";
+
+            switch (command)
             {
-                // Se scrivi 'open C:\file.nexo', lo eseguiamo
-                ExecuteFile(argument);
+                case "help":
+                    ShowHelp();
+                    break;
+
+                case "version":
+                    ShowVersion();
+                    break;
+
+                case "exit":
+                    running = false;
+                    break;
+
+                case "open":
+                    if (string.IsNullOrEmpty(argument))
+                    {
+                        // Open the runtime binaries folder securely using OS explorer mapping
+                        string appPath = AppDomain.CurrentDomain.BaseDirectory;
+                        Process.Start("explorer.exe", appPath);
+                        Console.WriteLine($"[INFO] Installation directory linked: {appPath}");
+                    }
+                    else
+                    {
+                        ExecuteFile(argument);
+                    }
+                    break;
+
+                case "build":
+                    if (string.IsNullOrEmpty(argument))
+                    {
+                        Console.WriteLine("Usage: build [file_path]");
+                    }
+                    else
+                    {
+                        BuildFile(argument);
+                    }
+                    break;
+
+                case "run":
+                    if (string.IsNullOrEmpty(argument) || !argument.EndsWith(".dll"))
+                    {
+                        Console.WriteLine("Usage: run [compiled_file.dll]");
+                    }
+                    else
+                    {
+                        RunDll(argument);
+                    }
+                    break;
+
+                default:
+                    // Implicit execution fallback for raw file dropping into the shell
+                    ExecuteFile(fullInput.Replace("\"", ""));
+                    break;
             }
-            break;
-
-        case "build":
-            if (string.IsNullOrEmpty(argument))
-            {
-                Console.WriteLine("Usage: build [file_path]");
-            }
-            else
-            {
-                BuildFile(argument);
-            }
-            break;
-
-        case "run":
-            if (string.IsNullOrEmpty(argument) || !argument.EndsWith(".dll"))
-            {
-                Console.WriteLine("Usage: run [compiled_file.dll]");
-            }
-            else
-            {
-                RunDll(argument);
-            }
-            break;
-
-        default:
-            // Se trascini solo il file senza scrivere 'open' prima, funziona lo stesso
-            ExecuteFile(fullInput.Replace("\"", ""));
-            break;
-    }
-}
-
-// --- FUNZIONI DI SUPPORTO ---
-
-static void ShowHelp()
-{
-    Console.WriteLine("\n--- AVAILABLE COMMANDS ---");
-    Console.WriteLine("help              : Show this help message");
-    Console.WriteLine("version           : Display NPL information");
-    Console.WriteLine("open [file_path]  : Execute a specific .nexo file");
-    Console.WriteLine("build [file_path] : Compile a .nexo file into an executable assembly (.dll)");
-    Console.WriteLine("run [file.dll]    : Run a compiled .nexo IL assembly natively");
-    Console.WriteLine("open              : Open NPL installation folder");
-    Console.WriteLine("exit              : Close the Nexo shell");
-    Console.WriteLine("---------------------------\n");
-}
-
-static void ShowVersion()
-{
-    Console.WriteLine("\nNPL - Nexo Programming Language");
-    Console.WriteLine("Build: 1.0.0-Stable");
-    Console.WriteLine("Developed by: Luca Cisternino\n");
-}
-
-static void ExecuteFile(string filePath)
-{
-    if (!File.Exists(filePath))
-    {
-        Console.WriteLine($"\nERROR: File not found: '{filePath}'");
-        return;
+        }
     }
 
-    try 
-    {
-        string sourceCode = File.ReadAllText(filePath);
-        Console.WriteLine($"\n[Running: {Path.GetFileName(filePath)}]");
-        
-        var lexer = new Lexer(sourceCode);
-        var tokens = lexer.Tokenize();
-        var parser = new Parser(tokens);
-        var ast = parser.Parse();
-        var interpreter = new Interpreter();
-        
-        interpreter.Execute(ast);
-        Console.WriteLine("[Done]\n");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"\nRUNTIME ERROR: {ex.Message}\n");
-    }
-}
+    // =========================================================================
+    // CLI DAEMON SUPPORT SUBROUTINES
+    // =========================================================================
 
-static void BuildFile(string filePath)
-{
-    if (!File.Exists(filePath))
+    private static void ShowHelp()
     {
-        Console.WriteLine($"\nERROR: File not found: '{filePath}'");
-        return;
+        Console.WriteLine("\n--- AVAILABLE COMMANDS ---");
+        Console.WriteLine("help              : Show this diagnostic help message");
+        Console.WriteLine("version           : Display underlying NPL runtime infrastructure version");
+        Console.WriteLine("open [file_path]  : Execute a specific .nexo script in JIT memory via Interpreter");
+        Console.WriteLine("build [file_path] : Compile a .nexo script into a native .NET execution assembly (.dll)");
+        Console.WriteLine("run [file.dll]    : Fast-launch a pre-compiled MSIL .nexo assembly directly into CLR");
+        Console.WriteLine("open              : Explore internal host installation architecture");
+        Console.WriteLine("exit              : Terminate the active Nexo REPL shell");
+        Console.WriteLine("---------------------------\n");
     }
 
-    try 
+    private static void ShowVersion()
     {
-        string sourceCode = File.ReadAllText(filePath);
-        Console.WriteLine($"\n[Compiling: {Path.GetFileName(filePath)}]");
-        
-        var lexer = new Lexer(sourceCode);
-        var tokens = lexer.Tokenize();
-        var parser = new Parser(tokens);
-        var ast = parser.Parse();
-        
-        // Output as DLL for Core/5+
-        string outPath = Path.Combine(Path.GetDirectoryName(filePath) ?? "", Path.GetFileNameWithoutExtension(filePath) + ".dll");
-        
-        var compiler = new Compiler(ast);
-        compiler.Compile(outPath);
-        
-        // Optional: generate runtimeconfig.json so it can be run with 'dotnet myapp.dll'
-        string configPath = Path.Combine(Path.GetDirectoryName(filePath) ?? "", Path.GetFileNameWithoutExtension(filePath) + ".runtimeconfig.json");
-        File.WriteAllText(configPath, @"{
+        Console.WriteLine("\nNPL - Nexo Programming Language");
+        Console.WriteLine("Core Build: 1.0.0-Stable");
+        Console.WriteLine("Developed by: Luca Cisternino\n");
+    }
+
+    /// <summary>
+    /// JIT Execution Environment Pipeline.
+    /// Bypasses explicit disk compilation by dynamically streaming tokens into the Interpreter's active memory grid.
+    /// </summary>
+    private static void ExecuteFile(string filePath)
+    {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine($"\n[FATAL] I/O Error: Target file reference not found at: '{filePath}'");
+            return;
+        }
+
+        try 
+        {
+            string sourceCode = File.ReadAllText(filePath);
+            Console.WriteLine($"\n[JIT Execution Protocol: {Path.GetFileName(filePath)}]");
+            
+            var lexer = new Lexer(sourceCode);
+            var tokens = lexer.Tokenize();
+            var parser = new Parser(tokens);
+            var ast = parser.Parse();
+            
+            var interpreter = new Interpreter();
+            interpreter.Execute(ast);
+            
+            Console.WriteLine("[System Halted Gracefully]\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n[FATAL] Interpreter Crash Hook: {ex.Message}\n");
+        }
+    }
+
+    /// <summary>
+    /// Ahead-Of-Time (AOT) Emission Engine.
+    /// Links, Parses, and emits raw .NET MSIL bytecodes to disk utilizing Reflection.Emit algorithms.
+    /// </summary>
+    private static void BuildFile(string filePath)
+    {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine($"\n[FATAL] I/O Error: Target compilation file reference not found at: '{filePath}'");
+            return;
+        }
+
+        try 
+        {
+            string sourceCode = File.ReadAllText(filePath);
+            Console.WriteLine($"\n[MSIL Compilation Booting: {Path.GetFileName(filePath)}]");
+            
+            var lexer = new Lexer(sourceCode);
+            var tokens = lexer.Tokenize();
+            var parser = new Parser(tokens);
+            var ast = parser.Parse();
+            
+            // Establish payload target trajectory relative to the compiling host string
+            string outPath = Path.Combine(Path.GetDirectoryName(filePath) ?? "", Path.GetFileNameWithoutExtension(filePath) + ".dll");
+            
+            var compiler = new Compiler(ast);
+            compiler.Compile(outPath);
+            
+            // Target specific framework compatibility by actively dropping .runtimeconfig.json mappings
+            string configPath = Path.Combine(Path.GetDirectoryName(filePath) ?? "", Path.GetFileNameWithoutExtension(filePath) + ".runtimeconfig.json");
+            File.WriteAllText(configPath, @"{
   ""runtimeOptions"": {
     ""tfm"": ""net9.0"",
     ""framework"": {
@@ -183,37 +206,43 @@ static void BuildFile(string filePath)
     }
   }
 }");
-        
-        Console.WriteLine($"[Done] You can run your compiled program with: dotnet {Path.GetFileNameWithoutExtension(filePath)}.dll\n");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"\nCOMPILATION ERROR: {ex.Message}\n");
-    }
-}
-
-static void RunDll(string dllPath)
-{
-    if (!File.Exists(dllPath))
-    {
-        Console.WriteLine($"\nERROR: Compiled file not found: '{dllPath}'");
-        return;
+            
+            Console.WriteLine($"[SUCCESS] Pipeline finalized. Execute payload bounds natively using: dotnet {Path.GetFileNameWithoutExtension(filePath)}.dll\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n[FATAL] MSIL Emission Crash Hook: {ex.Message}\n");
+        }
     }
 
-    try 
+    /// <summary>
+    /// Invokes pre-compiled Common Intermediate Language (CIL) bytes transparently inside 
+    /// the host infrastructure's execution limits via dynamic reflection instantiation.
+    /// </summary>
+    private static void RunDll(string dllPath)
     {
-        Console.WriteLine($"\n[Native Execution: {Path.GetFileName(dllPath)}]");
-        var assembly = System.Reflection.Assembly.LoadFrom(dllPath);
-        var programType = assembly.GetType("Program");
-        if (programType == null) throw new Exception("Entry class 'Program' not found in DLL.");
-        var mainMethod = programType.GetMethod("Main");
-        if (mainMethod == null) throw new Exception("Entry method 'Main' not found in DLL.");
-        
-        mainMethod.Invoke(null, null);
-        Console.WriteLine("\n[Done]\n");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"\nNATIVE EXECUTION ERROR: {ex.Message}\n");
+        if (!File.Exists(dllPath))
+        {
+            Console.WriteLine($"\n[FATAL] Executable Fault: Native Assembly mapping not found at: '{dllPath}'");
+            return;
+        }
+
+        try 
+        {
+            Console.WriteLine($"\n[Native CLR Shell Execution: {Path.GetFileName(dllPath)}]");
+            var assembly = System.Reflection.Assembly.LoadFrom(dllPath);
+            var programType = assembly.GetType("Program");
+            if (programType == null) throw new Exception("[NXC-100] Execution Fault: Bootstrapper root class 'Program' is strictly omitted from generated DLL bounds.");
+            
+            var mainMethod = programType.GetMethod("Main");
+            if (mainMethod == null) throw new Exception("[NXC-101] Execution Fault: Sequential bootstrapping method 'Main' is utterly unreachable.");
+            
+            mainMethod.Invoke(null, null);
+            Console.WriteLine("\n[System Halted Gracefully]\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n[FATAL] Abstract Architecture Exception: {ex.Message}\n");
+        }
     }
 }

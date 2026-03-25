@@ -21,3 +21,4 @@ C:\Users\ciste\RiderProjects\Nexo\NexoLogic\bin\Alt3\NexoLogic.pdb
 C:\Users\ciste\RiderProjects\Nexo\NexoLogic\bin\Alt5\NexoLogic.deps.json
 C:\Users\ciste\RiderProjects\Nexo\NexoLogic\bin\Alt5\NexoLogic.dll
 C:\Users\ciste\RiderProjects\Nexo\NexoLogic\bin\Alt5\NexoLogic.pdb
+C:\Users\ciste\RiderProjects\Nexo\NexoLogic\obj\Debug\net9.0\NexoLogic.sourcelink.json
