@@ -31,6 +31,11 @@ public class AstNodes
     // Memory Indexing (Heap Access via Pointer Dereferencing)
     public record IndexAccessExpression(Expression Obj, Expression Index) : Expression;
 
+    /// <summary>
+    /// Dynamic List Initialization. Represents continuous boxed items natively aggregated in heap space (List[object]).
+    /// </summary>
+    public record ArrayDeclarationExpression(List<Expression> Elements) : Expression;
+
     // --- Operations ---
     public record BinaryExpression(Expression Left, string Op, Expression Right) : Expression;
     public record UnaryExpression(string Op, Expression Right) : Expression;
@@ -58,6 +63,11 @@ public class AstNodes
     public record AssignmentStatement(string VariableName, Expression Value) : Statement;
     
     /// <summary>
+    /// Extrapolated assignment routing memory mutations explicitly inside deep heap clusters (e.g. lists or maps).
+    /// </summary>
+    public record IndexAssignmentStatement(Expression Obj, Expression Index, Expression Value) : Statement;
+    
+    /// <summary>
     /// Transparent wrapper evaluating standard expressions purely for their side-effects.
     /// </summary>
     public record ExpressionStatement(Expression Expression) : Statement;
@@ -71,6 +81,11 @@ public class AstNodes
     public record BlockStatement(List<Statement> Statements) : Statement;
     public record IfStatement(Expression Condition, Statement ThenBranch, Statement? ElseBranch) : Statement;
     public record WhileStatement(Expression Condition, Statement Body) : Statement;
+    
+    /// <summary>
+    /// Native IEnumerator wrapping statement resolving linear arrays effortlessly bypassing index boundary manipulation limits.
+    /// </summary>
+    public record ForeachStatement(string ItemName, Expression Iterable, Statement Body) : Statement;
     
     // --- Loop Synchronization ---
     public record BreakStatement() : Statement;

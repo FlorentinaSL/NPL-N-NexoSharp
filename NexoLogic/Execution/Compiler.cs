@@ -213,6 +213,14 @@ public class Compiler {
                 }
                 break;
                 
+            case AstNodes.IndexAssignmentStatement idxAsn:
+                EmitExpression(il, idxAsn.Obj);
+                EmitExpression(il, idxAsn.Index);
+                EmitExpression(il, idxAsn.Value);
+                // [Stack: -3, +0] Mutates underlying reference natively
+                il.Emit(OpCodes.Call, typeof(NexoRuntime).GetMethod(nameof(NexoRuntime.SetIndex))!);
+                break;
+                
             case AstNodes.ExpressionStatement e:
                 EmitExpression(il, e.Expression);
                 // Memory Hazard Mitigation: Ensures pure side-effect executions drop off from stack evaluation.
@@ -264,6 +272,47 @@ public class Compiler {
                 _breakLabels.Pop();
                 break;
                 
+            case AstNodes.ForeachStatement f:
+                EmitExpression(il, f.Iterable);
+                il.Emit(OpCodes.Call, typeof(NexoRuntime).GetMethod(nameof(NexoRuntime.GetEnumerator))!);
+                
+                var enumeratorLocal = il.DeclareLocal(typeof(object));
+                il.Emit(OpCodes.Stloc, enumeratorLocal); // Save enumeration state reference
+
+                var startForeach = il.DefineLabel();
+                var endForeach = il.DefineLabel();
+
+                _continueLabels.Push(startForeach);
+                _breakLabels.Push(endForeach);
+                
+                il.MarkLabel(startForeach);
+                
+                // Invoke abstract MoveNext evaluation hook
+                il.Emit(OpCodes.Ldloc, enumeratorLocal);
+                il.Emit(OpCodes.Call, typeof(NexoRuntime).GetMethod(nameof(NexoRuntime.MoveNext))!);
+                il.Emit(OpCodes.Brfalse, endForeach); 
+
+                // Load internal index reference target and unbox memory payload
+                il.Emit(OpCodes.Ldloc, enumeratorLocal);
+                il.Emit(OpCodes.Call, typeof(NexoRuntime).GetMethod(nameof(NexoRuntime.GetCurrent))!);
+                
+                // Scaffold transient Item binding into memory layer
+                if (_locals == null) _locals = new Dictionary<string, LocalBuilder>();
+                if (!_locals.TryGetValue(f.ItemName, out var itemLocal)) {
+                    itemLocal = il.DeclareLocal(typeof(object));
+                    _locals[f.ItemName] = itemLocal;
+                }
+                il.Emit(OpCodes.Stloc, itemLocal); // Cache array item structurally
+                
+                EmitStatement(il, f.Body);
+                
+                il.Emit(OpCodes.Br, startForeach);
+                
+                il.MarkLabel(endForeach);
+                _continueLabels.Pop();
+                _breakLabels.Pop();
+                break;
+                
             case AstNodes.BlockStatement b:
                 foreach (var s in b.Statements) {
                     EmitStatement(il, s);
@@ -299,6 +348,26 @@ public class Compiler {
     /// </summary>
     private void EmitExpression(ILGenerator il, AstNodes.Expression expr) {
         switch (expr) {
+            case AstNodes.ArrayDeclarationExpression arrNode:
+                // Emits a strongly typed Object mapping length block locally
+                il.Emit(OpCodes.Ldc_I4, arrNode.Elements.Count);
+                il.Emit(OpCodes.Newarr, typeof(object));
+                for (int i = 0; i < arrNode.Elements.Count; i++) {
+                    il.Emit(OpCodes.Dup); // Retain pointer
+                    il.Emit(OpCodes.Ldc_I4, i); // Push integer position bound
+                    EmitExpression(il, arrNode.Elements[i]); // Fetch node evaluation payload
+                    il.Emit(OpCodes.Stelem_Ref); // Override sequence structure assignment safely
+                }
+                // Cast array mapping fully dynamically to List<object>
+                il.Emit(OpCodes.Call, typeof(NexoRuntime).GetMethod(nameof(NexoRuntime.CreateList))!);
+                break;
+                
+            case AstNodes.IndexAccessExpression idxAcc:
+                EmitExpression(il, idxAcc.Obj);
+                EmitExpression(il, idxAcc.Index);
+                il.Emit(OpCodes.Call, typeof(NexoRuntime).GetMethod(nameof(NexoRuntime.GetIndex))!);
+                break;
+                
             case AstNodes.NumberExpression n:
                 // [Stack: 0 -> 1] Push unboxed int32 mapping constraint
                 il.Emit(OpCodes.Ldc_I4, n.Value);

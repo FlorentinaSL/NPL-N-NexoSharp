@@ -46,6 +46,8 @@ public enum TokenType
     Return,         // Scope Exit / Yield
     Break,          // Iteration Interruption
     Continue,       // Iteration Advancement
+    Foreach,        // Collection Iteration
+    In,             // Membership Testing / Iteration Target
     
     // --- Structural Syntax Groupings ---
     OpenParen,      // ( Priority escalation

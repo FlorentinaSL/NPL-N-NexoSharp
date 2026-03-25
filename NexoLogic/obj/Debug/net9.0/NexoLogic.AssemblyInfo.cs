@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NexoLogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b093a87a96d9cac4b328a91e8fae0790ac0232d2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+799d2f16d5748780a7bec20d94e906cbcb14c341")]
 [assembly: System.Reflection.AssemblyProductAttribute("NexoLogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NexoLogic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -82,12 +82,16 @@ public class Parser {
             return new AstNodes.PrintStatement(ParseExpression()); 
         }
         
-        // Memory Allocation & Assignment Evaluation
-        // Employs a lookahead to differentiate between a solitary expression and an explicit assignment
-        if (Current.Type == TokenType.Identifier && Peek(1).Type == TokenType.Assign) {
-            var name = Next().Value; 
-            Next(); // Consume Assignment '='
-            return new AstNodes.AssignmentStatement(name, ParseExpression());
+        // Collection Traversal Loop
+        if (Current.Type == TokenType.Foreach) {
+            Next(); // Consume 'foreach'
+            if (Current.Type != TokenType.Identifier) throw new Exception("[NXC-020] Syntax Error: Expected item identifier following 'foreach'.");
+            string itemName = Next().Value;
+            if (Current.Type != TokenType.In) throw new Exception("[NXC-021] Syntax Error: Expected 'in' linking keyword after foreach identifier.");
+            Next(); // Consume 'in'
+            var iterable = ParseExpression();
+            if (Current.Type == TokenType.Colon) Next(); // Optional colon
+            return new AstNodes.ForeachStatement(itemName, iterable, ParseBody());
         }
         
         // Modular Injection / Package Importing
@@ -145,6 +149,21 @@ public class Parser {
         
         // Fallback: Default to a transient Expression wrapper if no explicit control structure matches
         var expStmt = ParseExpression();
+        
+        // Memory Assignment Detection (Handles scalar vars and indexed heaps)
+        if (Current.Type == TokenType.Assign) {
+            Next(); // Consume '='
+            var value = ParseExpression();
+            
+            if (expStmt is AstNodes.VariableExpression varExpr) {
+                return new AstNodes.AssignmentStatement(varExpr.Name, value);
+            } else if (expStmt is AstNodes.IndexAccessExpression idxExpr) {
+                return new AstNodes.IndexAssignmentStatement(idxExpr.Obj, idxExpr.Index, value);
+            } else {
+                throw new Exception("[NXC-022] Assignment Error: The left-hand side of an assignment must be a mutable memory reference (variable or index).");
+            }
+        }
+        
         return new AstNodes.ExpressionStatement(expStmt);
     }
 
@@ -212,6 +231,19 @@ public class Parser {
         if (Current.Type == TokenType.True) { Next(); return new AstNodes.BoolExpression(true); }
         if (Current.Type == TokenType.False) { Next(); return new AstNodes.BoolExpression(false); }
         
+        // Dynamic List Initialization
+        if (Current.Type == TokenType.OpenBracket) {
+            Next(); // Consume '['
+            var elements = new List<AstNodes.Expression>();
+            while (Current.Type != TokenType.CloseBracket && Current.Type != TokenType.EOF) {
+                elements.Add(ParseExpression());
+                if (Current.Type == TokenType.Comma) Next(); // Consume ','
+            }
+            if (Current.Type != TokenType.CloseBracket) throw new Exception("[NXC-023] Syntax Error: Expected closing bracket ']' after dynamic list declaration.");
+            Next(); // Consume ']'
+            return new AstNodes.ArrayDeclarationExpression(elements);
+        }
+
         if (Current.Type == TokenType.Identifier) {
             string name = Next().Value;
             
@@ -226,7 +258,19 @@ public class Parser {
                 if (Current.Type == TokenType.CloseParen) Next();
                 return new AstNodes.CallExpression(name, args);
             }
-            return new AstNodes.VariableExpression(name);
+            
+            AstNodes.Expression expr = new AstNodes.VariableExpression(name);
+            
+            // Memory Indexing Traversal: Captures chained brackets like matrix[i][j]
+            while (Current.Type == TokenType.OpenBracket) {
+                Next(); // Consume '['
+                var indexExpr = ParseExpression();
+                if (Current.Type != TokenType.CloseBracket) throw new Exception("[NXC-024] Syntax Error: Expected closing bracket ']' after memory index.");
+                Next(); // Consume ']'
+                expr = new AstNodes.IndexAccessExpression(expr, indexExpr);
+            }
+            
+            return expr;
         }
         
         // Priority Override via Parentheses Escaping

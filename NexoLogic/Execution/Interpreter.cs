@@ -72,6 +72,13 @@ public class Interpreter {
                 currentScope[a.VariableName] = EvalExpr(a.Value, currentScope); 
                 break;
 
+            case AstNodes.IndexAssignmentStatement idxAsn:
+                object targetObj = EvalExpr(idxAsn.Obj, currentScope);
+                object targetIdx = EvalExpr(idxAsn.Index, currentScope);
+                object mutateVal = EvalExpr(idxAsn.Value, currentScope);
+                NexoRuntime.SetIndex(targetObj, targetIdx, mutateVal);
+                break;
+
             case AstNodes.ExpressionStatement ex:
                 EvalExpr(ex.Expression, currentScope);
                 break;
@@ -97,6 +104,25 @@ public class Interpreter {
                         break; // Drops iteration frame globally
                     } catch (ContinueException) {
                         continue; // Resets iteration PC to header
+                    }
+                }
+                break;
+
+            case AstNodes.ForeachStatement f:
+                // Native Iterator Extraction dynamically bounding memory targets
+                object iterableObj = EvalExpr(f.Iterable, currentScope);
+                object enumerator = NexoRuntime.GetEnumerator(iterableObj);
+                
+                while (NexoRuntime.MoveNext(enumerator)) {
+                    object itemVal = NexoRuntime.GetCurrent(enumerator);
+                    currentScope[f.ItemName] = itemVal; // Bind local transient ref
+                    
+                    try {
+                        EvalStmt(f.Body, currentScope); 
+                    } catch (BreakException) {
+                        break;
+                    } catch (ContinueException) {
+                        continue;
                     }
                 }
                 break;
@@ -202,6 +228,8 @@ public class Interpreter {
         AstNodes.StringExpression s => s.Value,
         AstNodes.BoolExpression b => b.Value,
         AstNodes.VariableExpression v => GetVariable(v.Name, currentScope),
+        AstNodes.ArrayDeclarationExpression arr => NexoRuntime.CreateList(arr.Elements.Select(expr => EvalExpr(expr, currentScope)).ToArray()),
+        AstNodes.IndexAccessExpression idx => NexoRuntime.GetIndex(EvalExpr(idx.Obj, currentScope), EvalExpr(idx.Index, currentScope)),
         AstNodes.BinaryExpression bin => EvalBin(bin, currentScope),
         AstNodes.CallExpression c => ExecuteFunction(c.Callee, c.Arguments, currentScope)!,
         _ => throw new Exception($"[NXC-017] Deserialization Bug: Unidentifiable semantic node struct '{e.GetType().Name}'.")

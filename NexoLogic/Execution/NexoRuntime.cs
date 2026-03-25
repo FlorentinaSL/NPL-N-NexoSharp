@@ -52,6 +52,61 @@ public static class NexoRuntime {
     }
 
     // =========================================================================
+    // DYNAMIC COLLECTIONS & ITERATORS BINDING
+    // =========================================================================
+    
+    public static object CreateList(object[] elements) {
+        return new List<object>(elements);
+    }
+    
+    public static object GetIndex(object obj, object index) {
+        if (obj is List<object> list) {
+            int i = Convert.ToInt32(index);
+            if (i < 0 || i >= list.Count) throw new Exception($"[NXC-025] Array Bounds Error: Index {i} is strictly out of the list evaluation bounds.");
+            return list[i];
+        }
+        if (obj is string str) {
+            int i = Convert.ToInt32(index);
+            if (i < 0 || i >= str.Length) throw new Exception($"[NXC-025] String Bounds Error: Index {i} out of bounds.");
+            return str[i].ToString();
+        }
+        throw new Exception($"[NXC-026] Type Error: Target variable is not inherently indexable.");
+    }
+    
+    public static void SetIndex(object obj, object index, object value) {
+        if (obj is List<object> list) {
+            int i = Convert.ToInt32(index);
+            if (i >= list.Count) {
+                // Auto-expand dynamic list mapping smoothly
+                while (list.Count <= i) list.Add(null!);
+            }
+            list[i] = value;
+            return;
+        }
+        throw new Exception($"[NXC-027] Type Error: Left hand side assignment target is not an open dynamic list.");
+    }
+    
+    public static object GetEnumerator(object obj) {
+        if (obj is System.Collections.IEnumerable enumerable) {
+            return enumerable.GetEnumerator();
+        }
+        throw new Exception($"[NXC-028] Type Error: Attempted to perform iteration over a non-enumerable object structural footprint.");
+    }
+    
+    public static bool MoveNext(object enumerator) {
+        return ((System.Collections.IEnumerator)enumerator).MoveNext();
+    }
+    
+    public static object GetCurrent(object enumerator) {
+        return ((System.Collections.IEnumerator)enumerator).Current!;
+    }
+    
+    // Explicit runtime push extension allowing list appending remotely
+    public static void ListPush(object obj, object val) {
+        if (obj is List<object> list) list.Add(val);
+    }
+
+    // =========================================================================
     // DATA TYPE COERCION & ARITHMETIC
     // =========================================================================
 

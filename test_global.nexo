@@ -1,21 +1,24 @@
-using nexocore.math
+using nexocore.io
 using nexocore.system
 
-do CalculateAbsolute() {
-    <3 System allocates local mutable reference `res` upon execution
-    res = abs(0 - 55)
+do TestDynamicCollections() {
+    print_border()
+    write "Testing N# Phase 6: Dynamic Heap Collections"
     
-    write "Global absolute payload evaluation returned:"
-    write res
+    <3 Dynamic Array allocation
+    var monsters = ["Orco", "Goblin", "Troll"]
     
-    <3 Asserts equality constraint, expecting positive integer 1 returned upon success
-    success_flag = assert(res == 55, "Math assertion failed fatally!")
+    <3 Index Access and Mutability
+    monsters[1] = "Hobgoblin"
     
-    <3 Conditional branch triggering purely if logic succeeds without crashing
-    if success_flag == 1: {
-        write "All CoreLibs Engine validations passed beautifully!"
+    write "Active enemies in sector:"
+    
+    <3 Foreach Iteration looping directly through boxed references
+    foreach m in monsters: {
+        write m
     }
+    
+    print_border()
 }
 
-<3 Bootstraps the global test execution frame sequentially
-CalculateAbsolute()
+TestDynamicCollections()

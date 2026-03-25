@@ -83,6 +83,8 @@ public class Lexer {
                     "return" => TokenType.Return,
                     "break" => TokenType.Break,
                     "continue" => TokenType.Continue,
+                    "foreach" => TokenType.Foreach,
+                    "in" => TokenType.In,
                     "write" => TokenType.Write, 
                     "read" => TokenType.Read, 
                     "true" => TokenType.True,
