@@ -40,13 +40,12 @@ export default function Docs() {
       <section className="animate-fade-in" style={{ animationDelay: "300ms", animationFillMode: "both", marginBottom: "5rem" }}>
         <h2 style={{ fontSize: "2.2rem", marginBottom: "1.5rem", color: "#a5b4fc", borderBottom: "1px solid var(--glass-border)", paddingBottom: "0.5rem" }}>3. I/O Broadcasts</h2>
         <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", marginBottom: "1.5rem" }}>
-          Sending data to the terminal buffer is governed by <code style={{color: "#c678dd"}}>write</code> and <code style={{color: "#c678dd"}}>print</code>.
+          Sending data to the terminal buffer natively is universally governed strictly by the <code style={{color: "#c678dd"}}>write</code> keyword.
         </p>
         <pre className="glass-panel" style={{ padding: "1.5rem", color: "#d1d5db", fontFamily: "monospace", overflowX: "auto" }}>
-          <span style={{ color: "#e5c07b" }}>write</span> "Initiating Sequence..." <span style={{ color: "#22c55e" }}>{"<3"} Adds a new line automatically</span><br/>
-          <span style={{ color: "#e5c07b" }}>print</span> "Loading "               <span style={{ color: "#22c55e" }}>{"<3"} Inline print without line break</span><br/><br/>
+          <span style={{ color: "#e5c07b" }}>write</span> "Initiating Nexo Sequence..." <span style={{ color: "#22c55e" }}>{"<3"} Prints the literal string buffer</span><br/><br/>
           
-          <span style={{ color: "#22c55e" }}>{"<3"} Concatenation is fully supported</span><br/>
+          <span style={{ color: "#22c55e" }}>{"<3"} Seamless string and dynamic concatenation is natively supported</span><br/>
           score = 999<br/>
           <span style={{ color: "#e5c07b" }}>write</span> "Final Score: " + score<br/>
         </pre>
