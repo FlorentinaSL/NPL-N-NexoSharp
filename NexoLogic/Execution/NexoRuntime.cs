@@ -253,6 +253,42 @@ public static class NexoRuntime {
         return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
     }
 
+    // =========================================================================
+    // URL PACKET MANIPULATION
+    // =========================================================================
+
+    public static object UrlEncode(object rawString) => System.Web.HttpUtility.UrlEncode(rawString.ToString()!);
+    public static object UrlDecode(object encodedString) => System.Web.HttpUtility.UrlDecode(encodedString.ToString()!);
+
+    // =========================================================================
+    // CLOUD ARTIFICIAL INTELLIGENCE (LLM INJECTION)
+    // =========================================================================
+
+    public static object AiGenerate(object systemPrompt, object userPrompt, object bearerToken) {
+        using var client = new System.Net.Http.HttpClient();
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
+        client.DefaultRequestHeaders.Add("User-Agent", "NPL/2.0");
+
+        var payload = new {
+            model = "gpt-4o",
+            messages = new[] {
+                new { role = "system", content = systemPrompt.ToString() },
+                new { role = "user", content = userPrompt.ToString() }
+            }
+        };
+
+        var content = new System.Net.Http.StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+        var response = client.PostAsync("https://api.openai.com/v1/chat/completions", content).GetAwaiter().GetResult();
+        
+        try {
+            var rawJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            var doc = System.Text.Json.JsonDocument.Parse(rawJson);
+            return doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString()!;
+        } catch {
+            return "[NXC-050] AI Generation Fault: The LLM Provider rejected the sequence or the hardware token is restricted.";
+        }
+    }
+
     /// <summary>
     /// Explicit Integer coercion casting.
     /// </summary>

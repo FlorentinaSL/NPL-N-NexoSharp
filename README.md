@@ -1,57 +1,49 @@
-# Nexo Programming Language (NPL)
+<div align="center">
+  <img src="https://nexosharp.vercel.app/logo.svg" alt="Nexo Logo" width="120" height="120">
+  <h1>Nexo (N#) Programming Language</h1>
+  <p><strong>A natively compiled, purely dynamic scripting architecture built on raw .NET MSIL.</strong></p>
+  <a href="https://nexosharp.vercel.app">Official Cloud Hub</a> | <a href="https://nexosharp.vercel.app/docs">Documentation</a>
+</div>
 
-Nexo Programming Language (NPL) is a minimal, natively-compiled scripting language combining clean syntax with the raw power of the .NET 9 ecosystem. It features native MSIL compilation, direct zero-setup C# bridging for system functions, a global modular system, and first-class JetBrains IDE support. Experience C# power without the OOP verbosity.
+---
 
-## Table of Contents
-- [Philosophy](#philosophy)
-- [Key Features](#key-features)
-- [Syntax Example](#syntax-example)
-- [Native C# Bridging](#native-c-bridging)
-- [IDE Support](#ide-support)
-- [Getting Started](#getting-started)
+Nexo (N#) is a professional, high-performance scripting language engineered to seamlessly blend the zero-boilerplate elegance of a dynamic language with the absolute, uncompromising execution speed of the **.NET Core Common Language Runtime (CLR)**.
 
-## Philosophy
-Nexo was born from a single architectural vision: providing a pure, immediate scripting experience while retaining the limitless capabilities of the .NET ecosystem. Developers should not be forced to write verbose Object-Oriented boilerplate just to execute logical routines. Nexo eliminates semicolons, complex access modifiers, and rigid class structures, replacing them with a streamlined flow of logic that compiles directly to highly-optimized MSIL (Microsoft Intermediate Language) bytecode.
+Nexo abolishes semicolons, complex object-oriented verbosity, and static types. Instead, it utilizes raw AOT Compilation (`Reflection.Emit`) to map extremely clean, readable script logic straight into MSIL (`.dll` or `.exe`) binaries.
 
-## Key Features
-- **Native IL Compilation:** Nexo code is not merely interpreted. A custom two-pass C# compiler translates your scripts directly into CIL opcodes, generating standalone `.dll` and `.exe` binaries optimized for the .NET Common Language Runtime (CLR).
-- **Zero-Setup Modular System:** Organize your codebase with ease using the `using` operator (e.g., `using nexocore.math`). Nexo natively resolves standard libraries and internal modules globally across your projects.
-- **Robust Logic Controls:** Full support for `if/else` structures, `while` loops, `break`, `continue`, custom function scoping (via `do` blocks), and dynamic variable allocations.
+## 🚀 The Nexo Ecosystem
 
-## Syntax Example
-```nexo
-using nexocore.io
+Nexo acts as a purely autonomous **Full-Stack Application Ecosystem**. We provide 13 integrated enterprise-grade Standard Libraries bridging native C# capabilities to pure N# commands:
 
-do Main() {
-    write "Generating load..."
-    var waiting_time = random(500, 1500)
-    
-    sleep(waiting_time)
-    
-    var result = "Loading completed!"
-    write result
-}
-```
+- **🤖 `nexocore.ai`**: Fire queries directly to Native LLM generation loops.
+- **🌐 `nexocore.net` & `url`**: Unrestricted asynchronous Web/HTTP capabilities.
+- **🗃️ `nexocore.json`**: Crack open complex REST API arrays into deep memory `Maps`.
+- **🔐 `nexocore.crypto`**: Military-grade Base64 encryption bounding.
+- **🎮 `nexocore.discord`**: Hook highly anonymous webhooks entirely silently.
+- **💽 `nexocore.fs` & `system`**: Run raw OS operations, read hard drives, and block runtime threads natively.
 
-## Native C# Bridging
-The crown jewel of the Nexo compiler is its Native C# Bridging engine. Rather than limiting the language to internal syntax, Nexo seamlessly binds undefined function calls to the C# standard framework.
-You do not need to import complex .NET namespaces or handle memory instances. You can directly call powerful native functions in your script:
+## ⚡ Native MSIL Bridging
 
-- **File Manipulation:** `file_read(path)`, `file_write(path, content)`, `file_exists(path)`
-- **String Manipulation:** `string_length(str)`, `string_replace(str, a, b)`, `string_upper(str)`
-- **System Controls:** `clear_console()`, `sleep(ms)`, `system_time()`, `random(min, max)`
+The absolute pinnacle of the Nexo compiler is its **Native .NET Bridging Engine**. If a script calls a command that doesn't exist within its immediate `AST` namespace, Nexo automatically overrides internal rules and attempts to directly link the instruction to a massive repository of pre-built `Runtime C#` logic instances executing natively on `.NET 9`. 
 
-The Nexo compiler handles the reflection, dynamic argument mapping, and opcode injection transparently.
+This bypasses normal interpreted slowdowns, achieving exact C# execution times while retaining Python-like beauty.
 
-## IDE Support
-Nexo comes with official, top-tier tooling for JetBrains IDEs (IntelliJ IDEA, Rider) via the **NexoLanguageSupport** plugin. 
-- Custom Lexer and Parser for real-time syntax checking.
-- Deep Code-Completion explicitly supporting Nexo standard libraries and the Native C# Bridge.
-- Live Templates, Project Wizards, and native `.nexo` file icons perfectly integrated into dark environments.
+## 📦 Zero-Setup API Decoupling
 
-## Getting Started
-To compile a Nexo script:
+Nexo code functions around decentralized standard libraries. The core `Nexo.exe` native compiler is extremely lightweight. When compiling N# Code utilizing advanced libraries like `nexocore.crypto`, the `nexo` Compiler resolves the payload using our globally deployed Serverless JSON Edge database hosted explicitly on Vercel:
+
 ```bash
-dotnet run --project NexoCompiler -- your_script.nexo
+$ nexo install nexocore.discord
+$ nexo install nexocore.ai
 ```
-This will evaluate your logic and compile it directly into an executable binary leveraging the latest `.NET 9` framework.
+
+You can even author your own code blocks in N# and deploy them to the Global NPM Registry simply by executing:
+```bash
+$ nexo publish "your_script.nexo"
+```
+
+## 🛠️ JetBrains IDE Native Tooling
+
+Nexo pairs exclusively with the **NexoLanguageSupport** plugin. Install the runtime parser across IntelliJ IDEA or Rider to unlock deep semantic syntax highlighting, dynamic AST type-checking limits, and auto-complete frameworks matching natively hosted N# documentation streams.
+
+### Written in pure C#. Compiling strictly to MSIL. Welcome to N#.
