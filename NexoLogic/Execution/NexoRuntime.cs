@@ -152,6 +152,44 @@ public static class NexoRuntime {
     public static object Lte(object l, object r) => (int)l <= (int)r ? 1 : 0;
 
     // =========================================================================
+    // ENTERPRISE JSON SERIALIZATION ENGINE
+    // =========================================================================
+
+    public static object JsonParse(object jsonString) {
+        try {
+            var options = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var doc = System.Text.Json.JsonDocument.Parse(jsonString.ToString()!);
+            return UnwrapJsonElement(doc.RootElement);
+        } catch {
+            throw new Exception("[NXC-040] Serialization Fault: String footprint is not structurally valid JSON.");
+        }
+    }
+
+    private static object UnwrapJsonElement(System.Text.Json.JsonElement element) {
+        switch (element.ValueKind) {
+            case System.Text.Json.JsonValueKind.Object:
+                var dict = new Dictionary<string, object>();
+                foreach (var prop in element.EnumerateObject()) dict[prop.Name] = UnwrapJsonElement(prop.Value);
+                return dict;
+            case System.Text.Json.JsonValueKind.Array:
+                var list = new List<object>();
+                foreach (var item in element.EnumerateArray()) list.Add(UnwrapJsonElement(item));
+                return list;
+            case System.Text.Json.JsonValueKind.String: return element.GetString()!;
+            case System.Text.Json.JsonValueKind.Number: 
+                // Dynamically box back to int for N# compatibility
+                return element.TryGetInt32(out int n) ? n : element.GetDouble();
+            case System.Text.Json.JsonValueKind.True: return 1;
+            case System.Text.Json.JsonValueKind.False: return 0;
+            default: return "";
+        }
+    }
+    
+    public static object JsonStringify(object obj) {
+        return System.Text.Json.JsonSerializer.Serialize(obj);
+    }
+
+    // =========================================================================
     // NATIVE .NET FRAMEWORK BRIDGING
     // Externally invokable via NPL code implicitly bypassing structural paradigms
     // =========================================================================

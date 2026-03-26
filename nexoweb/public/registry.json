@@ -4,69 +4,76 @@
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - Mathematical Operations Library\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Calculates the exponential power of a base\ndo pow(base, exponent) {\n    result = 1\n    while exponent > 0 {\n        result = result * base\n        exponent = exponent - 1\n    }\n    return result\n}\n\n<3 Returns the absolute absolute value\ndo abs(val) {\n    if val < 0 {\n        return val * (0 - 1)\n    }\n    return val\n}\n\n<3 Evaluates the higher constraint\ndo max(a, b) {\n    if a > b {\n        return a\n    }\n    return b\n}\n\n<3 Evaluates the lower boundary\ndo min(a, b) {\n    if a < b {\n        return a\n    }\n    return b\n}\n",
-    "timestamp": "2026-03-26T12:00:00.000Z"
+    "timestamp": "2026-03-26T12:59:04.741Z"
   },
   "nexocore.io": {
     "name": "nexocore.io",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - Input/Output Protocol Array\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Throws a distinctly formatted Error payload\ndo error(message) {\n    write \"[V-ERROR] \" + message\n}\n\n<3 Resolves a deeply formatted Success prompt\ndo success(message) {\n    write \"[V-SUCCESS] \" + message\n}\n\n<3 Highlights an edge constraint payload\ndo warn(message) {\n    write \"[V-WARNING] \" + message\n}\n\n<3 Generates a strict application bounding box banner\ndo banner(appName, version) {\n    write \"=========================================\"\n    write \"  \" + appName + \" (v\" + version + \")\"\n    write \"=========================================\"\n}\n",
-    "timestamp": "2026-03-26T12:00:00.000Z"
+    "timestamp": "2026-03-26T12:59:04.741Z"
   },
   "nexocore.net": {
     "name": "nexocore.net",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - HTTP Networking Protocols\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Dispatches a highly synchronous HTTP GET stream\ndo get(url) {\n    return httpGet(url)\n}\n\n<3 Posts a JSON payload body forcefully to a target REST endpoint\ndo postJson(url, jsonString) {\n    return httpPost(url, jsonString)\n}\n",
-    "timestamp": "2026-03-26T12:00:00.000Z"
+    "timestamp": "2026-03-26T12:59:04.741Z"
   },
   "nexocore.discord": {
     "name": "nexocore.discord",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - Discord Webhook Integration\n<3 Copyright 2026 Florentina Spicco D'aura\n\nusing nexocore.net\n\n<3 Broadcasts an anonymous Webhook packet straight to a Discord channel\ndo sendWebhook(webhookUrl, botName, textMessage) {\n    <3 Structuring raw JSON natively using N# string allocations\n    rawJson = \"{\\\"username\\\": \\\"\" + botName + \"\\\", \\\"content\\\": \\\"\" + textMessage + \"\\\"}\"\n    \n    <3 Pipe the transmission through the .NET Native bounds\n    response = postJson(webhookUrl, rawJson)\n    return response\n}\n",
-    "timestamp": "2026-03-26T12:00:00.000Z"
+    "timestamp": "2026-03-26T12:59:04.740Z"
   },
   "nexocore.system": {
     "name": "nexocore.system",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - OS Terminal Bindings\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Directly executes raw Terminal/PowerShell/Bash commands via the Host System\ndo run(terminalCommand) {\n    return executeCommand(terminalCommand)\n}\n",
-    "timestamp": "2026-03-26T12:00:00.000Z"
+    "timestamp": "2026-03-26T12:59:04.741Z"
   },
   "nexocore.fs": {
     "name": "nexocore.fs",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - File System Manipulation\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Reads absolute textual buffer from a file\ndo read(path) {\n    return fileRead(path)\n}\n\n<3 Writes literal content string to a target bounding file\ndo write(path, content) {\n    fileWrite(path, content)\n}\n\n<3 Evaluates the structural existence of an OS file path\ndo exists(path) {\n    return fileExists(path)\n}\n",
-    "timestamp": "2026-03-26T12:39:59.163Z"
+    "timestamp": "2026-03-26T12:59:04.740Z"
   },
   "nexocore.string": {
     "name": "nexocore.string",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - String Manipulation\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Calculates literal length of a scalar string payload\ndo length(str) {\n    return stringLength(str)\n}\n\n<3 Injects new payload across all matched instances\ndo replace(str, oldVal, newVal) {\n    return stringReplace(str, oldVal, newVal)\n}\n\n<3 Ascertains if payload structure exists\ndo contains(str, val) {\n    return stringContains(str, val)\n}\n\ndo upper(str) {\n    return stringUpper(str)\n}\n\ndo lower(str) {\n    return stringLower(str)\n}\n",
-    "timestamp": "2026-03-26T12:39:59.165Z"
+    "timestamp": "2026-03-26T12:59:04.741Z"
   },
   "nexocore.time": {
     "name": "nexocore.time",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - Chronological Ecosystem\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Halts native OS execution thread forcibly for milliseconds\ndo sleep(ms) {\n    sleep(ms)\n}\n\n<3 Generates native Server Unix Milliseconds from Host Hardware\ndo now() {\n    return systemTime()\n}\n",
-    "timestamp": "2026-03-26T12:39:59.165Z"
+    "timestamp": "2026-03-26T12:59:04.741Z"
   },
   "nexocore.crypto": {
     "name": "nexocore.crypto",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - Cryptographic Operations\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Encodes raw UTF-8 String explicitly into Base64 format\ndo base64Encode(plainText) {\n    return base64Encode(plainText)\n}\n\n<3 Decodes bound Base64 string payload back into literal UTF-8 string\ndo base64Decode(base64String) {\n    return base64Decode(base64String)\n}\n",
-    "timestamp": "2026-03-26T12:39:59.165Z"
+    "timestamp": "2026-03-26T12:59:04.740Z"
   },
   "nexocore.map": {
     "name": "nexocore.map",
     "version": "1.0.0",
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - Dynamic Memory Mapping (Dictionaries)\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Instantiates a volatile Map (Dictionary Object) natively mapping to .NET IL Space\ndo create() {\n    return mapCreate()\n}\n\n<3 Forcefully assigns a Value to a Key internally in the Map structure\ndo set(mapTarget, keyName, valueScalar) {\n    mapSet(mapTarget, keyName, valueScalar)\n}\n\n<3 Safely extracts payload via a specific structural Key\ndo get(mapTarget, keyName) {\n    return mapGet(mapTarget, keyName)\n}\n",
-    "timestamp": "2026-03-26T12:39:59.165Z"
+    "timestamp": "2026-03-26T12:59:04.741Z"
+  },
+  "nexocore.json": {
+    "name": "nexocore.json",
+    "version": "1.0.0",
+    "author": "Nexo Core Security",
+    "code": "<3 Nexo Core - JSON Ecosystem\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Synchronously parses a pure raw JSON string into deeply nested Map and Array objects\ndo parse(jsonString) {\n    return jsonParse(jsonString)\n}\n\n<3 Stringifies a multidimensional N# Map or List back into a raw JSON textual footprint\ndo stringify(dataObject) {\n    return jsonStringify(dataObject)\n}\n",
+    "timestamp": "2026-03-26T12:59:04.741Z"
   }
 }

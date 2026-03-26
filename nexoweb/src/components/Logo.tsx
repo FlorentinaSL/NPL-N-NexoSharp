@@ -5,20 +5,14 @@ export default function Logo({ size = 240 }: { size?: number | string }) {
     <svg 
       width={size} 
       height={size} 
-      viewBox="0 0 240 240" 
+      viewBox="0 0 100 100" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg" 
-      style={{ filter: "drop-shadow(0 0 20px rgba(167, 139, 250, 0.4))", userSelect: "none" }}
+      style={{ userSelect: "none" }}
     >
-      {/* The pristine 'N' Shape */}
-      <path d="M 85 160 L 85 80 L 155 160 L 155 80" stroke="#ffffff" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
-      
-      {/* Subtle Glowing Aura around the N */}
-      <path d="M 85 160 L 85 80 L 155 160 L 155 80" stroke="#c084fc" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" style={{ filter: "blur(8px)", opacity: 0.6 }} />
-
-      {/* The Glowing Center Circle */}
-      <circle cx="120" cy="120" r="22" fill="#93c5fd" />
-      <circle cx="120" cy="120" r="22" fill="#93c5fd" style={{ filter: "blur(10px)", opacity: 0.9 }} />
+      <text x="50" y="72" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="64" fill="#0d9488" textAnchor="middle" letterSpacing="-2">
+        N#
+      </text>
     </svg>
   );
 }

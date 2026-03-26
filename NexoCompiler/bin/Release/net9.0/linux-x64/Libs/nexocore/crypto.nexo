@@ -1,0 +1,12 @@
+<3 Nexo Core - Cryptographic Operations
+<3 Copyright 2026 Florentina Spicco D'aura
+
+<3 Encodes raw UTF-8 String explicitly into Base64 format
+do base64Encode(plainText) {
+    return base64Encode(plainText)
+}
+
+<3 Decodes bound Base64 string payload back into literal UTF-8 string
+do base64Decode(base64String) {
+    return base64Decode(base64String)
+}
