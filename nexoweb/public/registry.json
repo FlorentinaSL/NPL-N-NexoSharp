@@ -1,0 +1,16 @@
+{
+  "nexocore.math": {
+    "name": "nexocore.math",
+    "version": "1.0.0",
+    "author": "Nexo Core Security",
+    "code": "<3 Nexo Core - Mathematical Operations Library\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Calculates the exponential power of a base\ndo pow(base, exponent) {\n    result = 1\n    while exponent > 0 {\n        result = result * base\n        exponent = exponent - 1\n    }\n    return result\n}\n\n<3 Returns the absolute absolute value\ndo abs(val) {\n    if val < 0 {\n        return val * (0 - 1)\n    }\n    return val\n}\n\n<3 Evaluates the higher constraint\ndo max(a, b) {\n    if a > b {\n        return a\n    }\n    return b\n}\n\n<3 Evaluates the lower boundary\ndo min(a, b) {\n    if a < b {\n        return a\n    }\n    return b\n}\n",
+    "timestamp": "2026-03-26T12:00:00.000Z"
+  },
+  "nexocore.io": {
+    "name": "nexocore.io",
+    "version": "1.0.0",
+    "author": "Nexo Core Security",
+    "code": "<3 Nexo Core - Input/Output Protocol Array\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Throws a distinctly formatted Error payload\ndo error(message) {\n    write \"[V-ERROR] \" + message\n}\n\n<3 Resolves a deeply formatted Success prompt\ndo success(message) {\n    write \"[V-SUCCESS] \" + message\n}\n\n<3 Highlights an edge constraint payload\ndo warn(message) {\n    write \"[V-WARNING] \" + message\n}\n\n<3 Generates a strict application bounding box banner\ndo banner(appName, version) {\n    write \"=========================================\"\n    write \"  \" + appName + \" (v\" + version + \")\"\n    write \"=========================================\"\n}\n",
+    "timestamp": "2026-03-26T12:00:00.000Z"
+  }
+}

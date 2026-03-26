@@ -2,24 +2,12 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "Microsoft.NET.ILLink.Tasks/9.0.10": {
+      "Microsoft.DotNet.ILCompiler/9.0.10": {
         "type": "package",
         "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
+          "build/Microsoft.DotNet.ILCompiler.props": {}
         }
       },
-      "NexoLogic/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/NexoLogic.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/NexoLogic.dll": {}
-        }
-      }
-    },
-    "net9.0/osx-x64": {
       "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
@@ -39,6 +27,35 @@
     }
   },
   "libraries": {
+    "Microsoft.DotNet.ILCompiler/9.0.10": {
+      "sha512": "S8hlK3KFCMLWvFDd1cUJj62bPgmomVdxnELv/Eiauug4uSEHjDkcOLfpiUvurku9iuW3uuyExwPwXX4QsWrmZQ==",
+      "type": "package",
+      "path": "microsoft.dotnet.ilcompiler/9.0.10",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/BuildFrameworkNativeObjects.proj",
+        "build/Microsoft.DotNet.ILCompiler.SingleEntry.targets",
+        "build/Microsoft.DotNet.ILCompiler.props",
+        "build/Microsoft.NETCore.Native.Publish.targets",
+        "build/Microsoft.NETCore.Native.Unix.targets",
+        "build/Microsoft.NETCore.Native.Windows.targets",
+        "build/Microsoft.NETCore.Native.targets",
+        "build/NativeAOT.natstepfilter",
+        "build/NativeAOT.natvis",
+        "build/WindowsAPIs.txt",
+        "build/findvcvarsall.bat",
+        "microsoft.dotnet.ilcompiler.9.0.10.nupkg.sha512",
+        "microsoft.dotnet.ilcompiler.nuspec",
+        "runtime.json",
+        "tools/netstandard/ILCompiler.Build.Tasks.deps.json",
+        "tools/netstandard/ILCompiler.Build.Tasks.dll"
+      ]
+    },
     "Microsoft.NET.ILLink.Tasks/9.0.10": {
       "sha512": "sseaSJcBxKEpkc59hnB00b3NmJdGvJLfj74HK+nucHxERxbZSUREuWKjC9ywc+HdzJvJyiP2eiyEOROaGSfcPw==",
       "type": "package",
@@ -98,6 +115,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "Microsoft.DotNet.ILCompiler >= 9.0.10",
       "Microsoft.NET.ILLink.Tasks >= 9.0.10",
       "NexoLogic >= 1.0.0"
     ]
@@ -159,6 +177,12 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "Microsoft.DotNet.ILCompiler": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.10, )",
+            "autoReferenced": true
+          },
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
@@ -179,15 +203,7 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-            "version": "[9.0.10, 9.0.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[9.0.10, 9.0.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.osx-x64",
+            "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
             "version": "[9.0.10, 9.0.10]"
           }
         ],
@@ -197,11 +213,6 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "osx-x64": {
-        "#import": []
       }
     }
   }
