@@ -1,7 +1,7 @@
 [Setup]
 ; --- Application Info ---
 AppName=Nexo
-AppVersion=1.0
+AppVersion=2.0
 AppPublisher=Luca Cisternino
 AppCopyright=Copyright (c) 2026 Luca Cisternino
 DefaultDirName={autopf}\Nexo

@@ -1,0 +1,15 @@
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\ai.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\crypto.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\discord.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\fs.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\io.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\json.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\map.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\math.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\net.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\string.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\system.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\time.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Libs\nexocore\url.nexo
+C:\Users\ciste\RiderProjects\Nexo\publish_win\Nexo.exe
+C:\Users\ciste\RiderProjects\Nexo\publish_win\NexoLogic.pdb

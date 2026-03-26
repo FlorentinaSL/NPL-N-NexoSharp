@@ -210,3 +210,6 @@ C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\n
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\string.nexo
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\system.nexo
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\time.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\ai.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\json.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\url.nexo

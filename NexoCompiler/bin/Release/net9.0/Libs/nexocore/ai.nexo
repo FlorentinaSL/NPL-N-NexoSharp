@@ -1,0 +1,13 @@
+<3 Nexo Core - Artificial Intelligence Engine (Singularity)
+<3 Copyright 2026 Florentina Spicco D'aura
+
+<3 Synchronously triggers Cloud LLM Hardware explicitly inside N# bounds.
+<3 Automatically unwraps JSON responses, returning pure intelligence string streams.
+do generateText(systemDirective, userQuery, openaiKeyToken) {
+    return aiGenerate(systemDirective, userQuery, openaiKeyToken)
+}
+
+<3 Specialized routine utilizing a default behavior constraint for quick prompt completion
+do prompt(query, openaiKeyToken) {
+    return aiGenerate("You are a helpful, enterprise-level intelligence assistant executing inside the Nexo N# OS natively.", query, openaiKeyToken)
+}
