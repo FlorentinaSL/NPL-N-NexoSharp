@@ -41,7 +41,7 @@ export default function Home() {
           </pre>
         </div>
         <div className="animate-fade-in delay-3" style={{ textAlign: "center", marginTop: "1rem", color: "var(--text-muted)", fontSize: "0.9rem" }}>
-          $ nexo install nexocore.http <span style={{ color: "#22c55e" }}># Download dynamically utilizing NPM mapping</span>
+          $ nexo install nexocore.http <span style={{ color: "#22c55e" }}>{"<3"} Download dynamically utilizing NPM mapping</span>
         </div>
       </section>
     </div>

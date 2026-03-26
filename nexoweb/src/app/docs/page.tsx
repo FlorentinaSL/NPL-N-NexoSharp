@@ -23,7 +23,7 @@ export default function Docs() {
         <pre className="glass-panel" style={{ padding: "1.5rem", color: "#d1d5db", fontFamily: "monospace", overflowX: "auto" }}>
           x = 10<br/>
           y = "Hello World!"<br/>
-          active = 1 <span style={{ color: "#22c55e" }}># 1 evaluating as true</span><br/>
+          active = 1 <span style={{ color: "#22c55e" }}>{"<3"} 1 evaluating as true</span><br/>
         </pre>
       </section>
 
@@ -36,7 +36,7 @@ export default function Docs() {
         <pre className="glass-panel" style={{ padding: "1.5rem", color: "#d1d5db", fontFamily: "monospace", overflowX: "auto" }}>
           <span style={{ color: "#c678dd" }}>using</span> <span style={{ color: "#61afef" }}>nexocore.io</span><br/><br/>
           players = [100, 200, 300]<br/>
-          players[1] = 999 <span style={{ color: "#22c55e" }}># Index manipulation</span><br/><br/>
+          players[1] = 999 <span style={{ color: "#22c55e" }}>{"<3"} Index manipulation</span><br/><br/>
           <span style={{ color: "#c678dd" }}>foreach</span> item <span style={{ color: "#c678dd" }}>in</span> players {"{"}<br/>
           {"    "}<span style={{ color: "#e5c07b" }}>write</span> item<br/>
           {"}"}
