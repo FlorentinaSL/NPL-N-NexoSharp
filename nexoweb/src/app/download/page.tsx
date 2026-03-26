@@ -18,7 +18,7 @@ export default function Download() {
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginBottom: "2rem", flex: 1 }}>
             Official MSI/EXE Installer natively integrating Nexo into your global PATH environments. Includes local NPM caching.
           </p>
-          <a href="/NexoSetup.exe" download className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download .EXE (x64)</a>
+          <a href="/downloads/nexo-win.exe" download className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download .EXE (x64)</a>
         </div>
 
         {/* Linux Core */}
@@ -30,7 +30,7 @@ export default function Download() {
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginBottom: "2rem", flex: 1 }}>
             Self-contained binary bridging natively via .NET 9. Drop directly into /usr/local/bin to engage MSIL mapping.
           </p>
-          <a href="/linux/nexo" download className="primary-btn" style={{ width: "100%", textDecoration: "none", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>Download Binary (x64)</a>
+          <a href="/downloads/nexo-linux" download className="primary-btn" style={{ width: "100%", textDecoration: "none", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>Download Binary (x64)</a>
         </div>
 
         {/* macOS Core */}
@@ -42,7 +42,7 @@ export default function Download() {
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginBottom: "2rem", flex: 1 }}>
             Compiled universally for Apple Silicon & Intel processors. Bypasses Roslyn dependencies utilizing raw MSIL emission.
           </p>
-          <a href="/mac/nexo" download className="primary-btn" style={{ width: "100%", textDecoration: "none", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>Download Binary (x64)</a>
+          <a href="/downloads/nexo-mac" download className="primary-btn" style={{ width: "100%", textDecoration: "none", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>Download Binary (x64)</a>
         </div>
       </div>
       
