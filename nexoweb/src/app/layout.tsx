@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     title: "Nexo Programming Language",
     description: "Future of Dynamic Scripting.",
   },
+  verification: {
+    google: "rOL8c0gUlu2cXLM5zUm4XEYnpBzPYp3PALhV_EvpDjs",
+  },
 };
 
 export default function RootLayout({
