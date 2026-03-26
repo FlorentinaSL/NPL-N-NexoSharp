@@ -1,0 +1,29 @@
+<3 ============================================================================
+<3 NPL Core Module: Strings (nexocore.strings)
+<3 Advanced textual computation and string allocation mapping methods.
+<3 ============================================================================
+
+<3 Evaluates the absolute integer length of a scalar string
+do length(str) {
+    return StringLength(str)
+}
+
+<3 Forces all characters dynamically mapped into explicit uppercase
+do upper(str) {
+    return StringUpper(str)
+}
+
+<3 Forces all characters dynamically mapped into explicit lowercase
+do lower(str) {
+    return StringLower(str)
+}
+
+<3 Intercepts a string parameter, replacing substrings dynamically
+do replace(str, target, replacement) {
+    return StringReplace(str, target, replacement)
+}
+
+<3 Returns 1 natively if the designated phrase exists logically inside the string
+do contains(str, phrase) {
+    return StringContains(str, phrase)
+}

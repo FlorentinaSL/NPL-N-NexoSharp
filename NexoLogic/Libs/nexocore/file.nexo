@@ -1,0 +1,19 @@
+<3 ============================================================================
+<3 NPL Core Module: File System (nexocore.file)
+<3 Robust wrapper around native OS disk descriptors and bitstream parsing.
+<3 ============================================================================
+
+<3 Extracts the raw string layout from a specified absolute or relative path
+do read_text(path) {
+    return FileRead(path)
+}
+
+<3 Aggressively overwrites or creates a file at the targeted path with the payload
+do write_text(path, content) {
+    FileWrite(path, content)
+}
+
+<3 Returns 1 if the OS disk acknowledges the file existence, 0 otherwise
+do exists(path) {
+    return FileExists(path)
+}
