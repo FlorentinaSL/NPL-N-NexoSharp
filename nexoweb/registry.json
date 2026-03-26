@@ -1,0 +1,10 @@
+{
+  "packages": {
+    "nexocore.math": "<3 NPL Core Module: Math\ndo abs(n) {\n    if n < 0: { return 0 - n }\n    return n\n}",
+    "nexocore.io": "<3 NPL Core Module: IO\ndo print_border() { write \"----------------------------------------\" }\ndo prompt(msg) { write msg; return read }",
+    "nexocore.system": "<3 NPL Core Module: System\ndo sleep(ms) { Sleep(ms) }\ndo time_now() { return SystemTime() }\ndo random(min, max) { return Random(min, max) }\ndo assert(cond, msg) { if cond == 0: { write \"[FATAL SYSTEM ASSERTION ERROR] \" + msg; c = 1 / 0 } return 1 }\ndo clear() { ClearConsole() }",
+    "nexocore.strings": "<3 NPL Core Module: Strings\ndo length(str) { return StringLength(str) }\ndo upper(str) { return StringUpper(str) }\ndo lower(str) { return StringLower(str) }\ndo replace(str, target, rep) { return StringReplace(str, target, rep) }\ndo contains(str, phrase) { return StringContains(str, phrase) }",
+    "nexocore.file": "<3 NPL Core Module: Files\ndo read_text(path) { return FileRead(path) }\ndo write_text(path, contents) { FileWrite(path, contents) }\ndo exists(path) { return FileExists(path) }",
+    "florentina.demo": "do hello() { write \"Hello VPS!\" }"
+  }
+}

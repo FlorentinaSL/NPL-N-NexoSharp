@@ -1,4 +1,4 @@
-﻿[Setup]
+[Setup]
 ; --- Application Info ---
 AppName=Nexo
 AppVersion=1.0
@@ -19,9 +19,12 @@ Compression=lzma
 SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64
 
+[Dirs]
+Name: "C:\Programs\Nexo\libs"; Permissions: users-full
+
 [Files]
-; The main compiler executable (Renamed via AssemblyName to Nexo.exe)
-Source: "C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\publish\Nexo.exe"; DestDir: "{app}"; Flags: ignoreversion
+; The main compiler executable globally routed
+Source: "C:\Users\ciste\RiderProjects\Nexo\PublishedExe\Nexo.exe"; DestDir: "{app}"; DestName: "nexo.exe"; Flags: ignoreversion
 ; The official icon for file association
 Source: "C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\Installer\res\NPL.ico"; DestDir: "{app}"; Flags: ignoreversion
 
@@ -41,7 +44,20 @@ Root: HKCR; Subkey: "NexoScript"; ValueType: string; ValueName: ""; ValueData: "
 Root: HKCR; Subkey: "NexoScript\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\NPL.ico"
 
 ; Set the shell "Open" command (Right-click or Double-click)
-Root: HKCR; Subkey: "NexoScript\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\Nexo.exe"" ""%1"""
+Root: HKCR; Subkey: "NexoScript\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\nexo.exe"" open ""%1"""
+
+; Inject PATH globally for NPM tracking
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"; Check: NeedsAddPath(ExpandConstant('{app}'))
 
 [Code]
-// Future logic for adding Nexo to PATH can be placed here
+function NeedsAddPath(Param: string): boolean;
+var
+  OrigPath: string;
+begin
+  if not RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 'Path', OrigPath) then
+  begin
+    Result := True;
+    exit;
+  end;
+  Result := Pos(';' + Param + ';', ';' + OrigPath + ';') = 0;
+end;

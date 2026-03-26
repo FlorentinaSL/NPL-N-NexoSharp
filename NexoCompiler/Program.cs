@@ -4,6 +4,8 @@ using System.IO;
 using NexoLogic.Lexing;
 using NexoLogic.Parsing;
 using NexoLogic.Execution;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace NexoCompiler;
 
@@ -101,6 +103,17 @@ public static class Program {
                         RunDll(argument);
                     }
                     break;
+                    
+                case "install":
+                    if (string.IsNullOrEmpty(argument))
+                    {
+                        Console.WriteLine("Usage: install [package] (e.g., nexo install nexocore.math)");
+                    }
+                    else
+                    {
+                        InstallPackage(argument).Wait();
+                    }
+                    break;
 
                 default:
                     // Implicit execution fallback for raw file dropping into the shell
@@ -122,6 +135,7 @@ public static class Program {
         Console.WriteLine("open [file_path]  : Execute a specific .nexo script in JIT memory via Interpreter");
         Console.WriteLine("build [file_path] : Compile a .nexo script into a native .NET execution assembly (.dll)");
         Console.WriteLine("run [file.dll]    : Fast-launch a pre-compiled MSIL .nexo assembly directly into CLR");
+        Console.WriteLine("install [package] : Download and map remote .nexo ecosystems globally via NPM");
         Console.WriteLine("open              : Explore internal host installation architecture");
         Console.WriteLine("exit              : Terminate the active Nexo REPL shell");
         Console.WriteLine("---------------------------\n");
@@ -243,6 +257,50 @@ public static class Program {
         catch (Exception ex)
         {
             Console.WriteLine($"\n[FATAL] Abstract Architecture Exception: {ex.Message}\n");
+        }
+    }
+
+    /// <summary>
+    /// NPM (Nexo Package Manager) Native CLI Downloader.
+    /// Reaches out to the Nexo Registry API to fetch standard '.nexo' library sources and map them physically globally.
+    /// </summary>
+    private static async Task InstallPackage(string packageName)
+    {
+        Console.WriteLine($"\n[NPM] Contacting global registry for package: '{packageName}'...");
+        string registryUrl = $"http://localhost:3000/api/registry/{packageName}";
+        
+        try 
+        {
+            using var client = new HttpClient();
+            // Assign custom timeout to prevent REPL from halting indefinitely on networking stalls
+            client.Timeout = TimeSpan.FromSeconds(15);
+            var response = await client.GetAsync(registryUrl);
+            
+            if (!response.IsSuccessStatusCode) {
+                Console.WriteLine($"[FATAL] NPM Registry Fault: Package '{packageName}' was not found across the index bounds (Status: {response.StatusCode}).");
+                return;
+            }
+            
+            string sourceCode = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"[SUCCESS] NPM payload extraction complete ({sourceCode.Length} bytes).");
+            
+            // Map payload strictly towards User-Requested OS Bounds
+            string targetBaseDir = @"C:\Programs\Nexo\libs";
+            if (!Directory.Exists(targetBaseDir)) Directory.CreateDirectory(targetBaseDir);
+            
+            string fileName = packageName.Replace(".", @"\") + ".nexo";
+            string fullDestPath = Path.Combine(targetBaseDir, fileName);
+            
+            // Build trailing recursive folder injections seamlessly
+            string fileDir = Path.GetDirectoryName(fullDestPath)!;
+            if (!Directory.Exists(fileDir)) Directory.CreateDirectory(fileDir);
+            
+            File.WriteAllText(fullDestPath, sourceCode);
+            Console.WriteLine($"[+] Module deployed structurally to: {fullDestPath}\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n[FATAL] NPM Networking Crash Hook: {ex.Message}\n");
         }
     }
 }

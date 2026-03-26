@@ -1,0 +1,14 @@
+do assert(cond, msg) {
+    if cond == false: {
+        write "ASSERTION FAILED:"
+        write msg
+        return 0 
+    }
+    if cond == 0: {
+        write "ASSERTION FAILED:"
+        write msg
+        return 0
+    }
+    return 1
+}
+

@@ -158,10 +158,14 @@ public class Compiler {
                 if (!File.Exists(path)) {
                     // Fallback bridging strictly aimed at the physical global NPL executable library payload
                     string globalPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Libs", relativePath);
+                    string npmGlobalPath = Path.Combine(@"C:\Programs\Nexo\libs", relativePath);
+                    
                     if (File.Exists(globalPath)) {
                         path = globalPath;
+                    } else if (File.Exists(npmGlobalPath)) {
+                        path = npmGlobalPath;
                     } else {
-                        throw new Exception($"[NXC-002] Linker Error: Module '{u.ModuleName}' could not be located in the current execution directory or global libraries.");
+                        throw new Exception($"[NXC-002] Linker Error: Module '{u.ModuleName}' could not be located locally or in the global NPM registry ('C:\\Programs\\Nexo\\libs').");
                     }
                 }
                 

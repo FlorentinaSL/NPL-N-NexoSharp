@@ -197,12 +197,16 @@ public class Interpreter {
         string path = relativePath;
         
         if (!File.Exists(path)) {
-            // Absolute path probing on core NPL generic libraries
+            // Absolute path probing on core NPL generic NPM libraries
             string globalPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Libs", relativePath);
+            string npmGlobalPath = Path.Combine(@"C:\Programs\Nexo\libs", relativePath);
+            
             if (File.Exists(globalPath)) {
                 path = globalPath;
+            } else if (File.Exists(npmGlobalPath)) {
+                path = npmGlobalPath;
             } else {
-                throw new Exception($"[NXC-016] Path Traversal Error: Global library framework or local file '{moduleName}' failed resolution check.");
+                throw new Exception($"[NXC-016] Path Traversal Error: NPM network fallback failed. Module '{moduleName}' not installed globally.");
             }
         }
 

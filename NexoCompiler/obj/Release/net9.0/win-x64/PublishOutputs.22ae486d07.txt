@@ -1,2 +1,0 @@
-C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\publish\Nexo.exe
-C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\publish\NexoLogic.pdb

@@ -1,0 +1,17 @@
+<3 ============================================================================
+<3 NPL Core Module: IO (nexocore.io)
+<3 Provides standard operational routines for managing primitive Input/Output streams.
+<3 ============================================================================
+
+<3 Dispatches a purely cosmetic ASCII horizontal boundary to the standard output buffer (STDOUT).
+do print_border() {
+    write "----------------------------------------"
+}
+
+<3 Synchronously queries the runtime environment allocating the string payload 'msg' to STDOUT, 
+<3 then blocks the primary thread awaiting contiguous STDIN string/integer entry.
+do prompt(msg) {
+    write msg
+    var input = read
+    return input
+}
