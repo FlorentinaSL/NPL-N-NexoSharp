@@ -1,7 +1,7 @@
 <3 Nexo Core - Dynamic Memory Mapping (Dictionaries)
 <3 Copyright 2026 Florentina Spicco D'aura
 
-<3 Instantiates a volatile Map (Dictionary Object) natively mapping to C# Space
+<3 Instantiates a volatile Map (Dictionary Object) natively mapping to .NET IL Space
 do create() {
     return mapCreate()
 }

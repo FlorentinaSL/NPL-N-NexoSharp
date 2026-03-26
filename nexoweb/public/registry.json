@@ -24,7 +24,7 @@
     "name": "nexocore.discord",
     "version": "1.0.0",
     "author": "Nexo Core Security",
-    "code": "<3 Nexo Core - Discord Webhook Integration\n<3 Copyright 2026 Florentina Spicco D'aura\n\nusing nexocore.net\n\n<3 Broadcasts an anonymous Webhook packet straight to a Discord channel\ndo sendWebhook(webhookUrl, botName, textMessage) {\n    <3 Structuring raw JSON natively using N# string allocations\n    rawJson = \"{\\\"username\\\": \\\"\" + botName + \"\\\", \\\"content\\\": \\\"\" + textMessage + \"\\\"}\"\n    \n    <3 Pipe the transmission through the C# Native bounds\n    response = postJson(webhookUrl, rawJson)\n    return response\n}\n",
+    "code": "<3 Nexo Core - Discord Webhook Integration\n<3 Copyright 2026 Florentina Spicco D'aura\n\nusing nexocore.net\n\n<3 Broadcasts an anonymous Webhook packet straight to a Discord channel\ndo sendWebhook(webhookUrl, botName, textMessage) {\n    <3 Structuring raw JSON natively using N# string allocations\n    rawJson = \"{\\\"username\\\": \\\"\" + botName + \"\\\", \\\"content\\\": \\\"\" + textMessage + \"\\\"}\"\n    \n    <3 Pipe the transmission through the .NET Native bounds\n    response = postJson(webhookUrl, rawJson)\n    return response\n}\n",
     "timestamp": "2026-03-26T12:00:00.000Z"
   },
   "nexocore.system": {
@@ -66,7 +66,7 @@
     "name": "nexocore.map",
     "version": "1.0.0",
     "author": "Nexo Core Security",
-    "code": "<3 Nexo Core - Dynamic Memory Mapping (Dictionaries)\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Instantiates a volatile Map (Dictionary Object) natively mapping to C# Space\ndo create() {\n    return mapCreate()\n}\n\n<3 Forcefully assigns a Value to a Key internally in the Map structure\ndo set(mapTarget, keyName, valueScalar) {\n    mapSet(mapTarget, keyName, valueScalar)\n}\n\n<3 Safely extracts payload via a specific structural Key\ndo get(mapTarget, keyName) {\n    return mapGet(mapTarget, keyName)\n}\n",
+    "code": "<3 Nexo Core - Dynamic Memory Mapping (Dictionaries)\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Instantiates a volatile Map (Dictionary Object) natively mapping to .NET IL Space\ndo create() {\n    return mapCreate()\n}\n\n<3 Forcefully assigns a Value to a Key internally in the Map structure\ndo set(mapTarget, keyName, valueScalar) {\n    mapSet(mapTarget, keyName, valueScalar)\n}\n\n<3 Safely extracts payload via a specific structural Key\ndo get(mapTarget, keyName) {\n    return mapGet(mapTarget, keyName)\n}\n",
     "timestamp": "2026-03-26T12:39:59.165Z"
   }
 }

@@ -152,7 +152,7 @@ public static class NexoRuntime {
     public static object Lte(object l, object r) => (int)l <= (int)r ? 1 : 0;
 
     // =========================================================================
-    // NATIVE C# FRAMEWORK BRIDGING
+    // NATIVE .NET FRAMEWORK BRIDGING
     // Externally invokable via NPL code implicitly bypassing structural paradigms
     // =========================================================================
     

@@ -12,7 +12,7 @@ export default function Home() {
         </div>
         <h1 className="hero-title" style={{ fontSize: "5rem", marginBottom: "1rem", textAlign: "center", letterSpacing: "-0.03em" }}>NEXO</h1>
         <p style={{ fontSize: "1.4rem", color: "var(--accent-secondary)", textAlign: "center", maxWidth: "700px", marginBottom: "2.5rem", fontWeight: "300", lineHeight: "1.6" }}>
-          A natively compiled, purely dynamic scripting architecture built on C# MSIL. Designed for uncompromising speed and global cloud ecosystem integration.
+          A natively compiled, purely dynamic scripting architecture built on raw .NET MSIL. Designed for uncompromising speed and global cloud ecosystem integration.
         </p>
         
         <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}>
@@ -52,7 +52,7 @@ export default function Home() {
           <ul style={{ listStyle: "none", padding: 0, margin: 0, color: "var(--text-primary)", fontSize: "1.1rem" }}>
             <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "center", gap: "10px" }}><span style={{color: "#a5b4fc", fontSize: "1.2rem"}}>✓</span> Typed-Free Variable Assignments</li>
             <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "center", gap: "10px" }}><span style={{color: "#a5b4fc", fontSize: "1.2rem"}}>✓</span> Universal 'do' Logic Subroutines</li>
-            <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "center", gap: "10px" }}><span style={{color: "#a5b4fc", fontSize: "1.2rem"}}>✓</span> C# Linker Hardware Acceleration</li>
+            <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "center", gap: "10px" }}><span style={{color: "#a5b4fc", fontSize: "1.2rem"}}>✓</span> .NET CLR Hardware Acceleration</li>
           </ul>
         </div>
       </section>
@@ -64,7 +64,7 @@ export default function Home() {
           <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>⚡</div>
           <h3 style={{ fontSize: "1.3rem", marginBottom: "0.5rem" }}>Raw MSIL Speeds</h3>
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", lineHeight: "1.6" }}>
-            Compiling natively invokes the Reflection.Emit C# engine. Nexo translates your scripts directly into machine `.dll` execution boundaries, outperforming interpreted runtimes.
+            Compiling natively invokes the Reflection.Emit .NET engine. Nexo translates your scripts directly into machine `.dll` execution boundaries, outperforming interpreted runtimes.
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export default function Home() {
       <section className="animate-fade-in delay-3" style={{ background: "rgba(0,0,0,0.3)", borderRadius: "16px", padding: "4rem 2rem", border: "1px solid var(--glass-border)", marginBottom: "3rem", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
         <h2 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>Deploy the Global Network.</h2>
         <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", maxWidth: "600px", marginBottom: "2rem" }}>
-          The native C# CLI manages everything. Compile AOT `.dll` files, execute local JIT scripts via Interpreter, or synchronize extensions from the Cloud effortlessly.
+          The native .NET CLI manages everything. Compile AOT `.dll` files, execute local JIT scripts via Interpreter, or synchronize extensions from the Cloud effortlessly.
         </p>
         
         <div style={{ background: "#000", padding: "1.5rem 3rem", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)", textAlign: "left", width: "100%", maxWidth: "600px", fontFamily: "monospace", fontSize: "1.1rem" }}>

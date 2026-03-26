@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.svg"
   },
-  keywords: ["Nexo", "NPL", "Nexo Programming Language", "N#", "FlorentinaSL", "Luca Cisternino", "Dynamic Scripting", "MSIL", "C# Compiler", "NPM Registry"],
+  keywords: ["Nexo", "NPL", "Nexo Programming Language", "N#", "FlorentinaSL", "Luca Cisternino", "Dynamic Scripting", "MSIL", ".NET Standard", "NPM Registry"],
   authors: [{ name: "Florentina Spicco D'aura" }],
   creator: "Florentina Spicco D'aura",
   openGraph: {

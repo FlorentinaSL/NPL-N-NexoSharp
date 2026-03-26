@@ -148,7 +148,7 @@ public class Interpreter {
     }
 
     /// <summary>
-    /// Executes a custom-defined procedural routine node or delegates transparently to the implicit Native C# bridge.
+    /// Executes a custom-defined procedural routine node or delegates transparently to the implicit Native .NET bridge.
     /// </summary>
     private object? ExecuteFunction(string name, List<AstNodes.Expression> args, Dictionary<string, object> callingScope) {
         if (_functions.TryGetValue(name, out var func)) {
@@ -169,7 +169,7 @@ public class Interpreter {
             return null; // Implicit evaluation termination
         }
 
-        // --- Active Native C# Framework Bridging ---
+        // --- Active Native .NET Framework Bridging ---
         string targetName = name.Replace("_", "");
         var nativeMethod = typeof(NexoRuntime).GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)
             .FirstOrDefault(m => string.Equals(m.Name, targetName, StringComparison.OrdinalIgnoreCase));

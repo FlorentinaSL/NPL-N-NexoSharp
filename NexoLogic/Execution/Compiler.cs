@@ -348,7 +348,7 @@ public class Compiler {
     }
 
     /// <summary>
-    /// Processes computational expressions and enforces C# Object-Boxing to satisfy NPL's untyped operational methodology.
+    /// Processes computational expressions and enforces .NET Object-Boxing to satisfy NPL's untyped operational methodology.
     /// </summary>
     private void EmitExpression(ILGenerator il, AstNodes.Expression expr) {
         switch (expr) {
@@ -421,7 +421,7 @@ public class Compiler {
                     // Dispatches internal compiled logic bridging sequentially
                     il.Emit(OpCodes.Call, method);
                 } else {
-                    // --- NPL Magic: Native C# Framework Fallback Search Engine ---
+                    // --- NPL Magic: Native .NET Core Framework Fallback Search Engine ---
                     // Safely overrides normal function structures and directly binds to robust platform functionalities implicitly.
                     string targetName = c.Callee.Replace("_", "");
                     var nativeMethod = typeof(NexoRuntime).GetMethods(BindingFlags.Public | BindingFlags.Static)
@@ -441,7 +441,7 @@ public class Compiler {
                             il.Emit(OpCodes.Ldnull);
                         }
                     } else {
-                        throw new Exception($"[NXC-008] Linker Error: Unresolved invokable symbol '{c.Callee}' could not be found in user scopes or native C# bridge.");
+                        throw new Exception($"[NXC-008] Linker Error: Unresolved invokable symbol '{c.Callee}' could not be found in user scopes or native .NET bridge.");
                     }
                 }
                 break;
