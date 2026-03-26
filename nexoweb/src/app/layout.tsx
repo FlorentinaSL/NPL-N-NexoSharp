@@ -66,7 +66,7 @@ export default function RootLayout({
              <a href="/" style={{ color: "inherit", textDecoration: "none" }}>Home</a>
              <a href="/docs" style={{ color: "inherit", textDecoration: "none" }}>Documentation</a>
              <a href="/registry" style={{ color: "inherit", textDecoration: "none" }}>Global Registry</a>
-             <a href="/NexoSetup.exe" download style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: "600" }}>Download V1.0.0</a>
+             <a href="/download" style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: "600" }}>Download Native</a>
           </div>
           <h1 style={{ fontSize: "clamp(100px, 18vw, 250px)", fontWeight: "900", letterSpacing: "-0.05em", color: "rgba(255,255,255,0.02)", margin: 0, lineHeight: 0.8, userSelect: "none" }}>NEXO</h1>
           <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "1rem" }}>© 2026 Florentina Spicco D'aura. All rights reserved globally.</p>

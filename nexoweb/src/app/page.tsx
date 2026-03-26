@@ -18,7 +18,7 @@ export default function Home() {
         </p>
         
         <div style={{ display: "flex", gap: "1rem" }}>
-          <a href="/NexoSetup.exe" download className="primary-btn" style={{textDecoration: "none", display: "inline-block"}}>Download Windows Setup</a>
+          <a href="/download" className="primary-btn" style={{textDecoration: "none", display: "inline-block"}}>Download Engine</a>
           <a href="/docs" className="secondary-btn" style={{textDecoration: "none", display: "inline-block"}}>Read Documentation</a>
         </div>
       </section>

@@ -16,6 +16,13 @@ export async function GET() {
 
 export async function POST(request: Request) {
     try {
+        const authHeader = request.headers.get('authorization');
+        const masterKey = process.env.NEXO_API_KEY || "NexoAura2026-V1";
+    
+        if (!authHeader || authHeader !== `Bearer ${masterKey}`) {
+          return NextResponse.json({ error: "NXC009: Cryptographic Handshake Failed. Invalid or missing V1 API Key." }, { status: 401 });
+        }
+
         const { name, code } = await request.json();
         
         if (!name || !code || typeof name !== 'string' || typeof code !== 'string') {

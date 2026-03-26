@@ -6,6 +6,7 @@ export default function Registry() {
   const [packages, setPackages] = useState<string[]>([]);
   const [pubName, setPubName] = useState("");
   const [pubCode, setPubCode] = useState("");
+  const [pubKey, setPubKey] = useState("");
   const [pubStatus, setPubStatus] = useState("");
 
   const fetchPackages = async () => {
@@ -26,7 +27,10 @@ export default function Registry() {
     try {
       const res = await fetch("/api/registry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${pubKey}`
+        },
         body: JSON.stringify({ name: pubName, code: pubCode })
       });
       const data = await res.json();
@@ -92,7 +96,19 @@ export default function Registry() {
               />
             </div>
             
-            <button type="submit" className="primary-btn" style={{ marginTop: "0.5rem", width: "100%" }}>Broadcast NPM Release</button>
+            <div>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", color: "#a5b4fc" }}>V1 Cryptographic API Key</label>
+              <input 
+                type="password" 
+                value={pubKey}
+                onChange={(e) => setPubKey(e.target.value)}
+                placeholder="••••••••••••••••" 
+                style={{ width: "100%", background: "rgba(0,0,0,0.4)", border: "1px solid var(--glass-border)", color: "white", padding: "12px", borderRadius: "6px", outline: "none" }}
+                required
+              />
+            </div>
+            
+            <button type="submit" className="primary-btn" style={{ marginTop: "0.5rem", width: "100%" }}>Broadcast Secure NPM Release</button>
             
             {pubStatus && (
               <div style={{ marginTop: "1rem", padding: "12px", borderRadius: "6px", fontSize: "0.9rem", background: pubStatus.includes("NXC") || pubStatus.includes("Failed") ? "rgba(239, 68, 68, 0.1)" : "rgba(34, 197, 94, 0.1)", color: pubStatus.includes("NXC") || pubStatus.includes("Failed") ? "#ef4444" : "#22c55e", border: "1px solid var(--glass-border)" }}>

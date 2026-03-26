@@ -28,13 +28,17 @@ public static class Program {
                 BuildFile(args[1]);
             } else if (command == "run" && args.Length > 1) {
                 RunDll(args[1]);
+            } else if (command == "install" && args.Length > 1) {
+                InstallPackage(args[1]).Wait();
+            } else if (command == "publish" && args.Length > 1) {
+                PublishPackage(string.Join(" ", args[1..])).Wait();
             } else if (command == "open" && args.Length > 1) {
                 ExecuteFile(args[1]);
-            } else if (command != "build" && command != "open" && command != "run") {
+            } else if (command != "build" && command != "open" && command != "run" && command != "publish" && command != "install") {
                 // Fallback: Default to JIT execution if raw path is passed without explicit commands
                 ExecuteFile(command); 
             } else {
-                Console.WriteLine("Usage: NexoCompiler [build|open] file.nexo");
+                Console.WriteLine("Usage: NexoCompiler [build|open|install|publish] args");
             }
             
             // Unmount process synchronously without hanging CI/CD daemon layers
@@ -114,6 +118,17 @@ public static class Program {
                         InstallPackage(argument).Wait();
                     }
                     break;
+                    
+                case "publish":
+                    if (string.IsNullOrEmpty(argument))
+                    {
+                        Console.WriteLine("Usage: publish <namespace> <file.nexo> <auth_key>");
+                    }
+                    else
+                    {
+                        PublishPackage(argument).Wait();
+                    }
+                    break;
 
                 default:
                     // Implicit execution fallback for raw file dropping into the shell
@@ -136,6 +151,7 @@ public static class Program {
         Console.WriteLine("build [file_path] : Compile a .nexo script into a native .NET execution assembly (.dll)");
         Console.WriteLine("run [file.dll]    : Fast-launch a pre-compiled MSIL .nexo assembly directly into CLR");
         Console.WriteLine("install [package] : Download and map remote .nexo ecosystems globally via NPM");
+        Console.WriteLine("publish [args]    : Upload native modules to explicitly authenticated NPM domains");
         Console.WriteLine("open              : Explore internal host installation architecture");
         Console.WriteLine("exit              : Terminate the active Nexo REPL shell");
         Console.WriteLine("---------------------------\n");
@@ -300,6 +316,57 @@ public static class Program {
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"\n[FATAL] NPM Networking Crash Hook: {ex.Message}\n");
+        }
+    }
+
+    /// <summary>
+    /// NPM Edge Deployment Engine.
+    /// Bridges raw local N# syntax files to the Global Vercel Next.js Database via strict Cryptographic Bearer Auths.
+    /// </summary>
+    private static async Task PublishPackage(string arguments)
+    {
+        string[] parts = arguments.Split(' ', 3, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length < 3) {
+            Console.WriteLine("[FATAL] NPM Publishing Syntax Constraint: 'nexo publish <namespace> <file_path.nexo> <cryptographic_key>'");
+            return;
+        }
+        
+        string packageName = parts[0];
+        string filePath = parts[1];
+        string token = parts[2];
+        
+        if (!File.Exists(filePath)) {
+            Console.WriteLine($"[FATAL] I/O Fault: Target blueprint script '{filePath}' is structurally unreachable.");
+            return;
+        }
+        
+        string sourceCode = File.ReadAllText(filePath);
+        Console.WriteLine($"\n[NPM] Authenticating global deploy sequence for namespace '{packageName}'...");
+        
+        try {
+            using var client = new HttpClient();
+            // Assign strict 20-second timeout constraints
+            client.Timeout = TimeSpan.FromSeconds(20);
+            
+            // Inject Cryptographic Metadata
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            
+            // Build raw JSON payload natively without massive external dependencies
+            string escapedCode = sourceCode.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "");
+            string jsonPayload = $"{{\"name\": \"{packageName}\", \"code\": \"{escapedCode}\"}}";
+            
+            var content = new StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("https://nexosharp.vercel.app/api/registry", content);
+            
+            string responseBody = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode) {
+                Console.WriteLine($"[SUCCESS] Cryptographic verification confirmed. Package '{packageName}' dynamically synced terminating to Next.js API Hub.\n");
+            } else {
+                Console.WriteLine($"\n[FATAL] NPM Edge Integrity Rejection (HTTP {response.StatusCode}): {responseBody}\n");
+            }
+        }
+        catch (Exception ex) {
             Console.WriteLine($"\n[FATAL] NPM Networking Crash Hook: {ex.Message}\n");
         }
     }
