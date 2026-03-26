@@ -1,0 +1,96 @@
+name: Nexo Cross-Platform Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'   # Triggers when you push a tag like v2.0.0
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            rid: win-x64
+            artifact: nexo-win.exe
+            binary: Nexo.exe
+          - os: ubuntu-latest
+            rid: linux-x64
+            artifact: nexo-linux
+            binary: Nexo
+          - os: macos-latest
+            rid: osx-x64
+            artifact: nexo-mac
+            binary: Nexo
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Publish AOT Native Binary (${{ matrix.rid }})
+        run: |
+          dotnet publish NexoCompiler/NexoCompiler.csproj \
+            -c Release \
+            -r ${{ matrix.rid }} \
+            --self-contained true \
+            -p:PublishSingleFile=true \
+            -o dist/${{ matrix.rid }}
+
+      - name: Rename binary
+        shell: bash
+        run: |
+          mv dist/${{ matrix.rid }}/${{ matrix.binary }} dist/${{ matrix.artifact }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: dist/${{ matrix.artifact }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist/
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "Nexo ${{ github.ref_name }}"
+          body: |
+            ## Nexo ${{ github.ref_name }} — Official Release
+            
+            Cross-platform N# compiler binaries compiled via native .NET 9 AOT.
+            
+            | Platform | File |
+            |---|---|
+            | Windows x64 | `nexo-win.exe` |
+            | Linux x64 | `nexo-linux` |
+            | macOS x64 | `nexo-mac` |
+            
+            ### Install (Windows)
+            ```
+            nexo-win.exe build script.nexo
+            ```
+            ### Install (Linux/macOS)
+            ```bash
+            chmod +x nexo-linux && ./nexo-linux build script.nexo
+            ```
+          files: |
+            dist/nexo-win.exe/nexo-win.exe
+            dist/nexo-linux/nexo-linux
+            dist/nexo-mac/nexo-mac
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
