@@ -25,11 +25,11 @@
         }
       }
     },
-    "net9.0/win-x64": {
+    "net9.0/osx-x64": {
       "Microsoft.DotNet.ILCompiler/9.0.10": {
         "type": "package",
         "dependencies": {
-          "runtime.win-x64.Microsoft.DotNet.ILCompiler": "9.0.10"
+          "runtime.osx-x64.Microsoft.DotNet.ILCompiler": "9.0.10"
         },
         "build": {
           "build/Microsoft.DotNet.ILCompiler.props": {}
@@ -41,7 +41,7 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "runtime.win-x64.Microsoft.DotNet.ILCompiler/9.0.10": {
+      "runtime.osx-x64.Microsoft.DotNet.ILCompiler/9.0.10": {
         "type": "package"
       },
       "NexoLogic/1.0.0": {
@@ -137,10 +137,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.win-x64.Microsoft.DotNet.ILCompiler/9.0.10": {
-      "sha512": "KpzBuhcP/1YdjFODGCIU3RJZIZ+uZMyiPFGa0n1nZV6J3yxSNfluFZzHuMN5J6GoCaPbX6Kgn6sEI1VNYn0xdQ==",
+    "runtime.osx-x64.Microsoft.DotNet.ILCompiler/9.0.10": {
+      "sha512": "Q6wFijfGWVGbwsEwVuyQPftQf0I+DvqkYfJEu1XsM/tJgA8antNw6KxtCEsKW48vpbAVlal5BDLPjMjvAzBLEg==",
       "type": "package",
-      "path": "runtime.win-x64.microsoft.dotnet.ilcompiler/9.0.10",
+      "path": "runtime.osx-x64.microsoft.dotnet.ilcompiler/9.0.10",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -230,15 +230,12 @@
         "framework/System.Globalization.Calendars.pdb",
         "framework/System.Globalization.Extensions.dll",
         "framework/System.Globalization.Extensions.pdb",
-        "framework/System.Globalization.Native.pdb",
         "framework/System.Globalization.dll",
         "framework/System.Globalization.pdb",
         "framework/System.IO.Compression.Brotli.dll",
         "framework/System.IO.Compression.Brotli.pdb",
         "framework/System.IO.Compression.FileSystem.dll",
         "framework/System.IO.Compression.FileSystem.pdb",
-        "framework/System.IO.Compression.Native.dll",
-        "framework/System.IO.Compression.Native.pdb",
         "framework/System.IO.Compression.ZipFile.dll",
         "framework/System.IO.Compression.ZipFile.pdb",
         "framework/System.IO.Compression.dll",
@@ -483,10 +480,20 @@
         "framework/System.pdb",
         "framework/WindowsBase.dll",
         "framework/WindowsBase.pdb",
+        "framework/libSystem.Globalization.Native.a",
+        "framework/libSystem.Globalization.Native.dylib",
+        "framework/libSystem.IO.Compression.Native.a",
+        "framework/libSystem.IO.Compression.Native.dylib",
+        "framework/libSystem.Native.a",
+        "framework/libSystem.Native.dylib",
+        "framework/libSystem.Net.Security.Native.a",
+        "framework/libSystem.Net.Security.Native.dylib",
+        "framework/libSystem.Security.Cryptography.Native.Apple.a",
+        "framework/libSystem.Security.Cryptography.Native.Apple.dylib",
+        "framework/libSystem.Security.Cryptography.Native.OpenSsl.a",
+        "framework/libSystem.Security.Cryptography.Native.OpenSsl.dylib",
         "framework/mscorlib.dll",
         "framework/mscorlib.pdb",
-        "framework/msquic.dll",
-        "framework/msquic.pdb",
         "framework/netstandard.dll",
         "framework/netstandard.pdb",
         "mibc/DotNet_Adhoc.mibc",
@@ -495,28 +502,8 @@
         "mibc/DotNet_HelloWorld.mibc",
         "mibc/DotNet_OrchardCore.mibc",
         "mibc/DotNet_TechEmpower.mibc",
-        "runtime.win-x64.microsoft.dotnet.ilcompiler.9.0.10.nupkg.sha512",
-        "runtime.win-x64.microsoft.dotnet.ilcompiler.nuspec",
-        "sdk/Runtime.ServerGC.GuardCF.lib",
-        "sdk/Runtime.ServerGC.GuardCF.pdb",
-        "sdk/Runtime.ServerGC.lib",
-        "sdk/Runtime.ServerGC.pdb",
-        "sdk/Runtime.VxsortDisabled.lib",
-        "sdk/Runtime.VxsortDisabled.pdb",
-        "sdk/Runtime.VxsortEnabled.GuardCF.lib",
-        "sdk/Runtime.VxsortEnabled.GuardCF.pdb",
-        "sdk/Runtime.VxsortEnabled.lib",
-        "sdk/Runtime.VxsortEnabled.pdb",
-        "sdk/Runtime.WorkstationGC.lib",
-        "sdk/Runtime.WorkstationGC.pdb",
-        "sdk/System.Globalization.Native.Aot.GuardCF.lib",
-        "sdk/System.Globalization.Native.Aot.GuardCF.pdb",
-        "sdk/System.Globalization.Native.Aot.lib",
-        "sdk/System.Globalization.Native.Aot.pdb",
-        "sdk/System.IO.Compression.Native.Aot.GuardCF.lib",
-        "sdk/System.IO.Compression.Native.Aot.GuardCF.pdb",
-        "sdk/System.IO.Compression.Native.Aot.lib",
-        "sdk/System.IO.Compression.Native.Aot.pdb",
+        "runtime.osx-x64.microsoft.dotnet.ilcompiler.9.0.10.nupkg.sha512",
+        "runtime.osx-x64.microsoft.dotnet.ilcompiler.nuspec",
         "sdk/System.Private.CoreLib.dll",
         "sdk/System.Private.CoreLib.pdb",
         "sdk/System.Private.CoreLib.xml",
@@ -532,42 +519,25 @@
         "sdk/System.Private.TypeLoader.dll",
         "sdk/System.Private.TypeLoader.pdb",
         "sdk/System.Private.TypeLoader.xml",
-        "sdk/bootstrapper.GuardCF.obj",
-        "sdk/bootstrapper.GuardCF.pdb",
-        "sdk/bootstrapper.obj",
-        "sdk/bootstrapper.pdb",
-        "sdk/bootstrapperdll.GuardCF.obj",
-        "sdk/bootstrapperdll.GuardCF.pdb",
-        "sdk/bootstrapperdll.obj",
-        "sdk/bootstrapperdll.pdb",
-        "sdk/dn-containers.pdb",
-        "sdk/eventpipe-disabled.GuardCF.lib",
-        "sdk/eventpipe-disabled.GuardCF.pdb",
-        "sdk/eventpipe-disabled.lib",
-        "sdk/eventpipe-disabled.pdb",
-        "sdk/eventpipe-enabled.GuardCF.lib",
-        "sdk/eventpipe-enabled.GuardCF.pdb",
-        "sdk/eventpipe-enabled.lib",
-        "sdk/eventpipe-enabled.pdb",
-        "sdk/eventpipe-shared-objects.GuardCF.pdb",
-        "sdk/eventpipe-shared-objects.pdb",
-        "sdk/standalonegc-disabled.GuardCF.lib",
-        "sdk/standalonegc-disabled.GuardCF.pdb",
-        "sdk/standalonegc-disabled.lib",
-        "sdk/standalonegc-disabled.pdb",
-        "sdk/standalonegc-enabled.GuardCF.lib",
-        "sdk/standalonegc-enabled.GuardCF.pdb",
-        "sdk/standalonegc-enabled.lib",
-        "sdk/standalonegc-enabled.pdb",
-        "sdk/zlib.pdb",
-        "sdk/zlibstatic.lib",
-        "tools/clrjit_universal_arm64_x64.dll",
-        "tools/clrjit_universal_arm_x64.dll",
-        "tools/clrjit_unix_x64_x64.dll",
-        "tools/clrjit_win_x64_x64.dll",
-        "tools/clrjit_win_x86_x64.dll",
-        "tools/ilc.exe",
-        "tools/jitinterface_x64.dll"
+        "sdk/libRuntime.ServerGC.a",
+        "sdk/libRuntime.VxsortDisabled.a",
+        "sdk/libRuntime.VxsortEnabled.a",
+        "sdk/libRuntime.WorkstationGC.a",
+        "sdk/libbootstrapper.o",
+        "sdk/libbootstrapperdll.o",
+        "sdk/libeventpipe-disabled.a",
+        "sdk/libeventpipe-enabled.a",
+        "sdk/libstandalonegc-disabled.a",
+        "sdk/libstandalonegc-enabled.a",
+        "sdk/libstdc++compat.a",
+        "sdk/libz.a",
+        "tools/ilc",
+        "tools/libclrjit_universal_arm64_x64.dylib",
+        "tools/libclrjit_universal_arm_x64.dylib",
+        "tools/libclrjit_unix_x64_x64.dylib",
+        "tools/libclrjit_win_x64_x64.dylib",
+        "tools/libclrjit_win_x86_x64.dylib",
+        "tools/libjitinterface_x64.dylib"
       ]
     },
     "NexoLogic/1.0.0": {
@@ -666,15 +636,11 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+            "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
             "version": "[9.0.10, 9.0.10]"
           },
           {
-            "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[9.0.10, 9.0.10]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+            "name": "Microsoft.NETCore.App.Runtime.osx-x64",
             "version": "[9.0.10, 9.0.10]"
           },
           {
@@ -691,7 +657,7 @@
       }
     },
     "runtimes": {
-      "win-x64": {
+      "osx-x64": {
         "#import": []
       }
     }
