@@ -1,9 +1,11 @@
 import React from "react";
+import Logo from "../../components/Logo";
 
 export default function Docs() {
   return (
     <div style={{ maxWidth: "800px", margin: "4rem auto", lineHeight: "1.7", paddingBottom: "4rem" }}>
-      <div className="animate-fade-in" style={{ textAlign: "center", marginBottom: "4rem" }}>
+      <div className="animate-fade-in" style={{ textAlign: "center", marginBottom: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div style={{ marginBottom: "1.5rem" }}><Logo size={100} /></div>
         <h1 className="hero-title" style={{ fontSize: "4rem", marginBottom: "0.5rem" }}>NEXO DOCS</h1>
         <p style={{ color: "var(--accent-secondary)", fontSize: "1.3rem", fontWeight: "600" }}>The Official Blueprint of the N# Ecosystem</p>
       </div>

@@ -1,8 +1,10 @@
 import React from "react";
+import Logo from "../../components/Logo";
 
 export default function Download() {
   return (
-    <div className="animate-fade-in delay-1" style={{ maxWidth: "1000px", margin: "4rem auto", padding: "0 1rem" }}>
+    <div className="animate-fade-in delay-1" style={{ maxWidth: "1000px", margin: "4rem auto", padding: "0 1rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ marginBottom: "1rem" }}><Logo size={80} /></div>
       <h1 className="hero-title" style={{ fontSize: "3.5rem", marginBottom: "0.5rem", textAlign: "center" }}>Global Distribution.</h1>
       <p style={{ color: "var(--text-muted)", fontSize: "1.2rem", textAlign: "center", marginBottom: "4rem" }}>Acquire the NPL (Nexo Programming Language) engine natively compiled for your architecture.</p>
 

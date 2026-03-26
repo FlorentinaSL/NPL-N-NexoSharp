@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Logo from "../../components/Logo";
 
 export default function Registry() {
   const [packages, setPackages] = useState<string[]>([]);
@@ -47,6 +48,9 @@ export default function Registry() {
 
   return (
     <div className="animate-fade-in" style={{ maxWidth: "1000px", margin: "4rem auto" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "1rem" }}>
+         <Logo size={100} />
+      </div>
       <h1 className="hero-title" style={{ fontSize: "3rem", textAlign: "center" }}>Global NPM Registry</h1>
       <p style={{ color: "var(--text-muted)", marginBottom: "3rem", fontSize: "1.1rem", textAlign: "center" }}>Discover official and community N# packages. Fully detached from native core bounds.</p>
       
