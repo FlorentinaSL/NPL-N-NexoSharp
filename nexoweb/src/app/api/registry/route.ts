@@ -4,11 +4,11 @@ import path from 'path';
 
 export async function GET() {
     // Exposes the array of available global package keys to the Next.js Frontend
-    const registryPath = path.join(process.cwd(), 'registry.json');
+    const registryPath = path.join(process.cwd(), 'public', 'registry.json');
     try {
         const fileContent = fs.readFileSync(registryPath, 'utf-8');
         const db = JSON.parse(fileContent);
-        return NextResponse.json(Object.keys(db.packages || {}));
+        return NextResponse.json(Object.keys(db || {}));
     } catch(e) {
         return NextResponse.json([]);
     }
@@ -33,15 +33,21 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "[NXC-501] Critical syntax exception: Invalid or unresolvable package naming format." }, { status: 400 });
         }
 
-        const registryPath = path.join(process.cwd(), 'registry.json');
-        let db = { packages: {} as Record<string, string> };
+        const registryPath = path.join(process.cwd(), 'public', 'registry.json');
+        let db: Record<string, any> = {};
         
         if (fs.existsSync(registryPath)) {
             db = JSON.parse(fs.readFileSync(registryPath, 'utf-8'));
         }
         
-        // Permanently bind user code to the global database layer
-        db.packages[name] = code;
+        // Permanently bind user code to the global Edge database
+        db[name] = {
+            name: name,
+            version: "1.0.0",
+            author: "Community Module",
+            code: code,
+            timestamp: new Date().toISOString()
+        };
         fs.writeFileSync(registryPath, JSON.stringify(db, null, 2), 'utf-8');
         
         return NextResponse.json({ success: true, message: `Package '${name}' synchronized successfully with the Global NPM Array.` });
