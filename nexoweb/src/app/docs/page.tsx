@@ -142,6 +142,29 @@ export default function Docs() {
           <div><strong style={{ color: "#eab308" }}>nexo publish [pkg] [file] [key]</strong><br/>Authenticates and uploads your N# file straight to the Global Cloud Registry via Cryptographic Bearer keys.</div>
         </div>
       </section>
+
+      {/* 9. Standard Library Ecosystem */}
+      <section className="animate-fade-in" style={{ animationDelay: "900ms", animationFillMode: "both", marginTop: "5rem" }}>
+        <h2 style={{ fontSize: "2.2rem", marginBottom: "1.5rem", color: "#a5b4fc", borderBottom: "1px solid var(--glass-border)", paddingBottom: "0.5rem" }}>9. Standard Library Ecosystem</h2>
+        <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", marginBottom: "1.5rem" }}>
+          Nexo provides 13 enterprise-grade standard libraries natively bridged into the .NET runtime. Securely process networking, cryptography, AI hardware, and OS bounds purely using N# execution scopes.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.ai</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Native LLM Intelligence generation streams inside N#.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.url</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Safe protocol URI encoding and decoding boundaries.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.json</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Unwraps deeply nested REST payloads directly into Maps.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.discord</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>High-speed anonymous networking arrays to Discord APIs.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.net</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Asynchronous HTTP requests and hardware internet pipelines.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.crypto</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Military Grade Base64 structural hashing engines.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.fs</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Raw operating system file reading and overwriting commands.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.map</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Dynamic Dictionary Key-Value runtime memory allocators.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.time</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Host-OS thread blocking capacities and exact Unix Timestamps.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.system</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Executes raw OS bash/Unix commands silently.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.string</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Immutable text replacements and array length evaluations.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.math</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Accelerated hardware computational algorithms limits.</p></div>
+          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.io</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Formatted console reporting streams (Success, Errors, Banners).</p></div>
+        </div>
+      </section>
       
     </div>
   );
