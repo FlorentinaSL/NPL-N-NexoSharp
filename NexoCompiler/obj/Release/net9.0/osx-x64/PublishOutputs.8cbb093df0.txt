@@ -1,0 +1,3 @@
+C:\Users\ciste\RiderProjects\Nexo\nexoweb\public\mac\Nexo.pdb
+C:\Users\ciste\RiderProjects\Nexo\nexoweb\public\mac\NexoLogic.pdb
+C:\Users\ciste\RiderProjects\Nexo\nexoweb\public\mac\Nexo

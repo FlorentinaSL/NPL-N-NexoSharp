@@ -1,15 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "wt5WI+slfs4=",
+  "dgSpecHash": "Ym1m/2XaZ1g=",
   "success": true,
   "projectFilePath": "C:\\Users\\ciste\\RiderProjects\\Nexo\\NexoCompiler\\NexoCompiler.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ciste\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\9.0.10\\microsoft.dotnet.ilcompiler.9.0.10.nupkg.sha512",
     "C:\\Users\\ciste\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.10\\microsoft.net.illink.tasks.9.0.10.nupkg.sha512",
-    "C:\\Users\\ciste\\.nuget\\packages\\runtime.osx-x64.microsoft.dotnet.ilcompiler\\9.0.10\\runtime.osx-x64.microsoft.dotnet.ilcompiler.9.0.10.nupkg.sha512",
     "C:\\Users\\ciste\\.nuget\\packages\\microsoft.netcore.app.runtime.osx-x64\\9.0.10\\microsoft.netcore.app.runtime.osx-x64.9.0.10.nupkg.sha512",
     "C:\\Users\\ciste\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.osx-x64\\9.0.10\\microsoft.aspnetcore.app.runtime.osx-x64.9.0.10.nupkg.sha512",
-    "C:\\Users\\ciste\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\9.0.10\\runtime.win-x64.microsoft.dotnet.ilcompiler.9.0.10.nupkg.sha512"
+    "C:\\Users\\ciste\\.nuget\\packages\\microsoft.netcore.app.host.osx-x64\\9.0.10\\microsoft.netcore.app.host.osx-x64.9.0.10.nupkg.sha512"
   ],
   "logs": []
 }

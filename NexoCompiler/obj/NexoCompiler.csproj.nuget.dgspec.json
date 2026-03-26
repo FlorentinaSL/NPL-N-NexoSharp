@@ -57,12 +57,6 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.DotNet.ILCompiler": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[9.0.10, )",
-              "autoReferenced": true
-            },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
@@ -87,11 +81,11 @@
               "version": "[9.0.10, 9.0.10]"
             },
             {
-              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
               "version": "[9.0.10, 9.0.10]"
             },
             {
-              "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
+              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
               "version": "[9.0.10, 9.0.10]"
             }
           ],

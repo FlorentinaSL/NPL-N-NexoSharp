@@ -200,3 +200,4 @@ C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\osx-x64\refint
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\osx-x64\Nexo.pdb
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\osx-x64\NexoCompiler.genruntimeconfig.cache
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\osx-x64\ref\Nexo.dll
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\osx-x64\Nexo
