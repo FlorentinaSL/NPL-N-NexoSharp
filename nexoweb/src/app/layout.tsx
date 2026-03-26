@@ -70,16 +70,28 @@ export default function RootLayout({
           </div>
           
           <div className="animate-fade-in" style={{ animationDelay: "500ms", position: "relative", marginBottom: "-40px", zIndex: 1 }}>
-            {/* The Huge Official Nexo SVG Custom Logo */}
-            <svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: "drop-shadow(0 0 40px rgba(124, 58, 237, 0.4))" }}>
-              <path d="M120 20L210 70V170L120 220L30 170V70L120 20Z" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
-              <path d="M120 40L190 80V160L120 200L50 160V80L120 40Z" fill="url(#grad1)" />
-              <path d="M80 140V100L160 140V100" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="120" cy="120" r="15" fill="#a5b4fc" style={{ filter: "drop-shadow(0 0 15px #a5b4fc)" }} />
+            {/* The Official Nexo Hexagon Logo */}
+            <svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: "drop-shadow(0 0 30px rgba(139, 92, 246, 0.4))" }}>
+              {/* Outer Hexagon Border */}
+              <polygon points="120,10 215,65 215,175 120,230 25,175 25,65" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
+              
+              {/* Inner Hexagon Fill (Purple to Deep Indigo) */}
+              <polygon points="120,25 202,72 202,168 120,215 38,168 38,72" fill="url(#hexGradient)" stroke="rgba(139, 92, 246, 0.3)" strokeWidth="2"/>
+              
+              {/* The 'N' Shape */}
+              <path d="M 85 160 L 85 80 L 155 160 L 155 80" stroke="#ffffff" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
+              
+              {/* Subtle Glowing Aura around the N */}
+              <path d="M 85 160 L 85 80 L 155 160 L 155 80" stroke="#a855f7" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" style={{ filter: "blur(6px)", opacity: 0.5 }} />
+
+              {/* The Glowing Center Circle */}
+              <circle cx="120" cy="120" r="22" fill="#93c5fd" />
+              <circle cx="120" cy="120" r="22" fill="#93c5fd" style={{ filter: "blur(8px)", opacity: 0.8 }} />
+
               <defs>
-                <linearGradient id="grad1" x1="50" y1="40" x2="190" y2="200" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#c026d3" stopOpacity="0.2" />
+                <linearGradient id="hexGradient" x1="120" y1="25" x2="120" y2="215" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#7e22ce" />
+                  <stop offset="100%" stopColor="#312e81" />
                 </linearGradient>
               </defs>
             </svg>
