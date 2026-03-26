@@ -13,8 +13,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nexo Programming Language",
-  description: "Enterprise-grade typed-free dynamic scripting ecosystem globally connected via NPM.",
+  title: "Nexo Programming Language | Official Hub",
+  description: "The future of dynamic scripting. Nexo (NPL) is an enterprise-grade typed-free language natively compiled to MSIL logic, interconnected globally via the NPM Cloud Registry.",
+  keywords: ["Nexo", "NPL", "Nexo Programming Language", "N#", "FlorentinaSL", "Luca Cisternino", "Dynamic Scripting", "MSIL", "C# Compiler", "NPM Registry"],
+  authors: [{ name: "FlorentinaSL" }, { name: "Luca Cisternino" }],
+  creator: "FlorentinaSL",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://nexosharp.vercel.app/",
+    title: "Nexo Programming Language | N#",
+    description: "The typed-free dynamic scripting ecosystem compiled to MSIL.",
+    siteName: "Nexo Hub",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nexo Programming Language",
+    description: "Future of Dynamic Scripting.",
+  },
 };
 
 export default function RootLayout({
