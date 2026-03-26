@@ -12,5 +12,26 @@
     "author": "Nexo Core Security",
     "code": "<3 Nexo Core - Input/Output Protocol Array\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Throws a distinctly formatted Error payload\ndo error(message) {\n    write \"[V-ERROR] \" + message\n}\n\n<3 Resolves a deeply formatted Success prompt\ndo success(message) {\n    write \"[V-SUCCESS] \" + message\n}\n\n<3 Highlights an edge constraint payload\ndo warn(message) {\n    write \"[V-WARNING] \" + message\n}\n\n<3 Generates a strict application bounding box banner\ndo banner(appName, version) {\n    write \"=========================================\"\n    write \"  \" + appName + \" (v\" + version + \")\"\n    write \"=========================================\"\n}\n",
     "timestamp": "2026-03-26T12:00:00.000Z"
+  },
+  "nexocore.net": {
+    "name": "nexocore.net",
+    "version": "1.0.0",
+    "author": "Nexo Core Security",
+    "code": "<3 Nexo Core - HTTP Networking Protocols\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Dispatches a highly synchronous HTTP GET stream\ndo get(url) {\n    return httpGet(url)\n}\n\n<3 Posts a JSON payload body forcefully to a target REST endpoint\ndo postJson(url, jsonString) {\n    return httpPost(url, jsonString)\n}\n",
+    "timestamp": "2026-03-26T12:00:00.000Z"
+  },
+  "nexocore.discord": {
+    "name": "nexocore.discord",
+    "version": "1.0.0",
+    "author": "Nexo Core Security",
+    "code": "<3 Nexo Core - Discord Webhook Integration\n<3 Copyright 2026 Florentina Spicco D'aura\n\nusing nexocore.net\n\n<3 Broadcasts an anonymous Webhook packet straight to a Discord channel\ndo sendWebhook(webhookUrl, botName, textMessage) {\n    <3 Structuring raw JSON natively using N# string allocations\n    rawJson = \"{\\\"username\\\": \\\"\" + botName + \"\\\", \\\"content\\\": \\\"\" + textMessage + \"\\\"}\"\n    \n    <3 Pipe the transmission through the C# Native bounds\n    response = postJson(webhookUrl, rawJson)\n    return response\n}\n",
+    "timestamp": "2026-03-26T12:00:00.000Z"
+  },
+  "nexocore.system": {
+    "name": "nexocore.system",
+    "version": "1.0.0",
+    "author": "Nexo Core Security",
+    "code": "<3 Nexo Core - OS Terminal Bindings\n<3 Copyright 2026 Florentina Spicco D'aura\n\n<3 Directly executes raw Terminal/PowerShell/Bash commands via the Host System\ndo run(terminalCommand) {\n    return executeCommand(terminalCommand)\n}\n",
+    "timestamp": "2026-03-26T12:00:00.000Z"
   }
 }

@@ -1,0 +1,14 @@
+<3 Nexo Core - Discord Webhook Integration
+<3 Copyright 2026 Florentina Spicco D'aura
+
+using nexocore.net
+
+<3 Broadcasts an anonymous Webhook packet straight to a Discord channel
+do sendWebhook(webhookUrl, botName, textMessage) {
+    <3 Structuring raw JSON natively using N# string allocations
+    rawJson = "{\"username\": \"" + botName + "\", \"content\": \"" + textMessage + "\"}"
+    
+    <3 Pipe the transmission through the C# Native bounds
+    response = postJson(webhookUrl, rawJson)
+    return response
+}

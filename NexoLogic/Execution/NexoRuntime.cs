@@ -152,6 +152,36 @@ public static class NexoRuntime {
     public static void FileWrite(object path, object content) => File.WriteAllText(path.ToString()!, content.ToString()!);
     public static object FileExists(object path) => File.Exists(path.ToString()!) ? 1 : 0;
 
+    // --- Enterprise Networking (HTTP/HTTPS) ---
+    public static object HttpGet(object url) {
+        using var client = new System.Net.Http.HttpClient();
+        client.DefaultRequestHeaders.Add("User-Agent", "NexoRuntime/1.0");
+        return client.GetStringAsync(url.ToString()).GetAwaiter().GetResult();
+    }
+    
+    public static object HttpPost(object url, object jsonBody) {
+        using var client = new System.Net.Http.HttpClient();
+        client.DefaultRequestHeaders.Add("User-Agent", "NexoRuntime/1.0");
+        var content = new System.Net.Http.StringContent(jsonBody.ToString()!, System.Text.Encoding.UTF8, "application/json");
+        var response = client.PostAsync(url.ToString()!, content).GetAwaiter().GetResult();
+        return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+    }
+
+    // --- OS Terminal Thread Executions ---
+    public static object ExecuteCommand(object cmd) {
+        var process = new System.Diagnostics.Process {
+            StartInfo = new System.Diagnostics.ProcessStartInfo {
+                FileName = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows) ? "cmd.exe" : "/bin/bash",
+                Arguments = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows) ? $"/c {cmd}" : $"-c \"{cmd}\"",
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            }
+        };
+        process.Start();
+        return process.StandardOutput.ReadToEnd();
+    }
+
     // --- String Manipulation APIs ---
     public static object StringLength(object str) => str.ToString()!.Length;
     public static object StringReplace(object str, object oldVal, object newVal) => str.ToString()!.Replace(oldVal.ToString()!, newVal.ToString()!);
