@@ -31,8 +31,8 @@ export default function RootLayout({
         <nav className="animate-fade-in" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "2rem 2rem", maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
           <a href="/" style={{ fontSize: "1.8rem", fontWeight: "bold", letterSpacing: "-1px", textDecoration: "none", color: "var(--text-primary)" }}>NEXO</a>
           <div style={{ display: "flex", gap: "2rem", fontSize: "0.95rem", color: "var(--text-muted)", fontWeight: "500" }}>
-            <a href="/docs" style={{ color: "inherit", textDecoration: "none", transition: "color 0.2s" }} onMouseOver={(e) => e.currentTarget.style.color="white"} onMouseOut={(e) => e.currentTarget.style.color="var(--text-muted)"}>Docs</a>
-            <a href="/registry" style={{ color: "inherit", textDecoration: "none", transition: "color 0.2s" }} onMouseOver={(e) => e.currentTarget.style.color="white"} onMouseOut={(e) => e.currentTarget.style.color="var(--text-muted)"}>NPM Registry</a>
+            <a href="/docs" className="nav-link">Docs</a>
+            <a href="/registry" className="nav-link">NPM Registry</a>
             <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" style={{ color: "#a5b4fc", textDecoration: "none" }}>GitHub</a>
           </div>
         </nav>

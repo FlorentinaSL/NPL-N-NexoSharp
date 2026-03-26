@@ -1,0 +1,2 @@
+C:\Users\ciste\RiderProjects\Nexo\PublishedExe\Nexo.exe
+C:\Users\ciste\RiderProjects\Nexo\PublishedExe\NexoLogic.pdb
