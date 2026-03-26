@@ -106,6 +106,21 @@ public static class NexoRuntime {
         if (obj is List<object> list) list.Add(val);
     }
 
+    // --- Dynamic Key-Value Mapping (Dictionaries) ---
+    public static object MapCreate() => new Dictionary<string, object>();
+    
+    public static void MapSet(object map, object key, object value) {
+        if (map is Dictionary<string, object> dict) dict[key.ToString()!] = value;
+        else throw new Exception("[NXC-029] Type Error: MapSet strictly requires an active Dictionary allocation.");
+    }
+    
+    public static object MapGet(object map, object key) {
+        if (map is Dictionary<string, object> dict) {
+            return dict.TryGetValue(key.ToString()!, out var val) ? val : "";
+        }
+        throw new Exception("[NXC-030] Type Error: MapGet exclusively binds to Dictionary matrix formats.");
+    }
+
     // =========================================================================
     // DATA TYPE COERCION & ARITHMETIC
     // =========================================================================
@@ -188,6 +203,17 @@ public static class NexoRuntime {
     public static object StringContains(object str, object val) => str.ToString()!.Contains(val.ToString()!) ? 1 : 0;
     public static object StringUpper(object str) => str.ToString()!.ToUpper();
     public static object StringLower(object str) => str.ToString()!.ToLower();
+    
+    // --- Cryptographic String Primitives ---
+    public static object Base64Encode(object plainText) {
+        var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText.ToString()!);
+        return System.Convert.ToBase64String(plainTextBytes);
+    }
+    
+    public static object Base64Decode(object base64EncodedData) {
+        var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData.ToString()!);
+        return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+    }
 
     /// <summary>
     /// Explicit Integer coercion casting.
