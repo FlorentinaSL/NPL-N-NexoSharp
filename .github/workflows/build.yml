@@ -13,7 +13,7 @@ jobs:
           - os: windows-latest
             rid: win-x64
             artifact: nexo-win.exe
-            binary: Nexo.exe
+            binary: NexoSetup.exe
           - os: ubuntu-latest
             rid: linux-x64
             artifact: nexo-linux
@@ -41,7 +41,22 @@ jobs:
             -r ${{ matrix.rid }} \
             --self-contained true \
             -p:PublishSingleFile=true \
-            -o dist/${{ matrix.rid }}
+            -o PublishedExe
+
+      - name: Compile Inno Setup Installer (Windows only)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "NexoCompiler/Installer/setup.iss"
+          New-Item -ItemType Directory -Force -Path dist
+          Copy-Item "NexoCompiler/Installer/Output/NexoSetup.exe" "dist/nexo-win.exe"
+
+      - name: Rename Unix binary
+        if: matrix.os != 'windows-latest'
+        shell: bash
+        run: |
+          mkdir -p dist
+          mv PublishedExe/${{ matrix.binary }} dist/${{ matrix.artifact }}
 
       - name: Rename binary
         shell: bash

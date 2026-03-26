@@ -16,9 +16,9 @@ export default function Download() {
           </div>
           <h2 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>Windows Enterprise</h2>
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginBottom: "2rem", flex: 1 }}>
-            Official MSI/EXE Installer natively integrating Nexo into your global PATH environments. Includes local NPM caching.
+            Official Setup Installer (.exe) — registers .nexo file association, injects PATH globally, and creates a Start Menu shortcut automatically.
           </p>
-          <a href="/downloads/nexo-win.exe" download className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download .EXE (x64)</a>
+          <a href="/downloads/nexo-win.exe" download="NexoSetup.exe" className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download Setup v2.0 (x64)</a>
         </div>
 
         {/* Linux Core */}

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nexo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+576e59c4659086e585bfabb50f71f1ed77afdd11")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0996509ea64a561653c6b2fa0d71088aceb4b60b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nexo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nexo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
