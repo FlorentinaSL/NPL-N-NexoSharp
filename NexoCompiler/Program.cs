@@ -267,7 +267,7 @@ public static class Program {
     private static async Task InstallPackage(string packageName)
     {
         Console.WriteLine($"\n[NPM] Contacting global registry for package: '{packageName}'...");
-        string registryUrl = $"http://localhost:3000/api/registry/{packageName}";
+        string registryUrl = $"https://nexosharp.vercel.app/api/registry/{packageName}";
         
         try 
         {
