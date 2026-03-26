@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Nexo Programming Language | Official Hub",
   description: "The future of dynamic scripting. Nexo (NPL) is an enterprise-grade typed-free language natively compiled to MSIL logic, interconnected globally via the NPM Cloud Registry.",
   keywords: ["Nexo", "NPL", "Nexo Programming Language", "N#", "FlorentinaSL", "Luca Cisternino", "Dynamic Scripting", "MSIL", "C# Compiler", "NPM Registry"],
-  authors: [{ name: "FlorentinaSL" }, { name: "Luca Cisternino" }],
+  authors: [{ name: "FlorentinaSL (Luca Cisternino)" }],
   creator: "FlorentinaSL",
   openGraph: {
     type: "website",
@@ -69,7 +69,7 @@ export default function RootLayout({
              <a href="/NexoSetup.exe" download style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: "600" }}>Download V1.0.0</a>
           </div>
           <h1 style={{ fontSize: "clamp(100px, 18vw, 250px)", fontWeight: "900", letterSpacing: "-0.05em", color: "rgba(255,255,255,0.02)", margin: 0, lineHeight: 0.8, userSelect: "none" }}>NEXO</h1>
-          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "1rem" }}>© 2026 Luca Cisternino & FlorentinaSL. All rights reserved globally.</p>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "1rem" }}>© 2026 FlorentinaSL (Luca Cisternino). All rights reserved globally.</p>
         </footer>
       </body>
     </html>
