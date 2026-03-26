@@ -16,9 +16,19 @@ namespace NexoCompiler;
 public static class Program {
     
     public static void Main(string[] args) {
-        Console.WriteLine("NPL (Nexo Programming Language) - Version 1.0.0");
-        Console.WriteLine("Copyright (c) 2026 Luca Cisternino. All rights reserved.");
-        Console.WriteLine("Type 'help' for usage, 'exit' to quit.\n");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(@"
+  _   _ _______   _____  
+ | \ | |  ____\ \ / / _ \ 
+ |  \| | |__   \ V / | | |
+ | . ` |  __|   > <| | | |
+ | |\  | |____ / . \ |_| |
+ |_| \_|______/_/ \_\___/ 
+");
+        Console.ResetColor();
+        Console.WriteLine("    [NPL - Nexo Programming Language] - Version 1.0.0");
+        Console.WriteLine("    Copyright (c) 2026 Florentina Spicco D'aura. All rights reserved.\n");
+        Console.WriteLine("Type 'help' for explicit daemon architecture usage, or 'exit' to unmount.\n");
 
         // Native Argument Binding: Handle implicit executions via OS double-clicks or shell parameters
         if (args.Length > 0)
