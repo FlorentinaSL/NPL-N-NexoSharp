@@ -200,3 +200,13 @@ C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\win-x64\refint
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\win-x64\Nexo.pdb
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\win-x64\NexoCompiler.genruntimeconfig.cache
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\win-x64\ref\Nexo.dll
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\crypto.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\discord.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\fs.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\io.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\map.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\math.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\net.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\string.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\system.nexo
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\win-x64\Libs\nexocore\time.nexo
