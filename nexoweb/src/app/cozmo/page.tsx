@@ -8,7 +8,7 @@ export default function CozmoPage() {
       {/* Hero Section */}
       <section className="animate-fade-in" style={{ textAlign: "center", marginBottom: "6rem", position: "relative" }}>
         <div style={{ display: "flex", justifyContent: "center", position: "relative", zIndex: 2 }}>
-          <div style={{ background: "#0a0a14", borderRadius: "24px 24px 0 0", padding: "2rem 3rem 0", display: "inline-block" }}>
+          <div style={{ background: "linear-gradient(135deg, #080810, #0d0d1e)", borderRadius: "24px 24px 0 0", padding: "2rem 3rem 0", display: "inline-block" }}>
             <div className="animate-float">
               <ClientImage 
                 src="/cozmo.png" 

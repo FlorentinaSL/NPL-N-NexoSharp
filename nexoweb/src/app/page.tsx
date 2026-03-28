@@ -24,12 +24,12 @@ export default function Home() {
 
       {/* NEW: Cozmo Robotics Highlight */}
       <section className="animate-fade-in delay-2" style={{ marginTop: "4rem", marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
-        <div className="glass-panel" style={{ padding: "2rem", display: "flex", justifyContent: "center", position: "relative", minHeight: "300px", background: "#0a0a14" }}>
+        <div className="glass-panel" style={{ padding: "2rem", display: "flex", justifyContent: "center", alignItems: "center", position: "relative", minHeight: "300px", background: "linear-gradient(135deg, #080810, #0d0d1e)", border: "1px solid rgba(124,58,237,0.2)" }}>
           <div className="animate-float" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
             <ClientImage 
               src="/cozmo.png" 
               alt="Cozmo Robot" 
-              style={{ width: "280px", filter: "drop-shadow(0 10px 30px rgba(124, 58, 237, 0.5))", position: "relative", zIndex: 2 }}
+              style={{ width: "280px", filter: "drop-shadow(0 10px 30px rgba(124, 58, 237, 0.5))", position: "relative", zIndex: 2, backgroundColor: "transparent" }}
               fallbackSrc="/cozmo.png"
             />
           </div>
