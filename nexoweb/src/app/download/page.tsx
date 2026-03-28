@@ -14,7 +14,7 @@ export default function Download() {
           <div style={{ width: "64px", height: "64px", background: "rgba(124, 58, 237, 0.1)", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
             <span style={{ fontSize: "2rem" }}>🪟</span>
           </div>
-          <h2 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>Windows Enterprise</h2>
+          <h2 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>Windows OS</h2>
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginBottom: "2rem", flex: 1 }}>
             Official Setup Installer (.exe) — registers .nexo file association, injects PATH globally, and creates a Start Menu shortcut automatically.
           </p>
