@@ -15,7 +15,7 @@ export default function CozmoPage() {
         borderBottom: "1px solid var(--glass-border)",
         marginBottom: "5rem"
       }}>
-        {/* Left: Robot - NO box, pure drop-shadow */}
+        {/* Left: Robot - floating freely, NO box */}
         <div className="animate-float" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <ClientImage
             src="/cozmo.png"
@@ -23,7 +23,7 @@ export default function CozmoPage() {
             style={{
               width: "100%",
               maxWidth: "420px",
-              filter: "drop-shadow(0 30px 80px rgba(124, 58, 237, 0.6)) drop-shadow(0 0 40px rgba(251,191,36,0.2))",
+              filter: "drop-shadow(0 20px 60px rgba(124, 58, 237, 0.7)) drop-shadow(0 0 30px rgba(251,191,36,0.15))",
               userSelect: "none"
             }}
             fallbackSrc="/cozmo.png"
