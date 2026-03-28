@@ -62,6 +62,7 @@ export default function RootLayout({
           </a>
           <div style={{ display: "flex", gap: "2rem", fontSize: "0.95rem", color: "var(--text-muted)", fontWeight: "500" }}>
             <a href="/docs" className="nav-link">Docs</a>
+            <a href="/cozmo" className="nav-link" style={{ color: "#fbbf24", fontWeight: "bold" }}>Cozmo Lab</a>
             <a href="/registry" className="nav-link">NPM Registry</a>
             <a href="/download" className="nav-link">Download's</a>
             <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" style={{ color: "#a5b4fc", textDecoration: "none" }}>GitHub</a>
@@ -77,6 +78,7 @@ export default function RootLayout({
           <div style={{ display: "flex", justifyContent: "center", gap: "3rem", marginBottom: "4rem", color: "var(--text-muted)", fontWeight: "500", flexWrap: "wrap", zIndex: 10 }}>
             <a href="/" style={{ color: "inherit", textDecoration: "none" }}>Home</a>
             <a href="/docs" style={{ color: "inherit", textDecoration: "none" }}>Documentation</a>
+            <a href="/cozmo" style={{ color: "inherit", textDecoration: "none" }}>Cozmo Robotics</a>
             <a href="/registry" style={{ color: "inherit", textDecoration: "none" }}>Global Registry</a>
             <a href="/download" style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: "600" }}>Download Native</a>
           </div>
@@ -86,7 +88,7 @@ export default function RootLayout({
           </div>
 
           <h1 className="animate-fade-in" style={{ animationDelay: "800ms", position: "relative", zIndex: 2, fontSize: "clamp(100px, 18vw, 250px)", fontWeight: "900", letterSpacing: "-0.05em", color: "rgba(255,255,255,0.03)", margin: 0, lineHeight: 0.8, userSelect: "none", filter: "drop-shadow(0 -20px 80px rgba(124,58,237,0.15))" }}>NEXO</h1>
-          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "2rem", zIndex: 10 }}>© 2026 Spicco D'aura. All rights reserved globally.</p>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "2rem", zIndex: 10 }}>© 2026 Luca Cisternino. All rights reserved globally.</p>
         </footer>
       </body>
     </html>

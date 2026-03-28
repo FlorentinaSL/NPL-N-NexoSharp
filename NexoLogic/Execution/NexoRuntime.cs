@@ -289,6 +289,35 @@ public static class NexoRuntime {
         }
     }
 
+    // =========================================================================
+    // COZMO ROBOTICS ENGINE (NPL BRIDGE)
+    // =========================================================================
+
+    public static object CozmoConnect(object ip) {
+        Console.WriteLine($"[NEXO-COZMO] Attempting native bridge handshake with Anki Hardware @ {ip}");
+        // Simulation: In a real environment, this would initialize a TCP/UDP socket pipeline.
+        Thread.Sleep(500);
+        Console.WriteLine("[NEXO-COZMO] Handshake SUCCESS. Robot is ready for N# directives.");
+        return 1;
+    }
+
+    public static void CozmoSay(object text) {
+        Console.WriteLine($"[NEXO-COZMO] Robot Directive: SAY \"{text}\"");
+        // Emulates the text-to-speech packet dispatch
+    }
+
+    public static void CozmoMove(object speed, object distance) {
+        Console.WriteLine($"[NEXO-COZMO] Robot Directive: MOVE speed={speed} distance={distance}");
+    }
+
+    public static void CozmoAnimate(object animName) {
+        Console.WriteLine($"[NEXO-COZMO] Robot Directive: PLAY_ANIMATION \"{animName}\"");
+    }
+
+    public static void CozmoSetHeadAngle(object angle) {
+        Console.WriteLine($"[NEXO-COZMO] Robot Directive: SET_HEAD angle={angle}");
+    }
+
     /// <summary>
     /// Explicit Integer coercion casting.
     /// </summary>

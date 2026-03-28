@@ -143,28 +143,66 @@ export default function Docs() {
         </div>
       </section>
 
-      {/* 9. Standard Library Ecosystem */}
+      {/* 9. Standard Library Deep-Dive */}
       <section className="animate-fade-in" style={{ animationDelay: "900ms", animationFillMode: "both", marginTop: "5rem" }}>
-        <h2 style={{ fontSize: "2.2rem", marginBottom: "1.5rem", color: "#a5b4fc", borderBottom: "1px solid var(--glass-border)", paddingBottom: "0.5rem" }}>9. Standard Library Ecosystem</h2>
-        <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", marginBottom: "1.5rem" }}>
-          Nexo provides 13 enterprise-grade standard libraries natively bridged into the .NET runtime. Securely process networking, cryptography, AI hardware, and OS bounds purely using N# execution scopes.
+        <h2 style={{ fontSize: "2.2rem", marginBottom: "1.5rem", color: "#a5b4fc", borderBottom: "1px solid var(--glass-border)", paddingBottom: "0.5rem" }}>9. Standard Library Technical Lab</h2>
+        <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", marginBottom: "2rem" }}>
+          Nexo 2.0 "Titan" introduces a professional, natively bridged standard library. Every function call below maps 1:1 to optimized .NET MSIL instructions.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.ai</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Native LLM Intelligence generation streams inside N#.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.url</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Safe protocol URI encoding and decoding boundaries.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.json</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Unwraps deeply nested REST payloads directly into Maps.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.discord</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>High-speed anonymous networking arrays to Discord APIs.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.net</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Asynchronous HTTP requests and hardware internet pipelines.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.crypto</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Military Grade Base64 structural hashing engines.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.fs</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Raw operating system file reading and overwriting commands.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.map</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Dynamic Dictionary Key-Value runtime memory allocators.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.time</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Host-OS thread blocking capacities and exact Unix Timestamps.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.system</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Executes raw OS bash/Unix commands silently.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.string</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Immutable text replacements and array length evaluations.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.math</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Accelerated hardware computational algorithms limits.</p></div>
-          <div className="glass-panel" style={{ padding: "1.5rem" }}><strong style={{ color: "#E06C75" }}>nexocore.io</strong><p style={{ color: "var(--text-muted)", marginTop: "0.5rem", fontSize: "0.95rem" }}>Formatted console reporting streams (Success, Errors, Banners).</p></div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {/* AI Module */}
+          <div className="glass-panel" style={{ padding: "2rem" }}>
+            <h3 style={{ color: "#E06C75", marginBottom: "1rem" }}>nexocore.ai</h3>
+            <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>Invoke LLM intelligence directly within the execution scope.</p>
+            <pre style={{ background: "rgba(0,0,0,0.3)", padding: "1rem", borderRadius: "8px", fontSize: "0.9rem", color: "#61afef" }}>
+              using nexocore.ai<br/>
+              prompt = &quot;Write a Nexo function to sort an array&quot;<br/>
+              response = aiGenerate(prompt)<br/>
+              write response
+            </pre>
+          </div>
+
+          {/* JSON Module */}
+          <div className="glass-panel" style={{ padding: "2rem" }}>
+            <h3 style={{ color: "#E06C75", marginBottom: "1rem" }}>nexocore.json</h3>
+            <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>Full serialization support for REST API responses.</p>
+            <pre style={{ background: "rgba(0,0,0,0.3)", padding: "1rem", borderRadius: "8px", fontSize: "0.9rem", color: "#61afef" }}>
+              using nexocore.json<br/>
+              rawJson = &quot;&#123; \&quot;name\&quot;: \&quot;Titan\&quot;, \&quot;version\&quot;: 2 &#125;&quot;<br/>
+              data = jsonParse(rawJson)<br/>
+              write &quot;System: &quot; + data[&quot;name&quot;]
+            </pre>
+          </div>
+
+          {/* Discord Module */}
+          <div className="glass-panel" style={{ padding: "2rem" }}>
+            <h3 style={{ color: "#E06C75", marginBottom: "1rem" }}>nexocore.discord</h3>
+            <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>Native high-speed networking to Discord Gateway.</p>
+            <pre style={{ background: "rgba(0,0,0,0.3)", padding: "1rem", borderRadius: "8px", fontSize: "0.9rem", color: "#61afef" }}>
+              using nexocore.discord<br/>
+              webhook = &quot;https://discord.com/api/webhooks/...&quot;<br/>
+              discordPost(webhook, &quot;Hello from N#!&quot;)
+            </pre>
+          </div>
+
+          {/* FS Module */}
+          <div className="glass-panel" style={{ padding: "2rem" }}>
+            <h3 style={{ color: "#E06C75", marginBottom: "1rem" }}>nexocore.fs</h3>
+            <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>Raw operating system file system operations.</p>
+            <pre style={{ background: "rgba(0,0,0,0.3)", padding: "1rem", borderRadius: "8px", fontSize: "0.9rem", color: "#61afef" }}>
+              using nexocore.fs<br/>
+              config = fsRead(&quot;config.nexo&quot;)<br/>
+              fsWrite(&quot;log.txt&quot;, &quot;Execution started at &quot; + config)
+            </pre>
+          </div>
+          
+          <p style={{ textAlign: "center", color: "var(--text-muted)", fontSize: "0.9rem", marginTop: "1rem" }}>
+            ... and 9 more enterprise modules including <code style={{color: "#a5b4fc"}}>crypto</code>, <code style={{color: "#a5b4fc"}}>net</code>, and <code style={{color: "#a5b4fc"}}>system</code>.
+          </p>
         </div>
       </section>
+
       
     </div>
   );
