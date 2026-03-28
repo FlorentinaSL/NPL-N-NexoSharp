@@ -1,50 +1,79 @@
 import React from "react";
-import Logo from "../../components/Logo";
 import ClientImage from "../../components/ClientImage";
 
 export default function CozmoPage() {
   return (
-    <div style={{ maxWidth: "1000px", margin: "4rem auto", padding: "0 1rem" }}>
-      {/* Hero Section */}
-      <section className="animate-fade-in" style={{ textAlign: "center", marginBottom: "6rem", position: "relative" }}>
-        <div style={{ display: "flex", justifyContent: "center", position: "relative", zIndex: 2 }}>
-          <div style={{ background: "linear-gradient(135deg, #080810, #0d0d1e)", borderRadius: "24px 24px 0 0", padding: "2rem 3rem 0", display: "inline-block" }}>
-            <div className="animate-float">
-              <ClientImage 
-                src="/cozmo.png" 
-                alt="Anki Cozmo Robot" 
-                style={{ width: "320px", filter: "drop-shadow(0 20px 50px rgba(124, 58, 237, 0.5))", userSelect: "none", display: "block" }}
-                fallbackSrc="/cozmo.png"
-              />
-            </div>
-          </div>
+    <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1rem" }}>
+
+      {/* ── HERO: Full-bleed, no box, image bleeds into title ── */}
+      <section className="animate-fade-in" style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "4rem",
+        alignItems: "center",
+        padding: "6rem 0 5rem",
+        borderBottom: "1px solid var(--glass-border)",
+        marginBottom: "5rem"
+      }}>
+        {/* Left: Robot - NO box, pure drop-shadow */}
+        <div className="animate-float" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <ClientImage
+            src="/cozmo.png"
+            alt="Anki Cozmo Robot"
+            style={{
+              width: "100%",
+              maxWidth: "420px",
+              filter: "drop-shadow(0 30px 80px rgba(124, 58, 237, 0.6)) drop-shadow(0 0 40px rgba(251,191,36,0.2))",
+              userSelect: "none"
+            }}
+            fallbackSrc="/cozmo.png"
+          />
         </div>
-        <div className="glass-panel" style={{ padding: "4rem 2rem 4rem", position: "relative", zIndex: 1, border: "1px solid rgba(255,255,255,0.05)" }}>
-          <h1 className="hero-title" style={{ fontSize: "6.5rem", marginBottom: "0.5rem", filter: "drop-shadow(0 0 30px rgba(124,58,237,0.3))" }}>COZMO LAB &reg;</h1>
-          <p className="animate-fade-in delay-1" style={{ color: "var(--accent-secondary)", fontSize: "1.6rem", fontWeight: "800", letterSpacing: "4px", textTransform: "uppercase", opacity: 0.8 }}>
-            Direct Robotics Control via N# Native 2.1
+
+        {/* Right: Copy */}
+        <div>
+          <p style={{ color: "#fbbf24", fontWeight: "700", letterSpacing: "3px", fontSize: "0.85rem", textTransform: "uppercase", marginBottom: "1rem" }}>
+            nexocore.cozmo
           </p>
+          <h1 className="hero-title" style={{ fontSize: "4.5rem", lineHeight: 1.1, marginBottom: "1.5rem" }}>
+            COZMO<br />LAB ®
+          </h1>
+          <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", lineHeight: "1.8", marginBottom: "2rem" }}>
+            The Anki Cozmo isn't just a toy anymore. With <code style={{ color: "#fbbf24", background: "rgba(251,191,36,0.1)", padding: "2px 8px", borderRadius: "6px" }}>nexocore.cozmo</code>, you control hardware natively via MSIL. Direct handshakes, zero latency, pure N# logic.
+          </p>
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <a href="/download" className="primary-btn" style={{
+              textDecoration: "none",
+              background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
+              color: "#000",
+              fontWeight: "800",
+              boxShadow: "0 10px 30px rgba(251,191,36,0.3)"
+            }}>
+              Get Cozmo SDK for N# →
+            </a>
+            <a href="/docs" className="secondary-btn" style={{ textDecoration: "none" }}>
+              Read Docs
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Contrast Section */}
-      <section className="animate-fade-in delay-2" style={{ marginBottom: "6rem" }}>
+      {/* ── N# vs Python Comparison ── */}
+      <section className="animate-fade-in delay-1" style={{ marginBottom: "5rem" }}>
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <h2 style={{ fontSize: "2.8rem", color: "#fff", marginBottom: "1rem" }}>N# vs The Old World</h2>
           <p style={{ color: "var(--text-muted)", fontSize: "1.1rem" }}>Why developers are ditching Python SDKs for the power of Nexo.</p>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "2.5rem" }}>
-          <div className="glass-panel" style={{ padding: "2.5rem", borderLeft: "4px solid #ef4444", background: "rgba(239, 68, 68, 0.02)" }}>
-            <h3 style={{ color: "#ef4444", marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              Python SDK (Legacy)
-            </h3>
-            <pre style={{ fontSize: "0.9rem", color: "#9ca3af", background: "rgba(0,0,0,0.2)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)" }}>
-              import cozmo<br/>
-              <span style={{ color: "#6b7280" }}># Heavy boilerplate</span><br/>
-              def cozmo_program(robot):<br/>
-              {"  "}robot.say_text(&quot;Hello&quot;).wait()<br/>
-              cozmo.run_program(cozmo_program)
+          <div className="glass-panel" style={{ padding: "2.5rem", borderLeft: "4px solid #ef4444" }}>
+            <h3 style={{ color: "#ef4444", marginBottom: "1.5rem" }}>Python SDK (Legacy)</h3>
+            <pre style={{ fontSize: "0.9rem", color: "#9ca3af", background: "rgba(0,0,0,0.2)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)", overflowX: "auto" }}>
+              {`import cozmo
+# Heavy boilerplate
+def cozmo_program(robot):
+  robot.say_text("Hello").wait()
+cozmo.run_program(cozmo_program)`}
             </pre>
             <ul style={{ marginTop: "1.5rem", color: "#9ca3af", paddingLeft: "1.2rem", fontSize: "0.95rem" }}>
               <li style={{ marginBottom: "0.5rem" }}>Slow interpreted execution</li>
@@ -53,16 +82,15 @@ export default function CozmoPage() {
             </ul>
           </div>
 
-          <div className="glass-panel" style={{ padding: "2.5rem", borderLeft: "4px solid #22c55e", background: "rgba(34, 197, 94, 0.02)" }}>
-            <h3 style={{ color: "#22c55e", marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              Nexo nexocore.cozmo (Titan)
-            </h3>
-            <pre style={{ fontSize: "0.9rem", color: "#61afef", background: "rgba(0,0,0,0.2)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(34, 197, 94, 0.1)" }}>
-              using nexocore.cozmo<br/><br/>
-              <span style={{ color: "#22c55e" }}>// Direct MSIL execution</span><br/>
-              cozmo.connect()<br/>
-              cozmo.say(&quot;System Online&quot;)<br/>
-              cozmo.move(100, 50)
+          <div className="glass-panel" style={{ padding: "2.5rem", borderLeft: "4px solid #22c55e" }}>
+            <h3 style={{ color: "#22c55e", marginBottom: "1.5rem" }}>Nexo nexocore.cozmo (Titan)</h3>
+            <pre style={{ fontSize: "0.9rem", color: "#61afef", background: "rgba(0,0,0,0.2)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(34,197,94,0.1)", overflowX: "auto" }}>
+              {`using nexocore.cozmo
+
+// Direct MSIL execution
+cozmo.connect()
+cozmo.say("System Online")
+cozmo.move(100, 50)`}
             </pre>
             <ul style={{ marginTop: "1.5rem", color: "#9ca3af", paddingLeft: "1.2rem", fontSize: "0.95rem" }}>
               <li style={{ marginBottom: "0.5rem" }}>Near-zero latency native logic</li>
@@ -73,8 +101,8 @@ export default function CozmoPage() {
         </div>
       </section>
 
-      {/* Feature Grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "4rem" }}>
+      {/* ── Feature Grid ── */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "5rem" }}>
         <div className="glass-panel animate-scale delay-3" style={{ padding: "2rem", textAlign: "center" }}>
           <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>⚡</div>
           <h4 style={{ color: "white", marginBottom: "0.5rem" }}>Instant Bridge</h4>
@@ -83,7 +111,7 @@ export default function CozmoPage() {
         <div className="glass-panel animate-scale delay-4" style={{ padding: "2rem", textAlign: "center" }}>
           <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🧠</div>
           <h4 style={{ color: "white", marginBottom: "0.5rem" }}>AI Integration</h4>
-          <p style={{ color: "var(--text-muted)", fontSize: "0.95rem" }}>Link <code style={{color: "#a5b4fc"}}>nexocore.ai</code> to give Cozmo advanced vision and speech logic.</p>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.95rem" }}>Link <code style={{ color: "#a5b4fc" }}>nexocore.ai</code> to give Cozmo advanced vision and speech logic.</p>
         </div>
         <div className="glass-panel animate-scale delay-5" style={{ padding: "2rem", textAlign: "center" }}>
           <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🛡️</div>
@@ -92,11 +120,19 @@ export default function CozmoPage() {
         </div>
       </div>
 
-      <div style={{ textAlign: "center" }}>
-        <button className="primary-btn" style={{ padding: "1.5rem 4rem", fontSize: "1.2rem" }}>
-          Get Cozmo SDK for N#
-        </button>
+      {/* ── CTA ── */}
+      <div style={{ textAlign: "center", marginBottom: "5rem" }}>
+        <a href="/download" className="primary-btn" style={{
+          textDecoration: "none",
+          padding: "1.5rem 4rem",
+          fontSize: "1.2rem",
+          background: "linear-gradient(135deg, #7C3AED, #3B82F6)",
+          boxShadow: "0 10px 40px rgba(124,58,237,0.4)"
+        }}>
+          Download Nexo 2.1.0 "Titan"
+        </a>
       </div>
+
     </div>
   );
 }
