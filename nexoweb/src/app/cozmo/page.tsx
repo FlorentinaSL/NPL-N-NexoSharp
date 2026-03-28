@@ -5,18 +5,20 @@ export default function CozmoPage() {
   return (
     <div style={{ maxWidth: "1000px", margin: "4rem auto", padding: "0 1rem" }}>
       {/* Hero Section */}
-      <section className="animate-fade-in" style={{ textAlign: "center", marginBottom: "6rem" }}>
-        <div className="animate-float" style={{ marginBottom: "2rem", display: "flex", justifyContent: "center" }}>
+      <section className="animate-fade-in" style={{ textAlign: "center", marginBottom: "6rem", position: "relative" }}>
+        <div className="animate-float" style={{ marginBottom: "-2rem", display: "flex", justifyContent: "center", position: "relative", zIndex: 2 }}>
           <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Anki_Cozmo.png" 
+            src="https://purepng.com/public/uploads/large/purepng.com-anki-cozmo-robotrobotanki-cozmo-2115193291585qj0y.png" 
             alt="Anki Cozmo Robot" 
-            style={{ width: "320px", filter: "drop-shadow(0 30px 60px rgba(124, 58, 237, 0.4))", userSelect: "none" }}
+            style={{ width: "420px", filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.6))", userSelect: "none" }}
           />
         </div>
-        <h1 className="hero-title" style={{ fontSize: "5.5rem", marginBottom: "1rem" }}>COZMO LAB &reg;</h1>
-        <p className="animate-fade-in delay-1" style={{ color: "var(--accent-secondary)", fontSize: "1.5rem", fontWeight: "700", letterSpacing: "2px", textTransform: "uppercase" }}>
-          Direct Robotics Control via N# Native 2.0
-        </p>
+        <div className="glass-panel" style={{ padding: "8rem 2rem 4rem", marginTop: "-4rem", position: "relative", zIndex: 1, border: "1px solid rgba(255,255,255,0.05)" }}>
+          <h1 className="hero-title" style={{ fontSize: "6.5rem", marginBottom: "0.5rem", filter: "drop-shadow(0 0 30px rgba(124,58,237,0.3))" }}>COZMO LAB &reg;</h1>
+          <p className="animate-fade-in delay-1" style={{ color: "var(--accent-secondary)", fontSize: "1.6rem", fontWeight: "800", letterSpacing: "4px", textTransform: "uppercase", opacity: 0.8 }}>
+            Direct Robotics Control via N# Native 2.1
+          </p>
+        </div>
       </section>
 
       {/* Contrast Section */}

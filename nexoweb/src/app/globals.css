@@ -37,11 +37,19 @@ body {
 /* Premium Glassmorphism Card */
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 80px rgba(124, 58, 237, 0.2);
 }
 
 .primary-btn {
@@ -114,9 +122,20 @@ body {
 
 /* --- High-End Animations --- */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translateY(0px) rotate(0.2deg); }
+  50% { transform: translateY(-20px) rotate(-0.5deg); }
+  100% { transform: translateY(0px) rotate(0.2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
 }
 
 @keyframes fade-in-up {
@@ -129,14 +148,8 @@ body {
   to { transform: scale(1); opacity: 1; }
 }
 
-@keyframes glow {
-  0% { box-shadow: 0 0 5px rgba(124, 58, 237, 0.2); }
-  50% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.4); }
-  100% { box-shadow: 0 0 5px rgba(124, 58, 237, 0.2); }
-}
-
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
 }
 
 .animate-fade-in {

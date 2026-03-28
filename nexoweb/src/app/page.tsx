@@ -21,6 +21,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* NEW: Cozmo Robotics Highlight */}
+      <section className="animate-fade-in delay-2" style={{ marginTop: "4rem", marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
+        <div className="glass-panel animate-float" style={{ padding: "3rem", display: "flex", justifyContent: "center", position: "relative", overflow: "hidden", minHeight: "400px" }}>
+          <div className="animate-shimmer" style={{ position: "absolute", inset: 0, opacity: 0.1 }}></div>
+          <img 
+            src="https://purepng.com/public/uploads/large/purepng.com-anki-cozmo-robotrobotanki-cozmo-2115193291585qj0y.png" 
+            alt="Cozmo Robot" 
+            style={{ width: "280px", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))", position: "relative", zIndex: 2 }}
+          />
+          <div style={{ position: "absolute", bottom: "10%", width: "80%", height: "2px", background: "radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent)", filter: "blur(2px)" }}></div>
+        </div>
+        <div>
+          <h2 style={{ fontSize: "2.8rem", fontWeight: "900", marginBottom: "1.5rem", background: "linear-gradient(to right, #fbbf24, #f59e0b)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Robotics Frontier.</h2>
+          <p style={{ color: "var(--text-muted)", fontSize: "1.15rem", lineHeight: "1.8", marginBottom: "2.5rem" }}>
+            The Anki Cozmo isn't just a toy anymore. With <code style={{color: "#fbbf24", background: "rgba(251, 191, 36, 0.1)", padding: "4px 8px", borderRadius: "6px"}}>nexocore.cozmo</code>, you control hardware natively via MSIL. Direct handshakes, zero latency, pure N# logic.
+          </p>
+          <a href="/cozmo" className="primary-btn" style={{ textDecoration: "none", background: "linear-gradient(135deg, #fbbf24, #f59e0b)", boxShadow: "0 10px 30px rgba(251, 191, 36, 0.3)" }}>Enter the Cozmo Lab</a>
+        </div>
+      </section>
+
       {/* 2. Interactive Terminal / Quick Start Code (Left: Code, Right: Text) */}
       <section className="animate-fade-in delay-1" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "4rem", marginBottom: "5rem", padding: "0 1rem" }}>
         
