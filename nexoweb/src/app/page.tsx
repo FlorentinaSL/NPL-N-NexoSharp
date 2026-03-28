@@ -24,11 +24,12 @@ export default function Home() {
       {/* NEW: Cozmo Robotics Highlight */}
       <section className="animate-fade-in delay-2" style={{ marginTop: "4rem", marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
         <div className="glass-panel animate-float" style={{ padding: "3rem", display: "flex", justifyContent: "center", position: "relative", overflow: "hidden", minHeight: "400px" }}>
-          <div className="animate-shimmer" style={{ position: "absolute", inset: 0, opacity: 0.1 }}></div>
+          <div className="animate-shimmer" style={{ position: "absolute", inset: 0, opacity: 0.1, pointerEvents: "none" }}></div>
           <img 
-            src="https://purepng.com/public/uploads/large/purepng.com-anki-cozmo-robotrobotanki-cozmo-2115193291585qj0y.png" 
+            src="https://images.squarespace-cdn.com/content/v1/5903c7344402434b958e8a93/1501798361099-2N5X67U133GXY4W5Z689/Cozmo-Anki-Robot-Price.png" 
             alt="Cozmo Robot" 
-            style={{ width: "280px", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))", position: "relative", zIndex: 2 }}
+            style={{ width: "320px", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))", position: "relative", zIndex: 2 }}
+            onError={(e) => { e.currentTarget.src = "https://m.media-amazon.com/images/I/61m3J-kG0fL._AC_SL1500_.jpg"; }}
           />
           <div style={{ position: "absolute", bottom: "10%", width: "80%", height: "2px", background: "radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent)", filter: "blur(2px)" }}></div>
         </div>

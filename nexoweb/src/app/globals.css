@@ -122,9 +122,9 @@ body {
 
 /* --- High-End Animations --- */
 @keyframes float {
-  0% { transform: translateY(0px) rotate(0.2deg); }
-  50% { transform: translateY(-20px) rotate(-0.5deg); }
-  100% { transform: translateY(0px) rotate(0.2deg); }
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(0.2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 @keyframes shimmer {
@@ -136,6 +136,7 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s infinite linear;
+  pointer-events: none; /* Critical: Prevent blocking clicks */
 }
 
 @keyframes fade-in-up {

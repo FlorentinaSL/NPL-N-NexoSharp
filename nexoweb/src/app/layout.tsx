@@ -55,17 +55,17 @@ export default function RootLayout({
         <div className="ambient-glow"></div>
 
         {/* Global Navigation */}
-        <nav className="animate-fade-in" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1.5rem 2rem", maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
-          <a href="/" style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "1.8rem", fontWeight: "bold", letterSpacing: "-1px", textDecoration: "none", color: "var(--text-primary)" }}>
-            <Logo size={40} />
+        <nav className="animate-fade-in" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem 2rem", maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 100, position: "relative" }}>
+          <a href="/" style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "1.8rem", fontWeight: "900", letterSpacing: "-1.5px", textDecoration: "none", color: "var(--text-primary)", whiteSpace: "nowrap" }}>
+            <Logo size={42} />
             NEXO
           </a>
-          <div style={{ display: "flex", gap: "2rem", fontSize: "0.95rem", color: "var(--text-muted)", fontWeight: "500" }}>
+          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: "600" }}>
             <a href="/docs" className="nav-link">Docs</a>
-            <a href="/cozmo" className="nav-link" style={{ color: "#fbbf24", fontWeight: "bold" }}>Cozmo Lab</a>
-            <a href="/registry" className="nav-link">NPM Registry</a>
-            <a href="/download" className="nav-link">Download's</a>
-            <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" style={{ color: "#a5b4fc", textDecoration: "none" }}>GitHub</a>
+            <a href="/cozmo" className="nav-link" style={{ color: "#fbbf24" }}>Cozmo Lab</a>
+            <a href="/registry" className="nav-link">Registry</a>
+            <a href="/download" className="nav-link">Downloads</a>
+            <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: "#a5b4fc" }}>GitHub</a>
           </div>
         </nav>
 
