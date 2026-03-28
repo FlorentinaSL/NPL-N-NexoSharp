@@ -114,16 +114,18 @@ export default function OwnerPage() {
       </div>
 
       {/* ── GITHUB CTA ── */}
-      <section className="animate-fade-in" style={{
-        textAlign: "center",
+      <section style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         background: "linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.05))",
         padding: "4rem 2rem",
         borderRadius: "24px",
         border: "1px solid rgba(124,58,237,0.2)",
         marginBottom: "5rem"
       }}>
-        <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Follow the Repository</h2>
-        <p style={{ color: "var(--text-muted)", marginBottom: "2.5rem", maxWidth: "500px", margin: "0 auto 2.5rem" }}>
+        <h2 style={{ fontSize: "2rem", marginBottom: "1rem", textAlign: "center" }}>Follow the Repository</h2>
+        <p style={{ color: "var(--text-muted)", maxWidth: "500px", textAlign: "center", lineHeight: "1.7", marginBottom: "2.5rem" }}>
           Explore the source of NPL, the standard library, and the robotics bridge directly on GitHub.
         </p>
         <a
