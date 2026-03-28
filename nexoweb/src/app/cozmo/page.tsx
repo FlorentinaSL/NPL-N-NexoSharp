@@ -24,7 +24,8 @@ export default function CozmoPage() {
               width: "100%",
               maxWidth: "420px",
               filter: "drop-shadow(0 20px 60px rgba(124, 58, 237, 0.7)) drop-shadow(0 0 30px rgba(251,191,36,0.15))",
-              userSelect: "none"
+              userSelect: "none",
+              mixBlendMode: "screen"
             }}
             fallbackSrc="/cozmo.png"
           />

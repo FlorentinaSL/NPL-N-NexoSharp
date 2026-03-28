@@ -28,7 +28,7 @@ export default function Home() {
           <ClientImage 
             src="/cozmo.png" 
             alt="Cozmo Robot" 
-            style={{ width: "340px", filter: "drop-shadow(0 10px 40px rgba(124, 58, 237, 0.6))" }}
+            style={{ width: "340px", filter: "drop-shadow(0 10px 40px rgba(124, 58, 237, 0.6))", mixBlendMode: "screen" }}
             fallbackSrc="/cozmo.png"
           />
         </div>
