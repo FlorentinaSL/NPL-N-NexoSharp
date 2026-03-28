@@ -24,13 +24,15 @@ export default function Home() {
 
       {/* NEW: Cozmo Robotics Highlight */}
       <section className="animate-fade-in delay-2" style={{ marginTop: "4rem", marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
-        <div className="glass-panel animate-float" style={{ padding: "3rem", display: "flex", justifyContent: "center", position: "relative", overflow: "hidden", minHeight: "300px" }}>
-          <ClientImage 
-            src="/cozmo.png" 
-            alt="Cozmo Robot" 
-            style={{ width: "280px", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))", position: "relative", zIndex: 2 }}
-            fallbackSrc="/cozmo.png"
-          />
+        <div className="glass-panel" style={{ padding: "2rem", display: "flex", justifyContent: "center", position: "relative", minHeight: "300px", background: "#0a0a14" }}>
+          <div className="animate-float" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <ClientImage 
+              src="/cozmo.png" 
+              alt="Cozmo Robot" 
+              style={{ width: "280px", filter: "drop-shadow(0 10px 30px rgba(124, 58, 237, 0.5))", position: "relative", zIndex: 2 }}
+              fallbackSrc="/cozmo.png"
+            />
+          </div>
         </div>
         <div>
           <h2 style={{ fontSize: "2.8rem", fontWeight: "900", marginBottom: "1.5rem", background: "linear-gradient(to right, #fbbf24, #f59e0b)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Robotics Frontier.</h2>

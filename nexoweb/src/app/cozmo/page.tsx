@@ -7,15 +7,19 @@ export default function CozmoPage() {
     <div style={{ maxWidth: "1000px", margin: "4rem auto", padding: "0 1rem" }}>
       {/* Hero Section */}
       <section className="animate-fade-in" style={{ textAlign: "center", marginBottom: "6rem", position: "relative" }}>
-        <div className="animate-float" style={{ marginBottom: "-1rem", display: "flex", justifyContent: "center", position: "relative", zIndex: 2 }}>
-          <ClientImage 
-            src="/cozmo.png" 
-            alt="Anki Cozmo Robot" 
-            style={{ width: "360px", filter: "drop-shadow(0 30px 60px rgba(124, 58, 237, 0.4))", userSelect: "none" }}
-            fallbackSrc="/cozmo.png"
-          />
+        <div style={{ display: "flex", justifyContent: "center", position: "relative", zIndex: 2 }}>
+          <div style={{ background: "#0a0a14", borderRadius: "24px 24px 0 0", padding: "2rem 3rem 0", display: "inline-block" }}>
+            <div className="animate-float">
+              <ClientImage 
+                src="/cozmo.png" 
+                alt="Anki Cozmo Robot" 
+                style={{ width: "320px", filter: "drop-shadow(0 20px 50px rgba(124, 58, 237, 0.5))", userSelect: "none", display: "block" }}
+                fallbackSrc="/cozmo.png"
+              />
+            </div>
+          </div>
         </div>
-        <div className="glass-panel" style={{ padding: "6rem 2rem 4rem", marginTop: "-4rem", position: "relative", zIndex: 1, border: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="glass-panel" style={{ padding: "4rem 2rem 4rem", position: "relative", zIndex: 1, border: "1px solid rgba(255,255,255,0.05)" }}>
           <h1 className="hero-title" style={{ fontSize: "6.5rem", marginBottom: "0.5rem", filter: "drop-shadow(0 0 30px rgba(124,58,237,0.3))" }}>COZMO LAB &reg;</h1>
           <p className="animate-fade-in delay-1" style={{ color: "var(--accent-secondary)", fontSize: "1.6rem", fontWeight: "800", letterSpacing: "4px", textTransform: "uppercase", opacity: 0.8 }}>
             Direct Robotics Control via N# Native 2.1
