@@ -63,7 +63,7 @@ export default function RootLayout({
           <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: "600" }}>
             <a href="/docs" className="nav-link">Docs</a>
             <a href="/cozmo" className="nav-link" style={{ color: "#fbbf24" }}>Cozmo Lab</a>
-            <a href="/registry" className="nav-link">Registry</a>
+            <a href="/registry" className="nav-link">NPM Registry</a>
             <a href="/download" className="nav-link">Downloads</a>
             <a href="/luca-cisternino" className="nav-link">Owner</a>
             <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: "#a5b4fc" }}>GitHub</a>

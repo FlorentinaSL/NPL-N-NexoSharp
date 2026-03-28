@@ -86,7 +86,7 @@ cozmo.run_program(cozmo_program)`}
           </div>
 
           <div className="glass-panel" style={{ padding: "2.5rem", borderLeft: "4px solid #22c55e" }}>
-            <h3 style={{ color: "#22c55e", marginBottom: "1.5rem" }}>Nexo nexocore.cozmo (Titan)</h3>
+            <h3 style={{ color: "#22c55e", marginBottom: "1.5rem" }}>Nexo nexocore.cozmo.</h3>
             <pre style={{ fontSize: "0.9rem", color: "#61afef", background: "rgba(0,0,0,0.2)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(34,197,94,0.1)", overflowX: "auto" }}>
               {`using nexocore.cozmo
 
