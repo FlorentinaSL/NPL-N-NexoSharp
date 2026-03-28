@@ -13,7 +13,7 @@ export default function CozmoPage() {
             style={{ width: "320px", filter: "drop-shadow(0 30px 60px rgba(124, 58, 237, 0.4))", userSelect: "none" }}
           />
         </div>
-        <h1 className="hero-title" style={{ fontSize: "5.5rem", marginBottom: "1rem" }}>COZMO LAB</h1>
+        <h1 className="hero-title" style={{ fontSize: "5.5rem", marginBottom: "1rem" }}>COZMO LAB &reg;</h1>
         <p className="animate-fade-in delay-1" style={{ color: "var(--accent-secondary)", fontSize: "1.5rem", fontWeight: "700", letterSpacing: "2px", textTransform: "uppercase" }}>
           Direct Robotics Control via N# Native 2.0
         </p>
