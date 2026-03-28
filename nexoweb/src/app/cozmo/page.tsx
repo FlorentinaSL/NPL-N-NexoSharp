@@ -9,10 +9,10 @@ export default function CozmoPage() {
       <section className="animate-fade-in" style={{ textAlign: "center", marginBottom: "6rem", position: "relative" }}>
         <div className="animate-float" style={{ marginBottom: "-1rem", display: "flex", justifyContent: "center", position: "relative", zIndex: 2 }}>
           <ClientImage 
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Anki_Cozmo.png/402px-Anki_Cozmo.png" 
+            src="/cozmo.png" 
             alt="Anki Cozmo Robot" 
-            style={{ width: "380px", filter: "drop-shadow(0 30px 60px rgba(124, 58, 237, 0.4))", userSelect: "none" }}
-            fallbackSrc="https://upload.wikimedia.org/wikipedia/commons/e/e6/Anki_Cozmo.png"
+            style={{ width: "360px", filter: "drop-shadow(0 30px 60px rgba(124, 58, 237, 0.4))", userSelect: "none" }}
+            fallbackSrc="/cozmo.png"
           />
         </div>
         <div className="glass-panel" style={{ padding: "6rem 2rem 4rem", marginTop: "-4rem", position: "relative", zIndex: 1, border: "1px solid rgba(255,255,255,0.05)" }}>

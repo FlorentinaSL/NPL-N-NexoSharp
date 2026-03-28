@@ -26,10 +26,10 @@ export default function Home() {
       <section className="animate-fade-in delay-2" style={{ marginTop: "4rem", marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
         <div className="glass-panel animate-float" style={{ padding: "3rem", display: "flex", justifyContent: "center", position: "relative", overflow: "hidden", minHeight: "300px" }}>
           <ClientImage 
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Anki_Cozmo.png/402px-Anki_Cozmo.png" 
+            src="/cozmo.png" 
             alt="Cozmo Robot" 
             style={{ width: "280px", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))", position: "relative", zIndex: 2 }}
-            fallbackSrc="https://upload.wikimedia.org/wikipedia/commons/e/e6/Anki_Cozmo.png"
+            fallbackSrc="/cozmo.png"
           />
         </div>
         <div>
