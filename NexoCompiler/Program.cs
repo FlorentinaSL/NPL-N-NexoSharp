@@ -293,7 +293,7 @@ public static class Program {
     private static async Task InstallPackage(string packageName)
     {
         Console.WriteLine($"\n[NPM] Contacting global registry for package: '{packageName}'...");
-        string registryUrl = $"https://nexosharp.vercel.app/api/registry/{packageName}";
+        string registryUrl = $"https://nexosharp.com/api/registry/{packageName}";
         
         try 
         {
@@ -367,7 +367,7 @@ public static class Program {
             string jsonPayload = $"{{\"name\": \"{packageName}\", \"code\": \"{escapedCode}\"}}";
             
             var content = new StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://nexosharp.vercel.app/api/registry", content);
+            var response = await client.PostAsync("https://nexosharp.com/api/registry", content);
             
             string responseBody = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode) {

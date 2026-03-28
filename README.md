@@ -2,7 +2,7 @@
   <img src="https://nexosharp.vercel.app/logo.svg" alt="Nexo Logo" width="120" height="120">
   <h1>Nexo (N#) Programming Language</h1>
   <p><strong>A natively compiled, purely dynamic scripting architecture built on raw .NET MSIL.</strong></p>
-  <a href="https://nexosharp.vercel.app">Official Cloud Hub</a> | <a href="https://nexosharp.vercel.app/docs">Documentation</a>
+  <a href="https://nexosharp.com">Official Cloud Hub</a> | <a href="https://nexosharp.com/docs">Documentation</a>
 </div>
 
 ---

@@ -15,7 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Nexo Programming Language | Official Hub",
-  description: "The future of dynamic scripting. Nexo (NPL) is an enterprise-grade typed-free language natively compiled to MSIL logic, interconnected globally via the NPM Cloud Registry.",
+  description: "The future of dynamic scripting. Nexo (NPL) is an enterprise-grade language natively compiled to MSIL, interconnected globally via the NexoCloud Registry.",
+  metadataBase: new URL("https://nexosharp.com"),
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/logo.svg"
   },
@@ -25,10 +29,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nexosharp.vercel.app/",
+    url: "https://nexosharp.com/",
     title: "Nexo Programming Language | N#",
-    description: "The typed-free dynamic scripting ecosystem compiled to MSIL.",
-    siteName: "Nexo Hub",
+    description: "The dynamic scripting ecosystem compiled natively to MSIL.",
+    siteName: "Nexo",
   },
   twitter: {
     card: "summary_large_image",
