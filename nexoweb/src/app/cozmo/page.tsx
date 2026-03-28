@@ -24,10 +24,10 @@ export default function CozmoPage() {
             alt="Anki Cozmo Robot"
             style={{
               width: "100%",
-              maxWidth: "420px",
-              filter: "drop-shadow(0 20px 60px rgba(124, 58, 237, 0.7)) drop-shadow(0 0 30px rgba(251,191,36,0.15))",
+              maxWidth: "460px",
+              filter: "drop-shadow(0 20px 60px rgba(124, 58, 237, 0.4))",
               userSelect: "none",
-              mixBlendMode: "screen"
+              mixBlendMode: "lighten"
             }}
             fallbackSrc="/cozmo.png"
           />

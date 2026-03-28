@@ -193,21 +193,11 @@ public class Interpreter {
     private void HandleUsing(string moduleName) {
         if (_loadedModules.Contains(moduleName)) return;
 
-        string relativePath = moduleName.Replace(".", Path.DirectorySeparatorChar.ToString()) + ".nexo";
-        string path = relativePath;
-        
-        if (!File.Exists(path)) {
-            // Absolute path probing on core NPL generic NPM libraries
-            string globalPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Libs", relativePath);
-            string npmGlobalPath = Path.Combine(@"C:\Programs\Nexo\libs", relativePath);
-            
-            if (File.Exists(globalPath)) {
-                path = globalPath;
-            } else if (File.Exists(npmGlobalPath)) {
-                path = npmGlobalPath;
-            } else {
-                throw new Exception($"[NXC-016] Path Traversal Error: NPM network fallback failed. Module '{moduleName}' not installed globally.");
-            }
+        string path;
+        try {
+            path = PackageManager.EnsureModule(moduleName);
+        } catch (Exception e) {
+            throw new Exception($"[NXC-016] Path Traversal Error: NPM network fallback failed. Module '{moduleName}' not found. {e.Message}");
         }
 
         // Recursively boot a temporary parser environment
