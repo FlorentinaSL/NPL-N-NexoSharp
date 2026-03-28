@@ -18,14 +18,16 @@ export default function OwnerPage() {
 
       {/* ── HERO: Sidebar layout (image left, content right) ── */}
       <section className="animate-fade-in" style={{
-        display: "grid",
-        gridTemplateColumns: "300px 1fr",
-        gap: "5rem",
-        alignItems: "center",
-        padding: "6rem 0 5rem",
-        borderBottom: "1px solid var(--glass-border)",
-        marginBottom: "5rem"
-      }}>
+          display: "grid",
+          gridTemplateColumns: "300px 1fr",
+          gap: "5rem",
+          alignItems: "center",
+          padding: "6rem 0 5rem",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+          marginBottom: "5rem",
+          background: "radial-gradient(ellipse at top, rgba(124, 58, 237, 0.12), transparent 80%)",
+          position: "relative"
+        }}>
         {/* Left: Avatar */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem" }}>
           <div style={{ position: "relative" }}>

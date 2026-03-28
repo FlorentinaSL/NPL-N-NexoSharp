@@ -8,12 +8,14 @@ export default function CozmoPage() {
       {/* ── HERO: Full-bleed, no box, image bleeds into title ── */}
       <section className="animate-fade-in" style={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "4rem",
+        gridTemplateColumns: "300px 1fr",
+        gap: "5rem",
         alignItems: "center",
         padding: "6rem 0 5rem",
-        borderBottom: "1px solid var(--glass-border)",
-        marginBottom: "5rem"
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
+        marginBottom: "5rem",
+        background: "radial-gradient(ellipse at top, rgba(124, 58, 237, 0.12), transparent 80%)",
+        position: "relative"
       }}>
         {/* Left: Robot - floating freely, NO box */}
         <div className="animate-float" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
