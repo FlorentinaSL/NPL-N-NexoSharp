@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Logo from "../components/Logo";
+import ClientImage from "../components/ClientImage";
 
 export default function Home() {
   return (
@@ -25,11 +26,11 @@ export default function Home() {
       <section className="animate-fade-in delay-2" style={{ marginTop: "4rem", marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
         <div className="glass-panel animate-float" style={{ padding: "3rem", display: "flex", justifyContent: "center", position: "relative", overflow: "hidden", minHeight: "400px" }}>
           <div className="animate-shimmer" style={{ position: "absolute", inset: 0, opacity: 0.1, pointerEvents: "none" }}></div>
-          <img 
+          <ClientImage 
             src="https://images.squarespace-cdn.com/content/v1/5903c7344402434b958e8a93/1501798361099-2N5X67U133GXY4W5Z689/Cozmo-Anki-Robot-Price.png" 
             alt="Cozmo Robot" 
             style={{ width: "320px", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))", position: "relative", zIndex: 2 }}
-            onError={(e) => { e.currentTarget.src = "https://m.media-amazon.com/images/I/61m3J-kG0fL._AC_SL1500_.jpg"; }}
+            fallbackSrc="https://m.media-amazon.com/images/I/61m3J-kG0fL._AC_SL1500_.jpg"
           />
           <div style={{ position: "absolute", bottom: "10%", width: "80%", height: "2px", background: "radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent)", filter: "blur(2px)" }}></div>
         </div>

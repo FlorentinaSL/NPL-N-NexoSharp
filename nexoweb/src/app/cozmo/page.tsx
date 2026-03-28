@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../../components/Logo";
+import ClientImage from "../../components/ClientImage";
 
 export default function CozmoPage() {
   return (
@@ -7,11 +8,11 @@ export default function CozmoPage() {
       {/* Hero Section */}
       <section className="animate-fade-in" style={{ textAlign: "center", marginBottom: "6rem", position: "relative" }}>
         <div className="animate-float" style={{ marginBottom: "-1rem", display: "flex", justifyContent: "center", position: "relative", zIndex: 2 }}>
-          <img 
+          <ClientImage 
             src="https://images.squarespace-cdn.com/content/v1/5903c7344402434b958e8a93/1501798361099-2N5X67U133GXY4W5Z689/Cozmo-Anki-Robot-Price.png" 
             alt="Anki Cozmo Robot" 
             style={{ width: "450px", filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.6))", userSelect: "none" }}
-            onError={(e) => { e.currentTarget.src = "https://m.media-amazon.com/images/I/61m3J-kG0fL._AC_SL1500_.jpg"; }}
+            fallbackSrc="https://m.media-amazon.com/images/I/61m3J-kG0fL._AC_SL1500_.jpg"
           />
         </div>
         <div className="glass-panel" style={{ padding: "6rem 2rem 4rem", marginTop: "-4rem", position: "relative", zIndex: 1, border: "1px solid rgba(255,255,255,0.05)" }}>
