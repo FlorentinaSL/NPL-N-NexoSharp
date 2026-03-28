@@ -3,12 +3,17 @@ import fs from 'fs';
 import path from 'path';
 
 export async function GET() {
-    // Exposes the array of available global package keys to the Next.js Frontend
+    // Exposes the available global package metadata to the Next.js Frontend
     const registryPath = path.join(process.cwd(), 'public', 'registry.json');
     try {
         const fileContent = fs.readFileSync(registryPath, 'utf-8');
         const db = JSON.parse(fileContent);
-        return NextResponse.json(Object.keys(db || {}));
+        // Map to remove the 'code' field for the list view to keep the response small
+        const metaList = Object.values(db || {}).map((pkg: any) => {
+            const { code, ...meta } = pkg;
+            return meta;
+        });
+        return NextResponse.json(metaList);
     } catch(e) {
         return NextResponse.json([]);
     }
