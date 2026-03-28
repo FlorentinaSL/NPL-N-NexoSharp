@@ -80,6 +80,7 @@ export default function RootLayout({
             <a href="/docs" style={{ color: "inherit", textDecoration: "none" }}>Documentation</a>
             <a href="/cozmo" style={{ color: "inherit", textDecoration: "none" }}>Cozmo Robotics</a>
             <a href="/registry" style={{ color: "inherit", textDecoration: "none" }}>Global Registry</a>
+            <a href="/luca-cisternino" style={{ color: "#fbbf24", textDecoration: "none", fontWeight: "600" }}>Meet the Architect</a>
             <a href="/download" style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: "600" }}>Download Native</a>
           </div>
 
@@ -88,7 +89,7 @@ export default function RootLayout({
           </div>
 
           <h1 className="animate-fade-in" style={{ animationDelay: "800ms", position: "relative", zIndex: 2, fontSize: "clamp(100px, 18vw, 250px)", fontWeight: "900", letterSpacing: "-0.05em", color: "rgba(255,255,255,0.03)", margin: 0, lineHeight: 0.8, userSelect: "none", filter: "drop-shadow(0 -20px 80px rgba(124,58,237,0.15))" }}>NEXO</h1>
-          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "2rem", zIndex: 10 }}>© 2026 Luca Cisternino. All rights reserved globally.</p>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: "2rem", zIndex: 10 }}>© 2026 <a href="/luca-cisternino" style={{ color: "inherit", textDecoration: "underline" }}>Luca Cisternino</a>. All rights reserved globally.</p>
         </footer>
       </body>
     </html>
