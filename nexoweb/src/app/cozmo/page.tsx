@@ -88,7 +88,7 @@ cozmo.run_program(cozmo_program)`}
             <pre style={{ fontSize: "0.9rem", color: "#61afef", background: "rgba(0,0,0,0.2)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(34,197,94,0.1)", overflowX: "auto" }}>
               {`using nexocore.cozmo
 
-// Direct MSIL execution
+<3 Direct MSIL execution
 cozmo.connect()
 cozmo.say("System Online")
 cozmo.move(100, 50)`}
@@ -120,20 +120,6 @@ cozmo.move(100, 50)`}
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem" }}>Natively managed memory ensures robot commands never crash in production.</p>
         </div>
       </div>
-
-      {/* ── CTA ── */}
-      <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-        <a href="/download" className="primary-btn" style={{
-          textDecoration: "none",
-          padding: "1.5rem 4rem",
-          fontSize: "1.2rem",
-          background: "linear-gradient(135deg, #7C3AED, #3B82F6)",
-          boxShadow: "0 10px 40px rgba(124,58,237,0.4)"
-        }}>
-          Download Nexo 2.1.0 "Titan"
-        </a>
-      </div>
-
     </div>
   );
 }

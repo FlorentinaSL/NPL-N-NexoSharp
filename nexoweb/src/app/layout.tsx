@@ -65,6 +65,7 @@ export default function RootLayout({
             <a href="/cozmo" className="nav-link" style={{ color: "#fbbf24" }}>Cozmo Lab</a>
             <a href="/registry" className="nav-link">Registry</a>
             <a href="/download" className="nav-link">Downloads</a>
+            <a href="/luca-cisternino" className="nav-link">Owner</a>
             <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: "#a5b4fc" }}>GitHub</a>
           </div>
         </nav>

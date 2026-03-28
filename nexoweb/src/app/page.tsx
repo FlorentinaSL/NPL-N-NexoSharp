@@ -37,7 +37,7 @@ export default function Home() {
           <p style={{ color: "var(--text-muted)", fontSize: "1.15rem", lineHeight: "1.8", marginBottom: "2.5rem" }}>
             The Anki Cozmo isn't just a toy anymore. With <code style={{color: "#fbbf24", background: "rgba(251, 191, 36, 0.1)", padding: "4px 8px", borderRadius: "6px"}}>nexocore.cozmo</code>, you control hardware natively via MSIL. Direct handshakes, zero latency, pure N# logic.
           </p>
-          <a href="/cozmo" className="primary-btn" style={{ textDecoration: "none", background: "linear-gradient(135deg, #fbbf24, #f59e0b)", boxShadow: "0 10px 30px rgba(251, 191, 36, 0.3)" }}>Enter the Cozmo Lab</a>
+          <a href="/cozmo" className="primary-btn" style={{ textDecoration: "none", background: "linear-gradient(135deg, #fbbf24, #f59e0b)"}}>Enter the Cozmo Lab</a>
         </div>
       </section>
 
