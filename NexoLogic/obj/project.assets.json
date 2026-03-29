@@ -81,7 +81,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "3.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\ciste\\RiderProjects\\Nexo\\NexoLogic\\NexoLogic.csproj",
       "projectName": "NexoLogic",

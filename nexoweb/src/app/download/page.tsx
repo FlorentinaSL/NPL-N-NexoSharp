@@ -18,7 +18,7 @@ export default function Download() {
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginBottom: "2rem", flex: 1 }}>
             Official Setup Installer (.exe) — registers .nexo file association, injects PATH globally, and creates a Start Menu shortcut automatically.
           </p>
-          <a href="/NexoSetup_v3.exe" download="NexoSetup_v3.exe" className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download Setup v3.0 (x64)</a>
+          <a href="/NexoSetup_Final_v3.exe" download="NexoSetup_Final_v3.exe" className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download Setup v3.0 (x64)</a>
         </div>
 
         {/* Linux Core */}

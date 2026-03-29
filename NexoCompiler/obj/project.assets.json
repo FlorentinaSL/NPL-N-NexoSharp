@@ -14,7 +14,7 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "NexoLogic/1.0.0": {
+      "NexoLogic/3.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "compile": {
@@ -44,7 +44,7 @@
       "runtime.win-x64.Microsoft.DotNet.ILCompiler/9.0.10": {
         "type": "package"
       },
-      "NexoLogic/1.0.0": {
+      "NexoLogic/3.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "compile": {
@@ -570,7 +570,7 @@
         "tools/jitinterface_x64.dll"
       ]
     },
-    "NexoLogic/1.0.0": {
+    "NexoLogic/3.0.0": {
       "type": "project",
       "path": "../NexoLogic/NexoLogic.csproj",
       "msbuildProject": "../NexoLogic/NexoLogic.csproj"
@@ -580,7 +580,7 @@
     "net9.0": [
       "Microsoft.DotNet.ILCompiler >= 9.0.10",
       "Microsoft.NET.ILLink.Tasks >= 9.0.10",
-      "NexoLogic >= 1.0.0"
+      "NexoLogic >= 3.0.0"
     ]
   },
   "packageFolders": {
@@ -588,7 +588,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "3.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\ciste\\RiderProjects\\Nexo\\NexoCompiler\\NexoCompiler.csproj",
       "projectName": "Nexo",

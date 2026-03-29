@@ -7,11 +7,11 @@
   "targets": {
     ".NETCoreApp,Version=v9.0": {},
     ".NETCoreApp,Version=v9.0/win-x64": {
-      "Nexo/1.0.0": {
+      "Nexo/3.0.0": {
         "dependencies": {
           "Microsoft.DotNet.ILCompiler": "9.0.10",
           "Microsoft.NET.ILLink.Tasks": "9.0.10",
-          "NexoLogic": "1.0.0",
+          "NexoLogic": "3.0.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "9.0.10"
         },
         "runtime": {
@@ -752,18 +752,18 @@
       },
       "Microsoft.NET.ILLink.Tasks/9.0.10": {},
       "runtime.win-x64.Microsoft.DotNet.ILCompiler/9.0.10": {},
-      "NexoLogic/1.0.0": {
+      "NexoLogic/3.0.0": {
         "runtime": {
           "NexoLogic.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
           }
         }
       }
     }
   },
   "libraries": {
-    "Nexo/1.0.0": {
+    "Nexo/3.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -794,7 +794,7 @@
       "path": "runtime.win-x64.microsoft.dotnet.ilcompiler/9.0.10",
       "hashPath": "runtime.win-x64.microsoft.dotnet.ilcompiler.9.0.10.nupkg.sha512"
     },
-    "NexoLogic/1.0.0": {
+    "NexoLogic/3.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

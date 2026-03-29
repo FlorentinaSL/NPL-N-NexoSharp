@@ -9,6 +9,9 @@
         <InvariantGlobalization>true</InvariantGlobalization>
         <ApplicationIcon>Installer\res\NPL.ico</ApplicationIcon>
         <AssemblyName>Nexo</AssemblyName>
+        <Version>3.0.0</Version>
+        <AssemblyVersion>3.0.0</AssemblyVersion>
+        <FileVersion>3.0.0</FileVersion>
     </PropertyGroup>
 
     <ItemGroup>

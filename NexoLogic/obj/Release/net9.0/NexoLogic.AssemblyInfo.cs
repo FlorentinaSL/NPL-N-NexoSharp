@@ -12,11 +12,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("NexoLogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b25a35d712d0cbdebfcfa8ea2f4e0fd1486e9725")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("3.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.0.0+dca999f636ac606723c690c8b56f2ff6cbf6b960")]
 [assembly: System.Reflection.AssemblyProductAttribute("NexoLogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NexoLogic")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("3.0.0")]
 
 // Generato dalla classe WriteCodeFragment di MSBuild.
 

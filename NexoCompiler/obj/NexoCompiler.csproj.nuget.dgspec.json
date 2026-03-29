@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\ciste\\RiderProjects\\Nexo\\NexoCompiler\\NexoCompiler.csproj": {
-      "version": "1.0.0",
+      "version": "3.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\ciste\\RiderProjects\\Nexo\\NexoCompiler\\NexoCompiler.csproj",
         "projectName": "Nexo",
@@ -114,7 +114,7 @@
       }
     },
     "C:\\Users\\ciste\\RiderProjects\\Nexo\\NexoLogic\\NexoLogic.csproj": {
-      "version": "1.0.0",
+      "version": "3.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\ciste\\RiderProjects\\Nexo\\NexoLogic\\NexoLogic.csproj",
         "projectName": "NexoLogic",
