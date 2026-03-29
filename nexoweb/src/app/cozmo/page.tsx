@@ -20,16 +20,15 @@ export default function CozmoPage() {
         {/* Left: Robot - floating freely, NO box */}
         <div className="animate-float" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <ClientImage
-            src="/cozmo.png"
+            src="/cozmo-v2.png"
             alt="Anki Cozmo Robot"
             style={{
               width: "100%",
               maxWidth: "460px",
               filter: "drop-shadow(0 20px 60px rgba(124, 58, 237, 0.4))",
-              userSelect: "none",
-              mixBlendMode: "screen"
+              userSelect: "none"
             }}
-            fallbackSrc="/cozmo.png"
+            fallbackSrc="/cozmo-v2.png"
           />
         </div>
 

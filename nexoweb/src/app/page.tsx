@@ -26,10 +26,10 @@ export default function Home() {
       <section className="animate-fade-in delay-2" style={{ marginTop: "4rem", marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
         <div className="animate-float" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <ClientImage 
-            src="/cozmo.png" 
+            src="/cozmo-v2.png" 
             alt="Cozmo Robot" 
-            style={{ width: "380px", filter: "drop-shadow(0 10px 40px rgba(124, 58, 237, 0.3))", mixBlendMode: "screen" }}
-            fallbackSrc="/cozmo.png"
+            style={{ width: "380px", filter: "drop-shadow(0 10px 40px rgba(124, 58, 237, 0.4))" }}
+            fallbackSrc="/cozmo-v2.png"
           />
         </div>
         <div>
