@@ -1,7 +1,0 @@
-<3 Nexo Core - OS Terminal Bindings
-<3 Copyright 2026 Florentina Spicco D'aura
-
-<3 Directly executes raw Terminal/PowerShell/Bash commands via the Host System
-do run(terminalCommand) {
-    return executeCommand(terminalCommand)
-}
