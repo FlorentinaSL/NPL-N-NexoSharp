@@ -288,46 +288,23 @@ public static class Program {
 
     /// <summary>
     /// NPM (Nexo Package Manager) Native CLI Downloader.
-    /// Reaches out to the Nexo Registry API to fetch standard '.nexo' library sources and map them physically globally.
+    /// Bridges the CLI to the centralized NexoLogic.PackageManager synchronization engine.
     /// </summary>
     private static async Task InstallPackage(string packageName)
     {
-        Console.WriteLine($"\n[NPM] Contacting global registry for package: '{packageName}'...");
-        string registryUrl = $"https://nexosharp.com/api/v1/registry/{packageName}";
-        
         try 
         {
-            using var client = new HttpClient();
-            // Assign custom timeout to prevent REPL from halting indefinitely on networking stalls
-            client.Timeout = TimeSpan.FromSeconds(15);
-            var response = await client.GetAsync(registryUrl);
-            
-            if (!response.IsSuccessStatusCode) {
-                Console.WriteLine($"[FATAL] NPM Registry Fault: Package '{packageName}' was not found across the index bounds (Status: {response.StatusCode}).");
-                return;
-            }
-            
-            string sourceCode = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"[SUCCESS] NPM payload extraction complete ({sourceCode.Length} bytes).");
-            
-            // Map payload strictly towards User-Requested OS Bounds
-            string targetBaseDir = @"C:\Programs\Nexo\libs";
-            if (!Directory.Exists(targetBaseDir)) Directory.CreateDirectory(targetBaseDir);
-            
-            string fileName = packageName.Replace(".", @"\") + ".nexo";
-            string fullDestPath = Path.Combine(targetBaseDir, fileName);
-            
-            // Build trailing recursive folder injections seamlessly
-            string fileDir = Path.GetDirectoryName(fullDestPath)!;
-            if (!Directory.Exists(fileDir)) Directory.CreateDirectory(fileDir);
-            
-            File.WriteAllText(fullDestPath, sourceCode);
-            Console.WriteLine($"[+] Module deployed structurally to: {fullDestPath}\n");
+            // Delegate synchronization to the core logic engine to ensure path consistency
+            string localPath = PackageManager.EnsureModule(packageName);
+            Console.WriteLine($"[+] Module deployed structurally to: {localPath}\n");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"\n[FATAL] NPM Networking Crash Hook: {ex.Message}\n");
+            Console.WriteLine($"\n[FATAL] NPM Synchronization Failure: {ex.Message}\n");
         }
+        
+        // Satisfy async task signature
+        await Task.CompletedTask;
     }
 
     /// <summary>
