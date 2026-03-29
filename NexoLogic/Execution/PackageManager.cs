@@ -11,7 +11,7 @@ namespace NexoLogic.Execution;
 /// </summary>
 public static class PackageManager {
     private static readonly HttpClient _client = new HttpClient();
-    private const string RegistryUrl = "https://nexosharp.com/api/registry/";
+    private const string RegistryUrl = "https://nexosharp.com/api/v1/registry/";
     private static readonly string LibsDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Libs");
 
     /// <summary>
