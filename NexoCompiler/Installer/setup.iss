@@ -20,7 +20,7 @@ SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64
 
 [Dirs]
-Name: "C:\Programs\Nexo\libs"; Permissions: users-full
+Name: "{app}\Libs"; Permissions: users-full
 
 [Files]
 ; The main compiler executable globally routed
