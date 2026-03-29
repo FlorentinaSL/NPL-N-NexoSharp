@@ -1,7 +1,7 @@
 {
   "nexocore.math": {
     "name": "nexocore.math",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "Mathematical operations library. pow(), abs(), max(), min() — fully typed-free, native MSIL binding.",
     "category": "core",
@@ -11,7 +11,7 @@
   },
   "nexocore.io": {
     "name": "nexocore.io",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "Input/Output protocol array. error(), success(), warn(), banner() — structured terminal output primitives.",
     "category": "core",
@@ -21,7 +21,7 @@
   },
   "nexocore.net": {
     "name": "nexocore.net",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "HTTP Networking protocols. get(), postJson() — native HTTP/S over .NET HttpClient with zero overhead.",
     "category": "network",
@@ -31,7 +31,7 @@
   },
   "nexocore.json": {
     "name": "nexocore.json",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "JSON parsing and serialization. parse(), stringify() — bridges N# Maps and Lists to raw JSON natively.",
     "category": "data",
@@ -41,7 +41,7 @@
   },
   "nexocore.fs": {
     "name": "nexocore.fs",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "File System manipulation. read(), write(), exists() — direct OS file I/O with native path resolution.",
     "category": "core",
@@ -51,7 +51,7 @@
   },
   "nexocore.string": {
     "name": "nexocore.string",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "String manipulation primitives. length(), replace(), contains(), upper(), lower() — typed-free string operations.",
     "category": "core",
@@ -61,7 +61,7 @@
   },
   "nexocore.map": {
     "name": "nexocore.map",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "Dynamic Memory Mapping (Dictionaries). create(), set(), get() — .NET Dictionary binding via native IL.",
     "category": "data",
@@ -71,7 +71,7 @@
   },
   "nexocore.time": {
     "name": "nexocore.time",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "Chronological ecosystem. sleep(), now() — OS thread halting and Unix millisecond timestamp from host hardware.",
     "category": "core",
@@ -81,7 +81,7 @@
   },
   "nexocore.url": {
     "name": "nexocore.url",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "URL encoding/decoding protocol. encode(), decode() — RFC-compliant URI manipulation for HTTP pipelines.",
     "category": "network",
@@ -91,7 +91,7 @@
   },
   "nexocore.crypto": {
     "name": "nexocore.crypto",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "Cryptographic operations. base64Encode(), base64Decode() — native Base64 encoding via .NET Security APIs.",
     "category": "security",
@@ -101,7 +101,7 @@
   },
   "nexocore.system": {
     "name": "nexocore.system",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "OS Terminal bindings. run() — directly executes raw Terminal/PowerShell/Bash commands via the host system.",
     "category": "core",
@@ -111,7 +111,7 @@
   },
   "nexocore.discord": {
     "name": "nexocore.discord",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "Discord Webhook integration. sendWebhook() — broadcasts structured messages to Discord channels via native HTTP.",
     "category": "integrations",
@@ -121,7 +121,7 @@
   },
   "nexocore.ai": {
     "name": "nexocore.ai",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "AI Engine (Singularity). generateText(), prompt() — synchronous Cloud LLM calls with native N# unwrapping.",
     "category": "ai",
@@ -131,7 +131,7 @@
   },
   "nexocore.cozmo": {
     "name": "nexocore.cozmo",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "author": "Luca Cisternino",
     "description": "Anki Cozmo robotics bridge. connect(), say(), move(), animate() — native MSIL command streams, bypasses Python SDK entirely.",
     "category": "robotics",

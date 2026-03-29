@@ -147,7 +147,7 @@ export default function Docs() {
       <section className="animate-fade-in" style={{ animationDelay: "900ms", animationFillMode: "both", marginTop: "5rem" }}>
         <h2 style={{ fontSize: "2.2rem", marginBottom: "1.5rem", color: "#a5b4fc", borderBottom: "1px solid var(--glass-border)", paddingBottom: "0.5rem" }}>9. Standard Library Technical Lab</h2>
         <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", marginBottom: "2rem" }}>
-          Nexo 2.0 "Titan" introduces a professional, natively bridged standard library. Every function call below maps 1:1 to optimized .NET MSIL instructions.
+          Nexo 3.0 "Titan II" introduces a professional, natively bridged standard library. Every function call below maps 1:1 to optimized .NET MSIL instructions.
         </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -169,7 +169,7 @@ export default function Docs() {
             <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>Full serialization support for REST API responses.</p>
             <pre style={{ background: "rgba(0,0,0,0.3)", padding: "1rem", borderRadius: "8px", fontSize: "0.9rem", color: "#61afef" }}>
               using nexocore.json<br/>
-              rawJson = &quot;&#123; \&quot;name\&quot;: \&quot;Titan\&quot;, \&quot;version\&quot;: 2 &#125;&quot;<br/>
+              rawJson = &quot;&#123; \&quot;name\&quot;: \&quot;Titan II\&quot;, \&quot;version\&quot;: 3 &#125;&quot;<br/>
               data = jsonParse(rawJson)<br/>
               write &quot;System: &quot; + data[&quot;name&quot;]
             </pre>
