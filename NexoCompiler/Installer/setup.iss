@@ -1,7 +1,7 @@
 [Setup]
 ; --- Application Info ---
 AppName=Nexo
-AppVersion=2.0
+AppVersion=3.0
 AppPublisher=Luca Cisternino
 AppCopyright=Copyright (c) 2026 Luca Cisternino
 DefaultDirName={autopf}\Nexo
@@ -24,7 +24,7 @@ Name: "C:\Programs\Nexo\libs"; Permissions: users-full
 
 [Files]
 ; The main compiler executable globally routed
-Source: "C:\Users\ciste\RiderProjects\Nexo\PublishedExe\Nexo.exe"; DestDir: "{app}"; DestName: "nexo.exe"; Flags: ignoreversion
+Source: "C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\Publish\win-x64\Nexo.exe"; DestDir: "{app}"; DestName: "nexo.exe"; Flags: ignoreversion
 ; The official icon for file association
 Source: "C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\Installer\res\NPL.ico"; DestDir: "{app}"; Flags: ignoreversion
 
