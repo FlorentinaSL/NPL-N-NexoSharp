@@ -18,7 +18,7 @@ export default function Download() {
           <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginBottom: "2rem", flex: 1 }}>
             Official Setup Installer (.exe) — registers .nexo file association, injects PATH globally, and creates a Start Menu shortcut automatically.
           </p>
-          <a href="/NexoSetup_Final_v3.exe" download="NexoSetup_Final_v3.exe" className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download Setup v3.0 (x64)</a>
+          <a href="/NexoSetup.exe" download="NexoSetup_Final_v3.exe" className="primary-btn" style={{ width: "100%", textDecoration: "none" }}>Download Setup v3.0 (x64)</a>
         </div>
 
         {/* Linux Core */}
@@ -45,7 +45,7 @@ export default function Download() {
           <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp/releases/latest/download/nexo-mac" className="primary-btn" style={{ width: "100%", textDecoration: "none", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>Download Binary (x64)</a>
         </div>
       </div>
-      
+
       <div style={{ marginTop: "4rem", textAlign: "center", color: "var(--text-muted)", fontSize: "0.95rem", background: "rgba(124, 58, 237, 0.05)", padding: "1.5rem", borderRadius: "12px", border: "1px solid var(--glass-border)" }}>
         <strong style={{ color: "#a5b4fc" }}>Architectural Note:</strong> Nexo runs strictly locally as a pure native executable. Absolutely zero telemetry or background daemons are injected into your system memory.
       </div>
