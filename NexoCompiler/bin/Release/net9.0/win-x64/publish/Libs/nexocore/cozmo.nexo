@@ -1,0 +1,25 @@
+<3 Nexo Core - Cozmo Robotics Bridge
+<3 Copyright 2026 Luca Cisternino
+
+<3 Native N# library to control the Anki Cozmo robot.
+<3 Bypasses Python SDKs to direct native MSIL command streams.
+
+do connect(ip) {
+    return CozmoConnect(ip)
+}
+
+do say(text) {
+    CozmoSay(text)
+}
+
+do move(speed, distance) {
+    CozmoMove(speed, distance)
+}
+
+do animate(animName) {
+    CozmoAnimate(animName)
+}
+
+do setHead(angle) {
+    CozmoSetHeadAngle(angle)
+}

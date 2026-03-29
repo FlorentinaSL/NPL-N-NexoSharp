@@ -165,7 +165,15 @@ public class Compiler {
                     } else if (File.Exists(npmGlobalPath)) {
                         path = npmGlobalPath;
                     } else {
-                        throw new Exception($"[NXC-002] Linker Error: Module '{u.ModuleName}' could not be located locally or in the global NPM registry ('C:\\Programs\\Nexo\\libs').");
+                        // AUTOMATED CLOUD SYNC: Final attempt to pull from Nexo Registry
+                        try {
+                            Console.WriteLine($"[NPM] Module '{u.ModuleName}' missing. Attempting cloud resolution...");
+                            PackageManager.EnsureModule(u.ModuleName);
+                            if (File.Exists(globalPath)) path = globalPath;
+                            else if (File.Exists(npmGlobalPath)) path = npmGlobalPath;
+                        } catch {
+                            throw new Exception($"[NXC-002] Linker Error: Module '{u.ModuleName}' could not be located locally, in registry cache, or on the cloud (nexosharp.com).");
+                        }
                     }
                 }
                 

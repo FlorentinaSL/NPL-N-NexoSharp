@@ -17,7 +17,7 @@ export default function Home() {
         </p>
         
         <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}>
-          <a href="/download" className="primary-btn" style={{ textDecoration: "none", fontSize: "1.1rem", padding: "14px 28px", boxShadow: "0 0 20px rgba(124, 58, 237, 0.4)" }}>Download Nexo v2.0</a>
+          <a href="/NexoSetup.exe" className="primary-btn" style={{ textDecoration: "none", fontSize: "1.1rem", padding: "14px 28px", boxShadow: "0 0 20px rgba(124, 58, 237, 0.4)" }}>Download Nexo v3.0 (Windows)</a>
           <a href="/docs" className="secondary-btn" style={{ textDecoration: "none", fontSize: "1.1rem", padding: "14px 28px" }}>Get Started (Docs)</a>
         </div>
       </section>

@@ -30,3 +30,4 @@ C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\refint\Nexo.dl
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\Nexo.pdb
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\NexoCompiler.genruntimeconfig.cache
 C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\obj\Release\net9.0\ref\Nexo.dll
+C:\Users\ciste\RiderProjects\Nexo\NexoCompiler\bin\Release\net9.0\Libs\nexocore\cozmo.nexo

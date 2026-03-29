@@ -26,7 +26,7 @@ public static class Program {
  |_| \_|______/_/ \_\___/ 
 ");
         Console.ResetColor();
-        Console.WriteLine("    [NPL - Nexo Programming Language] - Version 2.0.0");
+        Console.WriteLine("    [NPL - Nexo Programming Language] - Version 3.0.0");
         Console.WriteLine("    Copyright (c) 2026 Spicco D'aura. All rights reserved.\n");
         Console.WriteLine("Type 'help' for explicit daemon architecture usage, or 'exit' to unmount.\n");
 

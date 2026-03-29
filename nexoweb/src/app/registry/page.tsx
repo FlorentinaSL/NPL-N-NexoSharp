@@ -178,7 +178,7 @@ export default function Registry() {
                 type="password" 
                 value={pubKey}
                 onChange={(e) => setPubKey(e.target.value)}
-                placeholder="V1 API Key" 
+                placeholder="V3 API Key" 
                 style={{ width: "100%", background: "rgba(0,0,0,0.4)", border: "1px solid var(--glass-border)", color: "white", padding: "12px", borderRadius: "8px", outline: "none" }}
                 required
               />
