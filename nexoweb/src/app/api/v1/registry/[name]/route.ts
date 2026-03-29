@@ -4,10 +4,10 @@ import path from 'path';
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ name: string[] }> }
+  { params }: { params: Promise<{ name: string }> }
 ) {
     const resolvedParams = await params;
-    const packageName = resolvedParams.name ? resolvedParams.name.join('.') : '';
+    const packageName = resolvedParams.name;
     const registryPath = path.join(process.cwd(), 'public', 'registry.json');
     
     try {
