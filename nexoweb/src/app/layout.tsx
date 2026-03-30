@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Logo from "../components/Logo";
+import CustomCursor from "../components/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body style={{ minHeight: "100vh", position: "relative", display: "flex", flexDirection: "column" }}>
+        <CustomCursor />
         <div className="ambient-glow"></div>
 
         {/* Global Navigation */}

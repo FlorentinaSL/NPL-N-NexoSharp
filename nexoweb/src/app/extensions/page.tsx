@@ -40,7 +40,7 @@ export default function Extensions() {
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" className="primary-btn" style={{ textDecoration: "none" }}>
+              <a href="/downloads/NexoLanguageSupport-1.0.6.zip" download className="primary-btn" style={{ textDecoration: "none" }}>
                 Download Plugin (.zip)
               </a>
               <div style={{ color: "var(--text-muted)", fontSize: "0.9rem", display: "flex", alignItems: "center" }}>
