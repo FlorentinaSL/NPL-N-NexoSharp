@@ -31,7 +31,7 @@ export default function Extensions() {
             
             <div style={{ marginBottom: "2rem" }}>
               <span style={{ background: "rgba(124, 58, 237, 0.15)", color: "#a5b4fc", padding: "6px 12px", borderRadius: "20px", fontSize: "0.9rem", fontWeight: "600", border: "1px solid rgba(124, 58, 237, 0.3)" }}>
-                Version 1.0.6 (Stable)
+                Version 1.0.7 (Stable)
               </span>
             </div>
 
@@ -40,7 +40,7 @@ export default function Extensions() {
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <a href="/downloads/NexoLanguageSupport-1.0.6.zip" download className="primary-btn" style={{ textDecoration: "none" }}>
+              <a href="/downloads/NexoLanguageSupport-1.0.7.zip" download className="primary-btn" style={{ textDecoration: "none" }}>
                 Download Plugin (.zip)
               </a>
               <div style={{ color: "var(--text-muted)", fontSize: "0.9rem", display: "flex", alignItems: "center" }}>
@@ -82,7 +82,7 @@ export default function Extensions() {
           <div className="glass-panel" style={{ padding: "2rem" }}>
             <div style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>1️⃣</div>
             <h4 style={{ marginBottom: "1rem" }}>Download</h4>
-            <p style={{ color: "var(--text-muted)", fontSize: "0.95rem" }}>Get the latest plugin build (NexoLanguageSupport-1.0.6.zip) from our official distribution channel.</p>
+            <p style={{ color: "var(--text-muted)", fontSize: "0.95rem" }}>Get the latest plugin build (NexoLanguageSupport-1.0.7.zip) from our official distribution channel.</p>
           </div>
 
           <div className="glass-panel" style={{ padding: "2rem" }}>

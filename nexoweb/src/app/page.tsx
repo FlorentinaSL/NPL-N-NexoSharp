@@ -141,7 +141,7 @@ export default function Home() {
              <div style={{ position: "absolute", inset: 0, opacity: 0.2, backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
              <Logo size={180} />
              <div style={{ position: "absolute", bottom: "20px", right: "20px", background: "rgba(0,0,0,0.5)", padding: "8px 12px", borderRadius: "8px", fontSize: "0.8rem", border: "1px solid var(--glass-border)" }}>
-               v1.0.6 Stable
+               v1.0.7 Stable
              </div>
           </div>
         </div>
