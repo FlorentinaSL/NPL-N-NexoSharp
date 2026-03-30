@@ -119,6 +119,34 @@ export default function Home() {
 
       </section>
 
+      {/* NEW: IDE Extensions Highlight */}
+      <section className="animate-fade-in delay-3" style={{ marginBottom: "6rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "4rem", alignItems: "center", padding: "0 1rem" }}>
+        <div style={{ order: 2 }}>
+          <h2 style={{ fontSize: "2.8rem", fontWeight: "900", marginBottom: "1.5rem", background: "linear-gradient(to right, #7c3aed, #3b82f6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Native IDE Support.</h2>
+          <p style={{ color: "var(--text-muted)", fontSize: "1.15rem", lineHeight: "1.8", marginBottom: "2.5rem" }}>
+            Code Nexo with confidence. Our official **JetBrains Plugin** brings high-end language support to Rider, IntelliJ, and CLion. Syntax highlighting, IntelliSense, and integrated run configurations—native and fast.
+          </p>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <a href="/extensions" className="primary-btn" style={{ textDecoration: "none" }}>
+              Get the Plugin
+            </a>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--text-muted)", fontSize: "0.9rem" }}>
+              <span>Available for:</span>
+              <span style={{ color: "#fff" }}>Rider / IntelliJ / CLion</span>
+            </div>
+          </div>
+        </div>
+        <div className="animate-float" style={{ order: 1, display: "flex", justifyContent: "center" }}>
+          <div className="glass-panel" style={{ width: "100%", maxWidth: "450px", height: "300px", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)", position: "relative", overflow: "hidden" }}>
+             <div style={{ position: "absolute", inset: 0, opacity: 0.2, backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
+             <Logo size={180} />
+             <div style={{ position: "absolute", bottom: "20px", right: "20px", background: "rgba(0,0,0,0.5)", padding: "8px 12px", borderRadius: "8px", fontSize: "0.8rem", border: "1px solid var(--glass-border)" }}>
+               v1.0.6 Stable
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* 4. Use Nexo Now (NPM Command Line Demo) */}
       <section className="animate-fade-in delay-3" style={{ background: "rgba(0,0,0,0.3)", borderRadius: "16px", padding: "4rem 2rem", border: "1px solid var(--glass-border)", marginBottom: "3rem", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
         <h2 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>Deploy the Global Network.</h2>
