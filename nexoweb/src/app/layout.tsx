@@ -64,6 +64,7 @@ export default function RootLayout({
             <a href="/docs" className="nav-link">Docs</a>
             <a href="/cozmo" className="nav-link" style={{ color: "#fbbf24" }}>Cozmo Lab</a>
             <a href="/registry" className="nav-link">NPM Registry</a>
+            <a href="/extensions" className="nav-link">Extensions</a>
             <a href="/download" className="nav-link">Downloads</a>
             <a href="/luca-cisternino" className="nav-link">Owner</a>
             <a href="https://github.com/FlorentinaSL/NPL-N-NexoSharp" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: "#a5b4fc" }}>GitHub</a>
@@ -81,6 +82,7 @@ export default function RootLayout({
             <a href="/docs" style={{ color: "inherit", textDecoration: "none" }}>Documentation</a>
             <a href="/cozmo" style={{ color: "inherit", textDecoration: "none" }}>Cozmo Robotics</a>
             <a href="/registry" style={{ color: "inherit", textDecoration: "none" }}>Global Registry</a>
+            <a href="/extensions" style={{ color: "inherit", textDecoration: "none" }}>Extensions</a>
             <a href="/luca-cisternino" style={{ color: "#fbbf24", textDecoration: "none", fontWeight: "600" }}>Meet the Architect</a>
             <a href="/download" style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: "600" }}>Download Native</a>
           </div>
