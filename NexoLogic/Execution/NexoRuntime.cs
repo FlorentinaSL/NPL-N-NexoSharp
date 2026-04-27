@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 
 namespace NexoLogic.Execution;
 
@@ -17,6 +19,66 @@ public static class NexoRuntime {
     /// Manages transient state for root-level variables and data structures inaccessible via local stack pointers.
     /// </summary>
     public static readonly Dictionary<string, object> Globals = new();
+
+    /// <summary>
+    /// AOT Linker Rooting Entry Point.
+    /// Explicitly references native methods to prevent the Native AOT Linker from stripping them during compilation.
+    /// </summary>
+    public static void AnchorNativeMethods() {
+        // Cozmo Hardware Stack (Forced Rooting)
+        var _ = new Action<object>(CozmoSay);
+        var __ = new Func<object, object>(CozmoConnect);
+        var ___ = new Action<object, object>(CozmoMove);
+        var ____ = new Action<object>(CozmoAnimate);
+        var _____ = new Action<object>(CozmoSetHeadAngle);
+        var ______ = new Action<object>(Wait);
+        var _______ = new Action<object, object>(CozmoTurn);
+        var ________ = new Action<object>(CozmoSetLift);
+    }
+
+    // =========================================================================
+    // NATIVE COZMO HARDWARE ENGINE (NPL CLAD DRIVER)
+    // =========================================================================
+    private static TcpClient? _cozmoClient;
+    private static NetworkStream? _cozmoStream;
+    private static bool _cozmoActive = false;
+
+    private static void SendCozmoBinary(ushort id, byte[] payload) {
+        if (_cozmoStream == null || !_cozmoActive) return;
+        
+        int length = 2 + payload.Length;
+        byte[] header = new byte[6];
+        
+        byte[] lenBytes = BitConverter.GetBytes(length);
+        byte[] idBytes = BitConverter.GetBytes(id);
+        
+        Array.Copy(lenBytes, 0, header, 0, 4);
+        Array.Copy(idBytes, 0, header, 4, 2);
+        
+        _cozmoStream.Write(header, 0, 6);
+        _cozmoStream.Write(payload, 0, payload.Length);
+        _cozmoStream.Flush();
+    }
+
+    private static void CozmoHeartbeatLoop() {
+        while (_cozmoActive) {
+            try {
+                SendCozmoBinary((ushort)0x00, Array.Empty<byte>());
+                Thread.Sleep(2000);
+            } catch {
+                _cozmoActive = false; break;
+            }
+        }
+    }
+
+    private static float ToFloat(object val) {
+        if (val is int i) return (float)i;
+        if (val is float f) return f;
+        if (val is double d) return (float)d;
+        if (val is long l) return (float)l;
+        if (float.TryParse(val.ToString(), out float r)) return r;
+        return 0.0f;
+    }
 
     // =========================================================================
     // STANDARD I/O BINDINGS
@@ -293,33 +355,124 @@ public static class NexoRuntime {
     // COZMO ROBOTICS ENGINE (NPL BRIDGE)
     // =========================================================================
 
-    public static object CozmoConnect(object ip) {
-        Console.WriteLine($"[NEXO-COZMO] Attempting native bridge handshake with Anki Hardware @ {ip}");
-        // Simulation: In a real environment, this would initialize a TCP/UDP socket pipeline.
-        Thread.Sleep(500);
-        Console.WriteLine("[NEXO-COZMO] Handshake SUCCESS. Robot is ready for N# directives.");
+    public static object CozmoConnect(object host) {
+        string target = host.ToString()!;
+        if (target == "" || target == "localhost") target = "127.0.0.1";
+        
+        Console.WriteLine($"[NEXO-NATIVE] Connecting to Cozmo SDK Bridge @ {target}:5106");
+        
+        try {
+            return AttemptConnection(target);
+        } catch {
+            // Auto-Linker: If on localhost, try ADB forwarding once
+            if (target == "127.0.0.1") {
+                Console.WriteLine("[NEXO-NATIVE] Link failed. Attempting ADB Auto-Forward (Bridge Tunneling)...");
+                TryAdbForward();
+                Thread.Sleep(1000); // Wait for ADB to stabilize
+                
+                try {
+                    return AttemptConnection(target);
+                } catch (Exception e2) {
+                    Console.WriteLine($"[NEXO-NATIVE] Auto-Link Failed: {e2.Message}");
+                    return 0;
+                }
+            }
+            return 0;
+        }
+    }
+
+    private static object AttemptConnection(string target) {
+        _cozmoClient = new TcpClient(target, 5106);
+        _cozmoStream = _cozmoClient.GetStream();
+        _cozmoActive = true;
+        SendCozmoBinary((ushort)0x01, System.Text.Encoding.UTF8.GetBytes("NexoRuntime"));
+        new Thread(CozmoHeartbeatLoop).Start();
+        Console.WriteLine("[NEXO-NATIVE] Native Handle Established. Robot linked.");
         return 1;
     }
 
+    private static void TryAdbForward() {
+        string localAdb = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "adb.exe");
+        string[] possibleAdbPaths = {
+            localAdb,
+            "adb",
+            @"C:\Users\ciste\AppData\Local\Android\Sdk\platform-tools\adb.exe"
+        };
+
+        foreach (var path in possibleAdbPaths) {
+            try {
+                var process = new System.Diagnostics.Process {
+                    StartInfo = new System.Diagnostics.ProcessStartInfo {
+                        FileName = path,
+                        Arguments = "forward tcp:5106 tcp:5106",
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }
+                };
+                process.Start();
+                process.WaitForExit();
+                if (process.ExitCode == 0) return; // Success!
+            } catch {
+                continue;
+            }
+        }
+        Console.WriteLine("[NEXO-NATIVE] ADB not found in system PATH or common SDK locations. Port forwarding might fail.");
+    }
+
     public static void CozmoSay(object text) {
-        Console.WriteLine($"[NEXO-COZMO] Robot Directive: SAY \"{text}\"");
-        // Emulates the text-to-speech packet dispatch
+        byte[] payload = System.Text.Encoding.UTF8.GetBytes(text.ToString()!);
+        SendCozmoBinary((ushort)0x02, payload);
     }
 
     public static void CozmoMove(object speed, object distance) {
-        Console.WriteLine($"[NEXO-COZMO] Robot Directive: MOVE speed={speed} distance={distance}");
+        byte[] payload = new byte[8];
+        byte[] sBytes = BitConverter.GetBytes(ToFloat(speed));
+        byte[] dBytes = BitConverter.GetBytes(ToFloat(distance));
+        
+        Array.Copy(sBytes, 0, payload, 0, 4);
+        Array.Copy(dBytes, 0, payload, 4, 4);
+        
+        SendCozmoBinary((ushort)0x03, payload);
     }
 
     public static void CozmoAnimate(object animName) {
-        Console.WriteLine($"[NEXO-COZMO] Robot Directive: PLAY_ANIMATION \"{animName}\"");
+        string nameStr = animName?.ToString() ?? "";
+        byte[] payload = System.Text.Encoding.UTF8.GetBytes(nameStr);
+        ushort packetId = (ushort)0x04;
+        SendCozmoBinary(packetId, payload);
     }
 
     public static void CozmoSetHeadAngle(object angle) {
-        Console.WriteLine($"[NEXO-COZMO] Robot Directive: SET_HEAD angle={angle}");
+        byte[] payload = BitConverter.GetBytes(ToFloat(angle));
+        SendCozmoBinary((ushort)0x05, payload);
+    }
+
+    public static void CozmoTurn(object angle, object speed) {
+        byte[] payload = new byte[8];
+        byte[] aBytes = BitConverter.GetBytes(ToFloat(angle));
+        byte[] sBytes = BitConverter.GetBytes(ToFloat(speed));
+        Array.Copy(aBytes, 0, payload, 0, 4);
+        Array.Copy(sBytes, 0, payload, 4, 4);
+        SendCozmoBinary((ushort)0x06, payload);
+    }
+
+    public static void CozmoSetLift(object height) {
+        byte[] payload = BitConverter.GetBytes(ToFloat(height));
+        SendCozmoBinary((ushort)0x07, payload);
     }
 
     /// <summary>
     /// Explicit Integer coercion casting.
     /// </summary>
     public static object ParseInt(object val) => int.TryParse(val.ToString(), out int r) ? r : 0;
+
+    /// <summary>
+    /// Core System Sync Utility.
+    /// Performs a synchronous execution pause on the current thread.
+    /// </summary>
+    public static void Wait(object ms) {
+        if (ms is int val) Thread.Sleep(val);
+        else if (int.TryParse(ms.ToString(), out int parsed)) Thread.Sleep(parsed);
+    }
 }

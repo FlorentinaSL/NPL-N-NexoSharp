@@ -1,0 +1,13 @@
+<3 Nexo Core - HTTP Networking Protocols
+<3 Copyright 2026 Florentina Spicco D'aura
+
+<3 Dispatches a highly synchronous HTTP GET stream
+do get(url) {
+    return httpGet(url)
+}
+
+<3 Posts a JSON payload body forcefully to a target REST endpoint
+do postJson(url, jsonString) {
+    return httpPost(url, jsonString)
+}
+

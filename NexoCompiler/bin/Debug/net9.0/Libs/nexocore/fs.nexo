@@ -1,0 +1,17 @@
+<3 Nexo Core - File System Manipulation
+<3 Copyright 2026 Florentina Spicco D'aura
+
+<3 Reads absolute textual buffer from a file
+do read(path) {
+    return fileRead(path)
+}
+
+<3 Writes literal content string to a target bounding file
+do write(path, content) {
+    fileWrite(path, content)
+}
+
+<3 Evaluates the structural existence of an OS file path
+do exists(path) {
+    return fileExists(path)
+}

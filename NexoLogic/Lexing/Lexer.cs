@@ -41,11 +41,13 @@ public class Lexer {
             if (char.IsWhiteSpace(Current)) { _pos++; continue; }
 
             // Semantic Annotation Bypass: Line Comments ('<3')
-            // Using a custom syntax where '<3' signals a full line comment block ignore until new line.
             if (Current == '<' && Peek() == '3') {
-                while (_pos < _source.Length && Current != '\n') _pos++;
+                while (_pos < _source.Length && Current != '\n' && Current != '\r') _pos++;
                 continue;
             }
+
+            // Carriage Return Bypass (Windows Line Endings Security)
+            if (Current == '\r') { _pos++; continue; }
 
             // String Literal Allocation
             // Traverses characters capturing pure text until an enclosing double-quote is registered.
@@ -62,7 +64,11 @@ public class Lexer {
             // Scans contiguous blocks of Base-10 digits, coalescing them into numerical descriptors.
             if (char.IsDigit(Current)) {
                 string val = "";
-                while (char.IsDigit(Current)) val += _source[_pos++];
+                bool hasDot = false;
+                while (char.IsDigit(Current) || (Current == '.' && !hasDot)) {
+                    if (Current == '.') hasDot = true;
+                    val += _source[_pos++];
+                }
                 tokens.Add(new Token(TokenType.Number, val));
                 continue;
             }
@@ -89,6 +95,7 @@ public class Lexer {
                     "read" => TokenType.Read, 
                     "true" => TokenType.True,
                     "false" => TokenType.False, 
+                    "null" => TokenType.Null,
                     "and" => TokenType.And, 
                     "or" => TokenType.Or,
                     "not" => TokenType.Not, 

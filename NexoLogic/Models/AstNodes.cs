@@ -20,7 +20,7 @@ public class AstNodes
     public abstract record Expression : Node;
 
     // --- Scalar Literals ---
-    public record NumberExpression(int Value) : Expression;
+    public record NumberExpression(object Value) : Expression;
     public record StringExpression(string Value) : Expression;
     public record BoolExpression(bool Value) : Expression;
     public record NullExpression() : Expression;

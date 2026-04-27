@@ -18,6 +18,7 @@ public enum TokenType
     Identifier,     // Unreserved names: x, counter, index
     True,           // Boolean true literal
     False,          // Boolean false literal
+    Null,           // Null reference literal
     
     // --- Arithmetic Binary Nodes ---
     Plus,           // +

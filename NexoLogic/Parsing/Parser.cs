@@ -190,7 +190,21 @@ public class Parser {
     // Progressively traverses priority depth from logical checks downwards to atomic values
     // -------------------------------------------------------------
     
-    private AstNodes.Expression ParseExpression() => ParseEquality();
+    private AstNodes.Expression ParseExpression() => ParseLogicalOr();
+    
+    private AstNodes.Expression ParseLogicalOr() {
+        var left = ParseLogicalAnd();
+        while (Current.Type == TokenType.Or)
+            left = new AstNodes.BinaryExpression(left, Next().Value, ParseLogicalAnd());
+        return left;
+    }
+    
+    private AstNodes.Expression ParseLogicalAnd() {
+        var left = ParseEquality();
+        while (Current.Type == TokenType.And)
+            left = new AstNodes.BinaryExpression(left, Next().Value, ParseEquality());
+        return left;
+    }
     
     private AstNodes.Expression ParseEquality() {
         var left = ParseComparison();
@@ -226,10 +240,15 @@ public class Parser {
     /// </summary>
     private AstNodes.Expression ParsePrimary() {
         if (Current.Type == TokenType.Read) { Next(); return new AstNodes.ReadExpression(); }
-        if (Current.Type == TokenType.Number) { return new AstNodes.NumberExpression(int.Parse(Next().Value)); }
+        if (Current.Type == TokenType.Number) { 
+            string val = Next().Value;
+            if (val.Contains('.')) return new AstNodes.NumberExpression(float.Parse(val, System.Globalization.CultureInfo.InvariantCulture));
+            return new AstNodes.NumberExpression(int.Parse(val)); 
+        }
         if (Current.Type == TokenType.String) { return new AstNodes.StringExpression(Next().Value); }
         if (Current.Type == TokenType.True) { Next(); return new AstNodes.BoolExpression(true); }
         if (Current.Type == TokenType.False) { Next(); return new AstNodes.BoolExpression(false); }
+        if (Current.Type == TokenType.Null) { Next(); return new AstNodes.NullExpression(); }
         
         // Dynamic List Initialization
         if (Current.Type == TokenType.OpenBracket) {
@@ -247,6 +266,14 @@ public class Parser {
         if (Current.Type == TokenType.Identifier) {
             string name = Next().Value;
             
+            // Support for qualified names (e.g. cozmo.connect)
+            while (Current.Type == TokenType.Dot) {
+                Next(); // Consume '.'
+                if (Current.Type != TokenType.Identifier)
+                    throw new Exception("[NXC-025] Syntax Error: Expected identifier after '.' in expression.");
+                name += "." + Next().Value;
+            }
+
             // Differentiates raw scalar variable references from executable function invocations
             if (Current.Type == TokenType.OpenParen) { 
                 Next();
@@ -281,6 +308,10 @@ public class Parser {
             return e; 
         }
         
-        throw new Exception($"[NXC-003] AST Resolution Error: Unexpected token '{Current.Value}' (Type: {Current.Type}) encountered during atomic primary expression evaluation.");
+        Token prev = _pos > 0 ? _tokens[_pos - 1] : _tokens[0];
+        Token next = _pos + 1 < _tokens.Count ? _tokens[_pos + 1] : _tokens[^1];
+        
+        throw new Exception($"[NXC-003] AST Resolution Error: Unexpected token '{Current.Value}' (Type: {Current.Type}) at pos {_pos}. " +
+                            $"Context: ...{prev.Value} -> [{Current.Value}] <- {next.Value}...");
     }
 }

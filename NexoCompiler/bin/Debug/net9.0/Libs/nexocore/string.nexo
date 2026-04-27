@@ -1,0 +1,25 @@
+<3 Nexo Core - String Manipulation
+<3 Copyright 2026 Florentina Spicco D'aura
+
+<3 Calculates literal length of a scalar string payload
+do length(str) {
+    return stringLength(str)
+}
+
+<3 Injects new payload across all matched instances
+do replace(str, oldVal, newVal) {
+    return stringReplace(str, oldVal, newVal)
+}
+
+<3 Ascertains if payload structure exists
+do contains(str, val) {
+    return stringContains(str, val)
+}
+
+do upper(str) {
+    return stringUpper(str)
+}
+
+do lower(str) {
+    return stringLower(str)
+}

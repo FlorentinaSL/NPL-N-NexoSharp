@@ -1,0 +1,24 @@
+<3 Nexo Core - Input/Output Protocol Array
+<3 Copyright 2026 Florentina Spicco D'aura
+
+<3 Throws a distinctly formatted Error payload
+do error(message) {
+    write "[V-ERROR] " + message
+}
+
+<3 Resolves a deeply formatted Success prompt
+do success(message) {
+    write "[V-SUCCESS] " + message
+}
+
+<3 Highlights an edge constraint payload
+do warn(message) {
+    write "[V-WARNING] " + message
+}
+
+<3 Generates a strict application bounding box banner
+do banner(appName, version) {
+    write "========================================="
+    write "  " + appName + " (v" + version + ")"
+    write "========================================="
+}

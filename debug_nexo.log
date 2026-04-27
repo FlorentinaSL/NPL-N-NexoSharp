@@ -1,0 +1,18 @@
+
+  _   _ _______   _____  
+ | \ | |  ____\ \ / / _ \ 
+ |  \| | |__   \ V / | | |
+ | . ` |  __|   > <| | | |
+ | |\  | |____ / . \ |_| |
+ |_| \_|______/_/ \_\___/ 
+
+    [NPL - Nexo Programming Language] - Version 3.0.0
+    Copyright (c) 2026 Spicco D'aura. All rights reserved.
+
+Type 'help' for explicit daemon architecture usage, or 'exit' to unmount.
+
+
+[JIT Execution Protocol: example.nexo]
+
+[FATAL] Interpreter Crash Hook: [NXC-003] AST Resolution Error: Unexpected token '.' (Type: Dot) encountered during atomic primary expression evaluation.
+

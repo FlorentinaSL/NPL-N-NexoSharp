@@ -16,6 +16,9 @@ namespace NexoCompiler;
 public static class Program {
     
     public static void Main(string[] args) {
+        // AOT Rooting: Force the linker to keep native hardware drivers
+        NexoRuntime.AnchorNativeMethods();
+
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine(@"
   _   _ _______   _____  

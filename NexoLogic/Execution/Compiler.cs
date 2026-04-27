@@ -381,10 +381,18 @@ public class Compiler {
                 break;
                 
             case AstNodes.NumberExpression n:
-                // [Stack: 0 -> 1] Push unboxed int32 mapping constraint
-                il.Emit(OpCodes.Ldc_I4, n.Value);
-                // Encase integer bytes into Object payload mapping structures natively
-                il.Emit(OpCodes.Box, typeof(int));
+                if (n.Value is float f) {
+                    il.Emit(OpCodes.Ldc_R4, f);
+                    il.Emit(OpCodes.Box, typeof(float));
+                } else if (n.Value is int i) {
+                    il.Emit(OpCodes.Ldc_I4, i);
+                    il.Emit(OpCodes.Box, typeof(int));
+                } else {
+                    // Fallback for double or other numeric types converted from Parse
+                    float val = Convert.ToSingle(n.Value);
+                    il.Emit(OpCodes.Ldc_R4, val);
+                    il.Emit(OpCodes.Box, typeof(float));
+                }
                 break;
                 
             case AstNodes.StringExpression s:

@@ -169,8 +169,25 @@ public class Interpreter {
             return null; // Implicit evaluation termination
         }
 
+        // --- Library Method Resolution (Loaded via 'using') ---
+        // If name is 'cozmo.connect', we look for 'connect' in the global functions
+        string nakedName = name;
+        if (name.Contains('.')) nakedName = name.Split('.')[^1];
+
+        if (_functions.ContainsKey(nakedName)) {
+            return ExecuteFunction(nakedName, args, callingScope);
+        }
+
         // --- Active Native .NET Framework Bridging ---
-        string targetName = name.Replace("_", "");
+        // Namespace Stripping fallback for direct hardware access
+        string lookupName = name;
+        if (name.Contains('.')) {
+            string[] parts = name.Split('.');
+            lookupName = parts[^1];
+            if (parts[0].ToLower() == "cozmo") lookupName = "Cozmo" + char.ToUpper(lookupName[0]) + lookupName.Substring(1);
+        }
+
+        string targetName = lookupName.Replace("_", "");
         var nativeMethod = typeof(NexoRuntime).GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)
             .FirstOrDefault(m => string.Equals(m.Name, targetName, StringComparison.OrdinalIgnoreCase));
         
@@ -179,12 +196,11 @@ public class Interpreter {
                 throw new Exception($"[NXC-014] Bridging Error: Bound Native Framework Method '{name}' physically requires {nativeMethod.GetParameters().Length} arguments.");
             }
             
-            // Execute synchronous reflection translation mappings recursively
             var argVals = args.Select(a => EvalExpr(a, callingScope)).ToArray();
             return nativeMethod.Invoke(null, argVals);
         }
 
-        throw new Exception($"[NXC-015] Linker Fault: Pointer to routine '{name}' returned null memory mapping. Method is strictly undefined.");
+        throw new Exception($"[NXC-015] Linker/AOT Fault: Pointer to routine '{name}' returned null. Method is likely stripped by the Native AOT Linker or is strictly undefined in NexoRuntime.cs.");
     }
 
     /// <summary>
@@ -225,9 +241,20 @@ public class Interpreter {
         AstNodes.ArrayDeclarationExpression arr => NexoRuntime.CreateList(arr.Elements.Select(expr => EvalExpr(expr, currentScope)).ToArray()),
         AstNodes.IndexAccessExpression idx => NexoRuntime.GetIndex(EvalExpr(idx.Obj, currentScope), EvalExpr(idx.Index, currentScope)),
         AstNodes.BinaryExpression bin => EvalBin(bin, currentScope),
+        AstNodes.UnaryExpression u => EvalUnary(u, currentScope),
+        AstNodes.NullExpression => null!,
         AstNodes.CallExpression c => ExecuteFunction(c.Callee, c.Arguments, currentScope)!,
         _ => throw new Exception($"[NXC-017] Deserialization Bug: Unidentifiable semantic node struct '{e.GetType().Name}'.")
     };
+
+    private object EvalUnary(AstNodes.UnaryExpression u, Dictionary<string, object> currentScope) {
+        var right = EvalExpr(u.Right, currentScope);
+        return u.Op switch {
+            "not" => !IsTrue(right),
+            "-" => -(int)right,
+            _ => throw new Exception($"[NXC-020] Interpreter Fault: Unary operator '{u.Op}' is not implemented.")
+        };
+    }
 
     /// <summary>
     /// Sweeps memory scopes sequentially starting from explicit Local parameters, bubbling upwards to absolute variables.
@@ -259,6 +286,8 @@ public class Interpreter {
             "<" => (int)l < (int)r, 
             ">=" => (int)l >= (int)r, 
             "<=" => (int)l <= (int)r,
+            "and" => IsTrue(l) && IsTrue(r),
+            "or" => IsTrue(l) || IsTrue(r),
             _ => throw new Exception($"[NXC-019] Mathematical Parser Engine failed translating arithmetic token delimiter '{b.Op}'.")
         };
     }

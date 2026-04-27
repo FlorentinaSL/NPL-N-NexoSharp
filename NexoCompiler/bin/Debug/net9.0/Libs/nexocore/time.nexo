@@ -1,0 +1,12 @@
+<3 Nexo Core - Chronological Ecosystem
+<3 Copyright 2026 Florentina Spicco D'aura
+
+<3 Halts native OS execution thread forcibly for milliseconds
+do sleep(ms) {
+    sleep(ms)
+}
+
+<3 Generates native Server Unix Milliseconds from Host Hardware
+do now() {
+    return systemTime()
+}
